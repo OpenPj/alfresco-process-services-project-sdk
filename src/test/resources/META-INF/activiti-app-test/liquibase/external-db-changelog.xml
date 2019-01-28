@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="1" author="activiti">
+
+        <!-- Hibernate sequence table -->
+        <createTable tableName="hibernate_sequences">
+            <column name="sequence_name" type="varchar(255)" />
+            <column name="sequence_next_hi_value" type="integer" />
+        </createTable>
+
+        <!-- User, authority and tokens -->
+        <createTable tableName="USERS">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="first_name" type="varchar(50)" />
+            <column name="last_name" type="varchar(50)" />
+            <column name="email" type="varchar(100)" />
+        </createTable>
+
+        <!-- Adding index on user email, since that is used for every login. -->
+        <createIndex indexName="idx_user_email" tableName="USERS" unique="false">
+            <column name="email" />
+        </createIndex>
+
+    </changeSet>
+
+
+</databaseChangeLog>

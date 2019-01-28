@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/processdef" xmlns:modeler="http://activiti.com/modeler" modeler:version="1.0en" modeler:exportDateTime="20190128120304770" modeler:modelId="1" modeler:modelVersion="7" modeler:modelLastUpdated="1548673356747">
+  <process id="fourEyesPrinciple" name="4 Eyes Principle" isExecutable="true">
+    <startEvent id="startApprovalWorkflow" name="Start approval" activiti:formKey="3">
+      <extensionElements>
+        <modeler:form-reference-id><![CDATA[3]]></modeler:form-reference-id>
+        <modeler:form-reference-name><![CDATA[Insert document]]></modeler:form-reference-name>
+        <modeler:editor-resource-id><![CDATA[startEvent1]]></modeler:editor-resource-id>
+      </extensionElements>
+    </startEvent>
+    <userTask id="firstApprovalTask" name="First approval" activiti:assignee="$INITIATOR" activiti:formKey="4">
+      <extensionElements>
+        <modeler:allow-send-email><![CDATA[true]]></modeler:allow-send-email>
+        <modeler:form-reference-id><![CDATA[4]]></modeler:form-reference-id>
+        <modeler:form-reference-name><![CDATA[Validate document]]></modeler:form-reference-name>
+        <modeler:activiti-idm-initiator><![CDATA[true]]></modeler:activiti-idm-initiator>
+        <modeler:editor-resource-id><![CDATA[sid-510CA2FC-F8FF-4A26-BC17-3772E7CA1B27]]></modeler:editor-resource-id>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="sid-DF123725-F4E6-446E-8A31-4B121E5C5929" sourceRef="startApprovalWorkflow" targetRef="firstApprovalTask">
+      <extensionElements>
+        <modeler:editor-resource-id><![CDATA[sid-DF123725-F4E6-446E-8A31-4B121E5C5929]]></modeler:editor-resource-id>
+      </extensionElements>
+    </sequenceFlow>
+    <userTask id="secondApprovalTask" name="Second approval" activiti:assignee="$INITIATOR" activiti:formKey="4">
+      <extensionElements>
+        <modeler:allow-send-email><![CDATA[true]]></modeler:allow-send-email>
+        <modeler:form-reference-id><![CDATA[4]]></modeler:form-reference-id>
+        <modeler:form-reference-name><![CDATA[Validate document]]></modeler:form-reference-name>
+        <modeler:activiti-idm-initiator><![CDATA[true]]></modeler:activiti-idm-initiator>
+        <modeler:editor-resource-id><![CDATA[sid-47A5350A-71B8-4849-82C2-6C7F034E6F8D]]></modeler:editor-resource-id>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="sid-5E13E45E-7D2F-4872-B797-EE9F158E43E7" sourceRef="firstApprovalTask" targetRef="secondApprovalTask">
+      <extensionElements>
+        <modeler:editor-resource-id><![CDATA[sid-5E13E45E-7D2F-4872-B797-EE9F158E43E7]]></modeler:editor-resource-id>
+      </extensionElements>
+    </sequenceFlow>
+    <endEvent id="endApprovalWorkflow" name="Approved">
+      <extensionElements>
+        <modeler:editor-resource-id><![CDATA[sid-BAD2C80C-5079-48BF-9DAF-BAD6383083D0]]></modeler:editor-resource-id>
+      </extensionElements>
+    </endEvent>
+    <sequenceFlow id="sid-55739EE7-589E-4964-A36E-D2BD5EE5EBBF" sourceRef="secondApprovalTask" targetRef="endApprovalWorkflow">
+      <extensionElements>
+        <modeler:editor-resource-id><![CDATA[sid-55739EE7-589E-4964-A36E-D2BD5EE5EBBF]]></modeler:editor-resource-id>
+      </extensionElements>
+    </sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_fourEyesPrinciple">
+    <bpmndi:BPMNPlane bpmnElement="fourEyesPrinciple" id="BPMNPlane_fourEyesPrinciple">
+      <bpmndi:BPMNShape bpmnElement="startApprovalWorkflow" id="BPMNShape_startApprovalWorkflow">
+        <omgdc:Bounds height="30.0" width="30.0" x="90.0" y="163.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="firstApprovalTask" id="BPMNShape_firstApprovalTask">
+        <omgdc:Bounds height="80.0" width="100.0" x="195.0" y="138.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="secondApprovalTask" id="BPMNShape_secondApprovalTask">
+        <omgdc:Bounds height="80.0" width="100.0" x="360.0" y="138.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="endApprovalWorkflow" id="BPMNShape_endApprovalWorkflow">
+        <omgdc:Bounds height="28.0" width="28.0" x="540.0" y="164.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sid-55739EE7-589E-4964-A36E-D2BD5EE5EBBF" id="BPMNEdge_sid-55739EE7-589E-4964-A36E-D2BD5EE5EBBF">
+        <omgdi:waypoint x="460.0" y="178.0"/>
+        <omgdi:waypoint x="540.0" y="178.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-5E13E45E-7D2F-4872-B797-EE9F158E43E7" id="BPMNEdge_sid-5E13E45E-7D2F-4872-B797-EE9F158E43E7">
+        <omgdi:waypoint x="295.0" y="178.0"/>
+        <omgdi:waypoint x="360.0" y="178.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-DF123725-F4E6-446E-8A31-4B121E5C5929" id="BPMNEdge_sid-DF123725-F4E6-446E-8A31-4B121E5C5929">
+        <omgdi:waypoint x="120.0" y="178.0"/>
+        <omgdi:waypoint x="195.0" y="178.0"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
