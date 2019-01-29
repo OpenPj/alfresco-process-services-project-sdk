@@ -1,9 +1,3 @@
-/**
- * Copyright 2005-2018 Alfresco Software, Ltd. All rights reserved.
- * License rights for this program may be obtained from Alfresco Software, Ltd.
- * pursuant to a written agreement and any use of this program without such an
- * agreement is prohibited.
- */
 package org.alfresco.activiti.conf;
 
 import org.springframework.context.annotation.Bean;
@@ -33,20 +27,16 @@ import com.activiti.conf.Bootstrapper;
         "com.activiti.runtime.bean",
         "com.activiti.runtime.activiti.bean",
 		"com.activiti.reporting",
-		"com.activiti.rest", // Extra for testing: the dispatcher servlet is not found by default
-		"com.activiti.api", // Extra for testing: the dispatcher servlet is not found by default
+		"com.activiti.rest",
+		"com.activiti.api",
 		},
         excludeFilters= {
-			@ComponentScan.Filter(value = ApplicationConfiguration.class, type = FilterType.ASSIGNABLE_TYPE), // Do not import main config, it will override the properties with the default property values!
+			@ComponentScan.Filter(value = ApplicationConfiguration.class, type = FilterType.ASSIGNABLE_TYPE),
 			@ComponentScan.Filter(value = Bootstrapper.class, type = FilterType.ASSIGNABLE_TYPE)
 		} 
 ) 
 public class ApplicationWhitelistingTestConfiguration {
 	
-	/**
-	 * This is needed to make property resolving work on annotations ...
-	 * (see http://stackoverflow.com/questions/11925952/custom-spring-property-source-does-not-resolve-placeholders-in-value) 
-	 */
 	@Bean
     public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
         return new PropertySourcesPlaceholderConfigurer();

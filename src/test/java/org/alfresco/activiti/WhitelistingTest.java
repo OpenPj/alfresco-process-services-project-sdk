@@ -70,9 +70,9 @@ public class WhitelistingTest {
 					"p.lucidi@tai.it", "Piergiorgio", "Lucidi", "test", null, UserStatus.ACTIVE,
 					AccountType.ENTERPRISE, tenant1.getId());
 		}
+		
 		SecurityUtils.assumeUser(user);
 		SecurityUtils.currentUserCanManageTenant(tenant1.getId());
-		
 	}
 
 	@Test
@@ -120,6 +120,7 @@ public class WhitelistingTest {
 	private Map<String, Object> getProcessInitVariables(String userId) {
 		Map<String, Object> processInitVariables = new HashMap<String, Object>();
 		processInitVariables.put("initiator", new Long(userId));
+		processInitVariables.put("assignee", new Long(userId));
 		processInitVariables.put("reviewtitle", "Iterating against software");
 		processInitVariables.put("description", "The quick brown fox jumps over the lazy dog.");
 		return processInitVariables;
