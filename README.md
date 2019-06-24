@@ -12,7 +12,14 @@ To run use 'mvn clean install'
  * Runs the embedded container + H2 DB 
  * Runs unit and integration tests
  * Packages both App ZIP and JAR with customization
-  
+
+# Prerequisites
+
+ * JDK 1.8
+ * Apache Maven 3.x
+ * Access to the Alfresco Maven Enterprise Repository
+ * A valid APS license installed in your local system
+
 # Few things to notice
 
  * You can use all the APS services such as: UserService, GroupService, TenantService and so on...
