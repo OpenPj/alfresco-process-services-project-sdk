@@ -1,6 +1,6 @@
 # Alfresco Process Services JAR Module - SDK
 
-Current dependencies are configured for APS 1.9.0.3.
+Current dependencies are configured for APS 1.9.0.5.
 
 Folder structure is based on the same APS project classpath:
  * /src/main/resources/activiti: APS configuration files
@@ -12,6 +12,11 @@ To run use 'mvn clean install'
  * Runs the embedded container + H2 DB 
  * Runs unit and integration tests
  * Packages both App ZIP and JAR with customization
+
+Supported Maven Profiles for dependencies management
+
+ * aps1.9  (APS 1.9.0.5 - default)
+ * aps1.10 (APS 1.10.0) 
 
 # Prerequisites
 

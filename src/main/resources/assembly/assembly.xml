@@ -13,7 +13,7 @@ xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assemb
     <fileSet>
       <directory>${project.basedir}/src/main/resources/app/</directory>
       <useDefaultExcludes>true</useDefaultExcludes>
-      <outputDirectory>/</outputDirectory>                
+      <outputDirectory>${file.separator}</outputDirectory>                
     </fileSet>
   </fileSets>
 

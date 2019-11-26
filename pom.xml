@@ -1,18 +1,10 @@
-<!-- 
-Copyright [yyyy] [name of copyright owner]
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
- -->
+<!-- Copyright [yyyy] [name of copyright owner] Licensed under the Apache 
+	License, Version 2.0 (the "License"); you may not use this file except in 
+	compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 
+	Unless required by applicable law or agreed to in writing, software distributed 
+	under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES 
+	OR CONDITIONS OF ANY KIND, either express or implied. See the License for 
+	the specific language governing permissions and limitations under the License. -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -24,14 +16,62 @@ limitations under the License.
 	<name>Alfresco Process Services - SDK Project</name>
 
 	<properties>
-		<jackson.version>2.9.5</jackson.version>
-		<spring.version>4.3.14.RELEASE</spring.version>
-		<spring-boot.version>1.5.10.RELEASE</spring-boot.version>
-		<spring-security.version>4.2.4.RELEASE</spring-security.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
+
+	<profiles>
+		<profile>
+			<id>aps1.9</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+
+			<properties>
+				<!-- APS 1.9 -->
+				<aps.version>1.9.0.5</aps.version>
+				<opencsv.version>3.7</opencsv.version>
+				<jackson.version>2.9.5</jackson.version>
+				<bcprov.version>1.59</bcprov.version>
+				<activiti.version>5.22.0.7</activiti.version>
+				<spring.version>4.3.14.RELEASE</spring.version>
+				<spring-boot.version>1.5.10.RELEASE</spring-boot.version>
+				<spring-security.version>4.2.4.RELEASE</spring-security.version>
+			</properties>
+
+		</profile>
+
+		<profile>
+			<id>aps1.10</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+
+			<properties>
+				<!-- APS 1.10 -->
+				<aps.version>1.10.0</aps.version>
+				<opencsv.version>3.7</opencsv.version>
+				<jackson.version>2.9.8</jackson.version>
+				<bcprov.version>1.62</bcprov.version>
+				<activiti.version>5.23.0.0</activiti.version>
+				<spring.version>4.3.20.RELEASE</spring.version>
+				<spring-boot.version>1.5.21.RELEASE</spring-boot.version>
+				<spring-security.version>4.2.9.RELEASE</spring-security.version>
+			</properties>
+
+		</profile>
+
+	</profiles>
 
 	<dependencyManagement>
 		<dependencies>
+			<dependency>
+				<groupId>org.bouncycastle</groupId>
+				<artifactId>bcprov-jdk15on</artifactId>
+				<version>${bcprov.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>com.fasterxml.jackson</groupId>
 				<artifactId>jackson-bom</artifactId>
@@ -95,32 +135,32 @@ limitations under the License.
 		<dependency>
 			<groupId>com.activiti</groupId>
 			<artifactId>activiti-app-logic</artifactId>
-			<version>1.9.0.3</version>
+			<version>${aps.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.activiti</groupId>
 			<artifactId>activiti-app</artifactId>
-			<version>1.9.0.3</version>
+			<version>${aps.version}</version>
 			<scope>test</scope>
 			<classifier>classes</classifier>
 		</dependency>
 		<dependency>
-            <groupId>com.activiti</groupId>
-            <artifactId>activiti-spring</artifactId>
-            <version>5.22.0.7</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.activiti</groupId>
-            <artifactId>activiti-engine</artifactId>
-            <version>5.22.0.7</version>
-            <scope>provided</scope>
-        </dependency>
+			<groupId>com.activiti</groupId>
+			<artifactId>activiti-spring</artifactId>
+			<version>${activiti.version}</version>
+			<scope>provided</scope>
+		</dependency>
 		<dependency>
-		    <groupId>com.opencsv</groupId>
-		    <artifactId>opencsv</artifactId>
-		    <version>4.3.2</version>
+			<groupId>com.activiti</groupId>
+			<artifactId>activiti-engine</artifactId>
+			<version>${activiti.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.opencsv</groupId>
+			<artifactId>opencsv</artifactId>
+			<version>${opencsv.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -132,7 +172,7 @@ limitations under the License.
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.6.2</version>
+				<version>3.8.1</version>
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
@@ -140,7 +180,7 @@ limitations under the License.
 			</plugin>
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
-				<version>3.1.0</version>
+				<version>3.2.0</version>
 				<executions>
 					<execution>
 						<configuration>
@@ -158,6 +198,26 @@ limitations under the License.
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.22.2</version>
+				<configuration>
+					<argLine>
+						--illegal-access=permit
+					</argLine>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>2.22.2</version>
+				<configuration>
+					<argLine>
+						--illegal-access=permit
+					</argLine>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
