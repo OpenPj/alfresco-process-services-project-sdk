@@ -11,7 +11,7 @@ xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assemb
 
   <fileSets>
     <fileSet>
-      <directory>${project.basedir}/src/main/resources/app/</directory>
+      <directory>${project.basedir}/src/main/resources/apps/fourEyes</directory>
       <useDefaultExcludes>true</useDefaultExcludes>
       <outputDirectory>${file.separator}</outputDirectory>                
     </fileSet>
