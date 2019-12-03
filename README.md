@@ -22,8 +22,8 @@ To run use 'mvn clean install'
  
 *Suggested naming conventions for implementations dedicated to a specific app*
 
- * com.activiti.extension.<yourApp>.listeners: put here your listeners
- * com.acitivit.extension.<yourApp>.service.tasks: put here your service tasks
+ * com.activiti.extension.*your_app*.listeners: put here your listeners
+ * com.acitivit.extension.*your_app*.service.tasks: put here your service tasks
 
 # SDK Packages - Test Runtime
  * org.alfresco.activiti.unit.tests: put here your unit test (with suffix *Test.java)
