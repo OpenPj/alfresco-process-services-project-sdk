@@ -29,7 +29,7 @@ To run use 'mvn clean install'
  * org.alfresco.activiti.unit.tests: put here your unit test (with suffix *Test.java)
  * org.alfresco.activiti.integration.tests: put here your integration tests (with suffix *IT.java)
 
-#Supported Maven Profiles for dependencies management
+# Supported Maven Profiles for dependencies management
 
  * aps1.9  (APS 1.9.0.5 - default)
  * aps1.10 (APS 1.10.0) 
