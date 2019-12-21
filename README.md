@@ -10,14 +10,14 @@ Folder structure is based on the same APS project classpath:
 To run use 'mvn clean install'
 
  * Runs the embedded container + H2 DB 
- * Runs unit tests with 'mvn clean test'
- * Runs integration tests with 'mvn clean integration-test'
+ * Runs unit tests with `mvn clean test`
+ * Runs integration tests with `mvn clean integration-test`
  * Packages both App ZIP and JAR with customization
  
  
 # SDK Packages - Runtime - Cross platform
  * com.activiti.extension.api: put here your enterprise custom REST endpoint (authentication required)
- * com.activiti.extension.rest: punt here your internal API (with no authentication)
+ * com.activiti.extension.rest: put here your internal API (with no authentication)
  * com.activiti.extension.bean: put here your Spring beans (services and components)
  
 *Suggested naming conventions for implementations dedicated to a specific app*
