@@ -1,0 +1,54 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>activiti-app-overlay-war</artifactId>
+	<packaging>war</packaging>
+	<name>Alfresco Process Services - SDK Project - Activiti App Overlay War</name>
+
+	<parent>
+		<groupId>org.alfresco.activiti</groupId>
+		<artifactId>aps-project</artifactId>
+		<version>1.2.0</version>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.alfresco.activiti</groupId>
+			<artifactId>aps-extensions-jar</artifactId>
+			<version>1.2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.activiti</groupId>
+			<artifactId>activiti-app</artifactId>
+			<version>${aps.version}</version>
+			<type>war</type>
+			<scope>runtime</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>activiti-app</finalName>
+		<plugins>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<workDirectory>./target/activiti-app</workDirectory>
+					<overlays>
+						<overlay>
+							<groupId>com.activiti</groupId>
+							<artifactId>activiti-app</artifactId>
+						</overlay>
+						<overlay>
+							<groupId>org.alfresco.activiti</groupId>
+							<artifactId>aps-extensions-jar</artifactId>
+							<type>jar</type>
+						</overlay>
+					</overlays>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
+	
