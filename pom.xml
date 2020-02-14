@@ -11,7 +11,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.alfresco.activiti</groupId>
 	<artifactId>aps-project</artifactId>
-	<version>1.2.0</version>
+	<version>1.3.0</version>
 	<packaging>pom</packaging>
 	<name>Alfresco Process Services - SDK Project</name>
 
@@ -28,12 +28,13 @@
 		<profile>
 			<id>aps1.9</id>
 			<activation>
-				<activeByDefault>true</activeByDefault>
+				<activeByDefault>false</activeByDefault>
 			</activation>
 
 			<properties>
 				<!-- APS 1.9 -->
 				<aps.version>1.9.0.5</aps.version>
+				<aps.docker.version>1.9.0.1</aps.docker.version> <!-- we should we 1.9.0.1 because we don't have the latest releases for 1.9 !!! -->
 				<aps.version.major>1</aps.version.major>
 				<aps.version.minor>9</aps.version.minor>
 				<aps.version.revision>0.5</aps.version.revision>
@@ -54,12 +55,13 @@
 		<profile>
 			<id>aps1.10</id>
 			<activation>
-				<activeByDefault>false</activeByDefault>
+				<activeByDefault>true</activeByDefault>
 			</activation>
 
 			<properties>
 				<!-- APS 1.10 -->
 				<aps.version>1.10.0</aps.version>
+				<aps.docker.version>1.10.0</aps.docker.version>
 				<aps.version.major>1</aps.version.major>
 				<aps.version.minor>10</aps.version.minor>
 				<aps.version.revision>0</aps.version.revision>
@@ -87,6 +89,16 @@
 					<artifactId>maven-war-plugin</artifactId>
 					<version>3.2.3</version>
 				</plugin>
+				<plugin>
+					<groupId>io.fabric8</groupId>
+					<artifactId>docker-maven-plugin</artifactId>
+					<version>0.33.0</version>
+				</plugin>
+				<plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>3.1.1</version>
+                </plugin>
 			</plugins>
 		</pluginManagement>
 		<plugins>
@@ -98,7 +110,7 @@
 			</plugin>
 		</plugins>
 	</build>
-	
+
 	<repositories>
 		<repository>
 			<id>alfresco-artifacts-repository</id>
@@ -116,6 +128,7 @@
 	<modules>
 		<module>aps-extensions-jar</module>
 		<module>activiti-app-overlay-war</module>
+		<module>activiti-app-overlay-docker</module>
 	</modules>
 
 </project>

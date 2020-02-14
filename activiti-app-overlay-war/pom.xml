@@ -9,14 +9,15 @@
 	<parent>
 		<groupId>org.alfresco.activiti</groupId>
 		<artifactId>aps-project</artifactId>
-		<version>1.2.0</version>
+		<version>1.3.0</version>
 	</parent>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.alfresco.activiti</groupId>
 			<artifactId>aps-extensions-jar</artifactId>
-			<version>1.2.0</version>
+			<version>${project.version}</version>
+			<type>jar</type>
 		</dependency>
 		<dependency>
 			<groupId>com.activiti</groupId>
@@ -33,22 +34,11 @@
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
 				<configuration>
+					<packagingExcludes>com.activiti/</packagingExcludes>
 					<workDirectory>./target/activiti-app</workDirectory>
-					<overlays>
-						<overlay>
-							<groupId>com.activiti</groupId>
-							<artifactId>activiti-app</artifactId>
-						</overlay>
-						<overlay>
-							<groupId>org.alfresco.activiti</groupId>
-							<artifactId>aps-extensions-jar</artifactId>
-							<type>jar</type>
-						</overlay>
-					</overlays>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
 
 </project>
-	

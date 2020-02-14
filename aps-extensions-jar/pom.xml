@@ -9,7 +9,7 @@
 	<parent>
 		<groupId>org.alfresco.activiti</groupId>
 		<artifactId>aps-project</artifactId>
-		<version>1.2.0</version>
+		<version>1.3.0</version>
 	</parent>
 
 	<dependencyManagement>
@@ -191,7 +191,7 @@
 					<execution>
 						<configuration>
 							<descriptors>
-								<descriptor>src/main/resources/assembly/assembly.xml</descriptor>
+								<descriptor>src/main/assembly/assembly.xml</descriptor>
 							</descriptors>
 							<!-- if you have special character issues, this is an option to play 
 								with. not required in most cases -->

@@ -18,7 +18,6 @@
   <logger name="org.hibernate.engine.internal" level="WARN"/>
   <logger name="com.codahale.metrics" level="WARN"/>
   <logger name="com.zaxxer" level="WARN"/>
-  <logger name="com.ecmcoreaveri" level="DEBUG"/>
   <root level="INFO">
     <appender-ref ref="CA"/>
   </root>
