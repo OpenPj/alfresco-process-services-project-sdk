@@ -94,8 +94,8 @@ Build, test, create and start the container with:
  * A valid APS license installed in your development environment `<USER_HOME>/.activiti/license` (for testing purpose)
  
 # Building your Docker container (optional)
- * Put the license in `/activiti-app-overlay-docker/src/docker/license`
- * Uncomment this line `#COPY license/*.* $TOMCAT_DIR/lib` in `/activiti-app-overlay-docker/src/docker/Dockerfile`
+ * Put a valid license in `/activiti-app-overlay-docker/src/main/docker/license`
+ * Put your logback.xml in `/activiti-app-overlay-docker/src/main/docker/logging`
 
 # Few things to notice
 
