@@ -4,7 +4,7 @@ The project consists of the following Maven submodules:
 
  * APS extensions JAR (`aps-extensions-jar`): put here your Java extensions
  * Activiti App Overlay WAR (`activiti-app-overlay-war`): it will generate activiti-app WAR overlay with APS Extensions JAR embedded
- * Activiti App Overlay Docker (`activiti-app-overlay-docker`): it will punt your overlayed WAR into the APS Docker container
+ * Activiti App Overlay Docker (`activiti-app-overlay-docker`): it will put your overlayed WAR into the APS Docker container
 
 # APS Extensions JAR Module
 
