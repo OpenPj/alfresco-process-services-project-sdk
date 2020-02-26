@@ -12,4 +12,4 @@ COPY logging/logback.xml $TOMCAT_DIR/lib
 
 COPY extensions/activiti-app.war $TOMCAT_DIR/webapps
 
-COPY license/*.* $TOMCAT_DIR/lib
+COPY license/*.* $TOMCAT_DIR/lib/
