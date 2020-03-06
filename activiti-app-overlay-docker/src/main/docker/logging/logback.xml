@@ -5,6 +5,13 @@
       <pattern>%d{hh:mm:ss,SSS} [%t] %-5p %c %X - %m%n</pattern>
     </encoder>
   </appender>
+  <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+  <file>/usr/local/tomcat/logs/activiti-app.log</file>
+  <append>true</append>
+    <encoder>
+      <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+    </encoder>
+  </appender>
   <logger name="org.apache" level="WARN"/>
   <logger name="org.springframework" level="WARN"/>
   <logger name="org.apache.ibatis.level" level="INFO"/>
@@ -18,7 +25,9 @@
   <logger name="org.hibernate.engine.internal" level="WARN"/>
   <logger name="com.codahale.metrics" level="WARN"/>
   <logger name="com.zaxxer" level="WARN"/>
+  <logger name="com.activiti" level="INFO"/>
   <root level="INFO">
     <appender-ref ref="CA"/>
+    <appender-ref ref="FILE"/>
   </root>
 </configuration>

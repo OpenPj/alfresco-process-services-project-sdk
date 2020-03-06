@@ -5,6 +5,8 @@ The project consists of the following Maven submodules:
  * APS extensions JAR (`aps-extensions-jar`): put here your Java extensions
  * Activiti App Overlay WAR (`activiti-app-overlay-war`): it will generate activiti-app WAR overlay with APS Extensions JAR embedded
  * Activiti App Overlay Docker (`activiti-app-overlay-docker`): it will put your overlayed WAR into the APS Docker container
+ 
+Running Docker will also create volumes for each storage component (contentstore, db and ElasticSearch) for making the development approach in APS consistent and reliable.
 
 # APS Extensions JAR Module
 
@@ -45,11 +47,18 @@ For building the Docker container with your custom Activiti App WAR:
 
 `mvn docker:build`
 
- * Packaging of Docker container with extensions
+ * Packaging of Activiti App and Activiti Admin Docker containers with extensions
  
 `mvn docker:start`
 
-  * Start your Docker container
+Start your Activiti App Docker container with the following architecture:
+
+  * Activiti Admin (with H2 embedded)
+  * PostgreSQL 10.9
+  * ElasticSearch 7.3.1
+  * aps-db-volume: Docker volume for PostgreSQL
+  * aps-es-volume: Docker volume for ElasticSearch
+  * aps-contentstore-volume: Docker volume for attachments
   
 `mvn docker:stop`
 
@@ -76,17 +85,16 @@ Build and package with integration tests execution for APS 1.10 with:
 Build your Docker container with:
 `mvn docker:build`
 
-Start your Docker container with:
+Start your APS Docker containers with:
 `mvn docker:start`
 
-Stop your Docker container with:
+Stop all the APS Docker containers with:
 `mvn docker:stop`
 
-Build, test, create and start the container with:
+Build, test, create and start all the APS containers with:
 `mvn clean install docker:build docker:start`
 
 # Prerequisites
-
  * OpenJDK 11.0.5
  * Apache Maven 3.6.3
  * Docker (optional)
@@ -96,6 +104,7 @@ Build, test, create and start the container with:
 # Building your Docker container (optional)
  * Put a valid license in `/activiti-app-overlay-docker/src/main/docker/license`
  * Put your logback.xml in `/activiti-app-overlay-docker/src/main/docker/logging`
+ * Put your activiti-app.properties in `/activiti-app-overlay-docker/src/main/docker/properties`
 
 # Few things to notice
 
@@ -103,6 +112,7 @@ Build, test, create and start the container with:
  * No parent pom
  * Standard JAR, WAR packaging with also Docker container generation
  * Works seamlessly with any IDE
+ * Test your extensions with a consistent APS architecture running with Docker volumes
 
 # Contributors
 Thanks to Carlo Cavallieri and Jessica Foroni for giving help on isolating the integration tests suite. 
