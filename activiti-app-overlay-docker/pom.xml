@@ -9,7 +9,7 @@
 	<parent>
 		<groupId>org.alfresco.activiti</groupId>
 		<artifactId>aps-project</artifactId>
-		<version>1.4.0</version>
+		<version>1.5.0</version>
 	</parent>
 
 	<properties>
@@ -268,7 +268,7 @@
 						</image>
 						<image>
 							<alias>elasticsearch</alias>
-							<name>elasticsearch:7.3.1</name>
+							<name>elasticsearch:${elasticsearch.version}</name>
 							<run>
 								<env>
 									<discovery.type>${docker.aps.es.discovery.type}</discovery.type>
