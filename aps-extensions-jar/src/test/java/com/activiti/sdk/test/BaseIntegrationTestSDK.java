@@ -20,10 +20,7 @@ import org.activiti.engine.TaskService;
 import org.activiti.engine.repository.Deployment;
 import org.alfresco.activiti.conf.ApplicationIntegrationTestConfiguration;
 import org.apache.commons.io.IOUtils;
-import org.codehaus.jackson.JsonNode;
-import org.codehaus.jackson.JsonProcessingException;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.node.ObjectNode;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -83,9 +80,13 @@ import com.activiti.service.license.LicenseStatus;
 import com.activiti.service.runtime.EmailTemplateService;
 import com.activiti.service.runtime.EmailTemplateService.ProcessedEmailTemplate;
 import com.activiti.servlet.WebConfigurer;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 /**
- * 
+ *
  * @author Carlo Cavallieri, Jessica Foroni
  *
  */
@@ -181,15 +182,15 @@ public class BaseIntegrationTestSDK {
 		if (appResurceDir != null) {
 			initApp(appResurceDir);
 		}
-		
+
 		// mock init
-		
+
 		// Email Template in APS (es: ${emailTemplateService.processCustomEmailTemplate(emailTemplateService.findCustomEmailTemplate(1, 'template custom').getId(), execution.getVariables()).getBody()}
 		EmailTemplate et = new EmailTemplate();
 		et.setId(1L);
 
 		Mockito.doReturn(et).when(emailTemplateService).findCustomEmailTemplate(Mockito.anyLong(), Mockito.anyString());
-		
+
 		ProcessedEmailTemplate pet = new ProcessedEmailTemplate("test", "body test");
 		try {
 			Mockito.doReturn(pet).when(emailTemplateService).processCustomEmailTemplate(Mockito.anyLong(), Mockito.anyMap());
@@ -338,7 +339,7 @@ public class BaseIntegrationTestSDK {
 
 	/**
 	 * Token for authenticating requests (es: getPrivateApiUrlPrefix())
-	 * 
+	 *
 	 * @param user
 	 */
 	private void addTokenForUser(User user) {
@@ -351,7 +352,7 @@ public class BaseIntegrationTestSDK {
 
 	/**
 	 * Encoding Base64
-	 * 
+	 *
 	 * @param token
 	 * @return
 	 */
@@ -379,7 +380,7 @@ public class BaseIntegrationTestSDK {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param url
 	 * @param user
 	 * @param expectedStatusCode
@@ -446,7 +447,7 @@ public class BaseIntegrationTestSDK {
 
 	/**
 	 * Classloader path for importing, publishing and deploying apps
-	 * 
+	 *
 	 * @param appResurceFolder
 	 * @return
 	 * @throws Exception

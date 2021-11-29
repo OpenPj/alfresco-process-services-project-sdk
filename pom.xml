@@ -1,4 +1,4 @@
-<!-- Copyright 2019 Piergiorgio Lucidi Licensed under the Apache License, 
+<!-- Copyright 2021 Piergiorgio Lucidi Licensed under the Apache License, 
 	Version 2.0 (the "License"); you may not use this file except in compliance 
 	with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 
 	Unless required by applicable law or agreed to in writing, software distributed 
@@ -11,7 +11,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.alfresco.activiti</groupId>
 	<artifactId>aps-project</artifactId>
-	<version>1.5.0</version>
+	<version>1.6.0</version>
 	<packaging>pom</packaging>
 	<name>Alfresco Process Services - SDK Project</name>
 
@@ -19,11 +19,11 @@
 		<webVersion>4.0</webVersion>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
 		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
 		<maven-war-plugin.version>3.2.3</maven-war-plugin.version>
-		<docker-maven-plugin.version>0.33.0</docker-maven-plugin.version>
+		<docker-maven-plugin.version>0.38.0</docker-maven-plugin.version>
 		<maven-dependency-plugin.version>3.1.1</maven-dependency-plugin.version>
 		<maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
 		<maven-assembly-plugin.version>3.2.0</maven-assembly-plugin.version>
@@ -31,8 +31,31 @@
 		<maven-failsafe-plugin.version>2.22.2</maven-failsafe-plugin.version>
 		<maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
 		<maven-eclipse-lifecycle-mapping.version>1.0.0</maven-eclipse-lifecycle-mapping.version>
-		
+		<stax-ex.version>2.0.1</stax-ex.version>
+		<jaxb.api.version>2.3.0</jaxb.api.version>
+		<jaxb.runtime.version>2.3.2</jaxb.runtime.version>
 	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.jvnet.staxex</groupId>
+				<artifactId>stax-ex</artifactId>
+				<version>${stax-ex.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.xml.bind</groupId>
+				<artifactId>jaxb-api</artifactId>
+				<version>${jaxb.api.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.glassfish.jaxb</groupId>
+				<artifactId>jaxb-runtime</artifactId>
+				<version>${jaxb.runtime.version}</version>
+				<scope>runtime</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<profiles>
 
@@ -45,7 +68,7 @@
 			<properties>
 				<!-- APS 1.9 -->
 				<aps.version>1.9.0.5</aps.version>
-				<aps.docker.version>1.9.0.1</aps.docker.version> <!-- we should we 1.9.0.1 because we don't have the latest releases for 1.9 !!! -->
+				<aps.docker.version>1.9.0.1</aps.docker.version>
 				<aps.version.major>1</aps.version.major>
 				<aps.version.minor>9</aps.version.minor>
 				<aps.version.revision>0.5</aps.version.revision>
@@ -59,6 +82,7 @@
 				<elasticsearch.version>1.7.3</elasticsearch.version>
 				<elasticsearch-rest-client.version>5.6.1</elasticsearch-rest-client.version>
 				<hibernate.version>4.2.16.Final</hibernate.version>
+				<postgresql.version>10.1</postgresql.version>
 			</properties>
 
 		</profile>
@@ -86,13 +110,14 @@
 				<elasticsearch.version>7.3.1</elasticsearch.version>
 				<elasticsearch-rest-client.version>7.3.1</elasticsearch-rest-client.version>
 				<hibernate.version>4.2.16.Final</hibernate.version>
+				<postgresql.version>10.9</postgresql.version>
 			</properties>
 		</profile>
-		
+
 		<profile>
-			<id>aps1.11</id>
+			<id>aps1.11.0</id>
 			<activation>
-				<activeByDefault>true</activeByDefault>
+				<activeByDefault>false</activeByDefault>
 			</activation>
 
 			<properties>
@@ -112,6 +137,34 @@
 				<elasticsearch.version>7.6.0</elasticsearch.version>
 				<elasticsearch-rest-client.version>7.6.0</elasticsearch-rest-client.version>
 				<hibernate.version>4.2.16.Final</hibernate.version>
+				<postgresql.version>10.9</postgresql.version>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>aps1.11.4</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+
+			<properties>
+				<!-- APS 1.11.4 -->
+				<aps.version>1.11.4</aps.version>
+				<aps.docker.version>1.11.4</aps.docker.version>
+				<aps.version.major>1</aps.version.major>
+				<aps.version.minor>11</aps.version.minor>
+				<aps.version.revision>4</aps.version.revision>
+				<opencsv.version>5.4</opencsv.version>
+				<jackson.version>2.12.3</jackson.version>
+				<bcprov.version>1.68</bcprov.version>
+				<activiti.version>5.23.0.1</activiti.version>
+				<spring.version>4.3.30.RELEASE</spring.version>
+				<spring-boot.version>1.5.22.RELEASE</spring-boot.version>
+				<spring-security.version>4.2.20.RELEASE</spring-security.version>
+				<elasticsearch.version>7.6.2</elasticsearch.version>
+				<elasticsearch-rest-client.version>7.6.2</elasticsearch-rest-client.version>
+				<hibernate.version>4.3.11.Final</hibernate.version>
+				<postgresql.version>10.9</postgresql.version>
 			</properties>
 		</profile>
 
@@ -131,15 +184,15 @@
 					<version>${docker-maven-plugin.version}</version>
 				</plugin>
 				<plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-dependency-plugin</artifactId>
-                    <version>${maven-dependency-plugin.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-resources-plugin</artifactId>
-                    <version>${maven-resources-plugin.version}</version>
-                </plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>${maven-dependency-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>${maven-resources-plugin.version}</version>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 		<plugins>
@@ -151,6 +204,8 @@
 			</plugin>
 		</plugins>
 	</build>
+
+
 
 	<repositories>
 		<repository>

@@ -9,7 +9,7 @@
 	<parent>
 		<groupId>org.alfresco.activiti</groupId>
 		<artifactId>aps-project</artifactId>
-		<version>1.5.0</version>
+		<version>1.6.0</version>
 	</parent>
 
 	<dependencyManagement>
@@ -33,7 +33,6 @@
 				<scope>import</scope>
 				<type>pom</type>
 			</dependency>
-
 			<dependency>
 				<groupId>org.springframework.security</groupId>
 				<artifactId>spring-security-bom</artifactId>
@@ -75,6 +74,21 @@
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-entitymanager</artifactId>
 				<version>${hibernate.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-annotations</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-core</artifactId>
+				<version>${jackson.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -211,8 +225,8 @@
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<source>${maven.compiler.source}</source>
+					<target>${maven.compiler.target}</target>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -267,8 +281,11 @@
 						<phase>generate-test-resources</phase>
 						<configuration>
 							<target>
-								<copy todir="${project.basedir}/src/test/resources/activiti" overwrite="true">
-									<file file="${project.basedir}/src/test/resources/activiti/${aps.version}/version.properties"/>
+								<copy
+									todir="${project.basedir}/src/test/resources/activiti"
+									overwrite="true">
+									<file
+										file="${project.basedir}/src/test/resources/activiti/${aps.version}/version.properties" />
 								</copy>
 							</target>
 						</configuration>

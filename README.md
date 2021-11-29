@@ -60,19 +60,27 @@ Start your Activiti App Docker container with the following architecture:
   * aps-es-volume: Docker volume for ElasticSearch
   * aps-contentstore-volume: Docker volume for attachments
   
+  * Stop your Docker container:
+
 `mvn docker:stop`
 
-  * Stop your Docker container
+  * Purge all the Docker volumes:
+  
+`mvn clean -Ppurge-volumes`
 
 # Supported Maven Profiles for dependencies management and packaging (JAR and WAR)
 
 In order to build you have to define a Maven profile for choosing the version of APS:
- * `aps1.11` (APS 1.11.0 - default)
+ * `aps1.11.4` (APS 1.11.4 - default)
+ * `aps1.11` (APS 1.11.0)
  * `aps1.10` (APS 1.10.0)
  * `aps1.9`  (APS 1.9.0.5)
  
-Build and test with unit tests execution for APS 1.11 with:
+Build and test with unit tests execution for APS 1.11.4 with:
 `mvn clean test`
+
+Build and test with unit tests execution for APS 1.11 with:
+`mvn clean test -Paps.1.11`
 
 Build and test with unit tests execution for APS 1.10 with:
 `mvn clean test -Paps1.10`
@@ -80,8 +88,11 @@ Build and test with unit tests execution for APS 1.10 with:
 Build and test with unit tests execution for APS 1.9.0.5 with:
 `mvn clean test -Paps1.9`
 
-Build and package with integration tests execution for APS 1.11 with:
+Build and package with integration tests execution for APS 1.11.4 with:
 `mvn clean install`
+
+Build and package with integration tests execution for APS 1.11 with:
+`mvn clean install -Paps1.11`
 
 Build and package with integration tests execution for APS 1.10 with:
 `mvn clean install -Paps1.10`

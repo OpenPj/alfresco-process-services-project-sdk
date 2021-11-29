@@ -9,7 +9,7 @@
 	<parent>
 		<groupId>org.alfresco.activiti</groupId>
 		<artifactId>aps-project</artifactId>
-		<version>1.5.0</version>
+		<version>1.6.0</version>
 	</parent>
 
 	<properties>
@@ -20,9 +20,9 @@
 
 		<docker.aps.database.port.internal>5432</docker.aps.database.port.internal>
 		<docker.aps.database.port.external>5432</docker.aps.database.port.external>
-		
+
 		<docker.aps.database.vendor>postgres</docker.aps.database.vendor>
-		<docker.aps.database.vendor.version>10.9</docker.aps.database.vendor.version>
+		<docker.aps.database.vendor.version>${postgresql.version}</docker.aps.database.vendor.version>
 		<docker.aps.database.image>${docker.aps.database.vendor}:${docker.aps.database.vendor.version}</docker.aps.database.image>
 		<docker.aps.database.username>alfresco</docker.aps.database.username>
 		<docker.aps.database.password>alfresco</docker.aps.database.password>
@@ -55,17 +55,17 @@
 
 		<docker.tomcat.port.external>8080</docker.tomcat.port.external>
 		<docker.tomcat.port.internal>8080</docker.tomcat.port.internal>
-		
+
 		<docker.aps-admin.tomcat.port.internal>8081</docker.aps-admin.tomcat.port.internal>
 		<docker.aps-admin.tomcat.port.external>8081</docker.aps-admin.tomcat.port.external>
-									
+
 		<docker.es.service.port.internal>9200</docker.es.service.port.internal>
 		<docker.es.service.port.external>9200</docker.es.service.port.external>
 		<docker.es.discovery.port.internal>9300</docker.es.discovery.port.internal>
 		<docker.es.discovery.port.external>9300</docker.es.discovery.port.external>
-		
-		
-		<docker.activiti.time.test>120000</docker.activiti.time.test>
+
+
+		<docker.activiti.time.test>240000</docker.activiti.time.test>
 	</properties>
 
 	<build>
@@ -260,7 +260,7 @@
 									<log>database system is ready to accept connections</log>
 									<time>20000</time>
 								</wait>
-								
+
 								<volumes>
 									<bind>aps-db-volume:/var/lib/postgresql/data</bind>
 								</volumes>
@@ -328,5 +328,43 @@
 		</plugins>
 	</build>
 
+	<profiles>
+		<profile>
+			<id>purge-volumes</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>io.fabric8</groupId>
+						<artifactId>docker-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>remove-volumes</id>
+								<phase>clean</phase>
+								<goals>
+									<goal>volume-remove</goal>
+								</goals>
+								<configuration>
+									<volumes>
+										<volume>
+											<name>aps-db-volume</name>
+										</volume>
+										<volume>
+											<name>aps-es-volume</name>
+										</volume>
+										<volume>
+											<name>aps-contentstore-volume</name>
+										</volume>
+									</volumes>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
 </project>
-	
