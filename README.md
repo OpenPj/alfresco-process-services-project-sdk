@@ -116,12 +116,31 @@ Build, test, create and start all the APS containers with:
  * OpenJDK 11.0.5
  * Apache Maven 3.6.3
  * Docker (optional)
- * Access to the Alfresco Nexus Repository (Maven settings.xml with credentials provided by Alfresco)
  * A valid APS license installed in your development environment `<USER_HOME>/.activiti/license` (for testing purpose)
+ * Access to the Alfresco Nexus Repositories (credentials provided by Alfresco)
+ * Configure your Maven servers settings.xml with credentials for these repositories:
  
+ ``` 
+    <server>
+	  <id>activiti-enterprise-releases</id>
+	  <username>yourAlfrescoUsername</username>
+	  <password>yourAlfrescoPassword</password>
+	</server>
+	<server>
+	  <id>enterprise-releases</id>
+	  <username>yourAlfrescoUsername</username>
+	  <password>yourAlfrescoPassword</password>
+	</server>
+	<server>
+	  <id>internal-thirdparty</id>
+	  <username>yourAlfrescoUsername</username>
+	  <password>yourAlfrescoPassword</password>
+	</server>
+  ```
+
 # Building your Docker container (optional)
  * Put a valid license in `/activiti-app-overlay-docker/src/main/docker/license`
- * Put your logback.xml in `/activiti-app-overlay-docker/src/main/docker/logging`
+ * Put your logback.xml in `/activiti-app-overlay-war/src/main/webapp/WEB-INF/classes`
  * Put your activiti-app.properties in `/activiti-app-overlay-docker/src/main/docker/properties`
 
 # Few things to notice
