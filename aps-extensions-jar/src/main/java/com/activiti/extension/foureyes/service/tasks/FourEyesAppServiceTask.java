@@ -10,7 +10,7 @@ public class FourEyesAppServiceTask implements JavaDelegate {
 	private final Logger log = LoggerFactory.getLogger(FourEyesAppServiceTask.class);
 	
 	@Override
-	public void execute(DelegateExecution execution) throws Exception {
+	public void execute(DelegateExecution execution) {
 		log.info("Four Eyes App - Hello world from the class delegate");
         execution.setVariable("helloWorld", "Four Eyes App - Hello world from the class delegate");
 	}

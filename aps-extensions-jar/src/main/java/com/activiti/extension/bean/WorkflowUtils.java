@@ -64,6 +64,6 @@ public class WorkflowUtils {
 	}
 
 	private boolean areJobsAvailable() {
-		return !processEngine.getManagementService().createJobQuery().executable().list().isEmpty();
+		return !processEngine.getManagementService().createJobQuery().list().isEmpty();
 	}
 }

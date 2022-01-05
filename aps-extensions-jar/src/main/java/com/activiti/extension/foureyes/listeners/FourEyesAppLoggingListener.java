@@ -14,7 +14,7 @@ public class FourEyesAppLoggingListener implements ExecutionListener {
 	private final Logger logger = LoggerFactory.getLogger(FourEyesAppLoggingListener.class);
 
 	@Override
-	public void notify(DelegateExecution execution) throws Exception {
+	public void notify(DelegateExecution execution) {
 		
 		//Initiator
 		String initiator = StringUtils.EMPTY;
