@@ -71,13 +71,17 @@ Start your Activiti App Docker container with the following architecture:
 # Supported Maven Profiles for dependencies management and packaging (JAR and WAR)
 
 In order to build you have to define a Maven profile for choosing the version of APS:
- * `aps1.11.4` (APS 1.11.4 - default)
+ * `aps2.0.1`  (APS 2.0.1 - default)
+ * `aps1.11.4` (APS 1.11.4)
  * `aps1.11` (APS 1.11.0)
  * `aps1.10` (APS 1.10.0)
  * `aps1.9`  (APS 1.9.0.5)
  
-Build and test with unit tests execution for APS 1.11.4 with:
+Build and test with unit tests execution for APS 2.0.1 with:
 `mvn clean test`
+
+Build and test with unit tests execution for APS 1.11.4 with:
+`mvn clean test -Paps.1.11.4`
 
 Build and test with unit tests execution for APS 1.11 with:
 `mvn clean test -Paps.1.11`
@@ -88,8 +92,11 @@ Build and test with unit tests execution for APS 1.10 with:
 Build and test with unit tests execution for APS 1.9.0.5 with:
 `mvn clean test -Paps1.9`
 
-Build and package with integration tests execution for APS 1.11.4 with:
+Build and package with integration tests execution for APS 2.0.1 with:
 `mvn clean install`
+
+Build and package with integration tests execution for APS 1.11.4 with:
+`mvn clean install -Paps1.11.4`
 
 Build and package with integration tests execution for APS 1.11 with:
 `mvn clean install -Paps1.11`
@@ -117,6 +124,7 @@ Build, test, create and start all the APS containers with:
  * Apache Maven 3.6.3
  * Docker (optional)
  * A valid APS license installed in your development environment `<USER_HOME>/.activiti/license` (for testing purpose)
+ * A valid Aspose license installed in your development environment `<USER_HOME>/.activiti/license` (for testing purpose)
  * Access to the Alfresco Nexus Repositories (credentials provided by Alfresco)
  * Configure your Maven servers settings.xml with credentials for these repositories:
  
@@ -139,7 +147,7 @@ Build, test, create and start all the APS containers with:
   ```
 
 # Building your Docker container (optional)
- * Put a valid license in `/activiti-app-overlay-docker/src/main/docker/license`
+ * Put a valid APS and Aspose license in `/activiti-app-overlay-docker/src/main/docker/license`
  * Put your logback.xml in `/activiti-app-overlay-war/src/main/webapp/WEB-INF/classes`
  * Put your activiti-app.properties in `/activiti-app-overlay-docker/src/main/docker/properties`
 
