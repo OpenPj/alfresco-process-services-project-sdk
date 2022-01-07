@@ -13,7 +13,7 @@
 	<artifactId>aps-project</artifactId>
 	<version>2.0.1</version>
 	<packaging>pom</packaging>
-	<name>Alfresco Process Services - SDK Project</name>
+	<name>APS - SDK Project</name>
 
 	<developers>
 		<developer>
@@ -182,15 +182,6 @@
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
-			
-			<dependencies>
-				<dependency>
-					<groupId>org.mockito</groupId>
-					<artifactId>mockito-junit-jupiter</artifactId>
-					<version>4.2.0</version>
-					<scope>test</scope>
-				</dependency>
-			</dependencies>
 
 			<properties>
 				<!-- APS 2.0.1 -->
@@ -209,7 +200,8 @@
 				<elasticsearch.version>7.13.4</elasticsearch.version>
 				<elasticsearch-rest-client.version>7.13.4</elasticsearch-rest-client.version>
 				<hibernate.version>5.4.32.Final</hibernate.version>
-				<postgresql.version>11.7</postgresql.version>
+				<postgresql.version>10.9</postgresql.version>
+				<skipITs>true</skipITs>
 			</properties>
 		</profile>
 
@@ -299,12 +291,18 @@
 				<enabled>true</enabled>
 			</snapshots>
 		</repository>
+		<repository>
+			<id>maven-central</id>
+			<url>https://repo1.maven.org/maven2/</url>
+		</repository>
 	</repositories>
 
 	<modules>
 		<module>aps-extensions-jar</module>
 		<module>activiti-app-overlay-war</module>
 		<module>activiti-app-overlay-docker</module>
+		<module>activiti-app-swagger-client</module>
+		<!-- <module>activiti-app-integration-tests</module> -->
 	</modules>
 
 </project>

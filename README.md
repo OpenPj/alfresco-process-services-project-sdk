@@ -47,18 +47,26 @@ For building the Docker container with your custom Activiti App WAR:
 
 `mvn docker:build`
 
- * Packaging of Activiti App and Activiti Admin Docker containers with extensions
+For building the Docker container adding also your custom Activiti Admin WAR use the activiti-admin Maven profile:
+
+`mvn docker:build -Pactiviti-admin`
+
+Packaging of Activiti App Docker containers with extensions
  
-`mvn docker:start`
+`mvn docker:build docker:start`
 
 Start your Activiti App Docker container with the following architecture:
 
-  * Activiti Admin (with H2 embedded)
   * PostgreSQL 10.9
   * ElasticSearch
   * aps-db-volume: Docker volume for PostgreSQL
   * aps-es-volume: Docker volume for ElasticSearch
   * aps-contentstore-volume: Docker volume for attachments
+  
+If you want to build and start also the Activiti Admin WAR container:
+
+`mvn docker:build docker:start -Pactiviti-admin`
+
   
   * Stop your Docker container:
 

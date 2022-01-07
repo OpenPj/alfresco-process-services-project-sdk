@@ -20,7 +20,6 @@ import org.activiti.engine.TaskService;
 import org.activiti.engine.repository.Deployment;
 import org.alfresco.activiti.conf.ApplicationIntegrationTestConfiguration;
 import org.apache.commons.io.IOUtils;
-
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -32,7 +31,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.io.FileSystemResource;
@@ -137,7 +135,7 @@ public class BaseIntegrationTestSDK {
 	@Autowired
 	protected RelatedContentRepository relatedContentRepository;
 
-	@SpyBean
+	@Autowired
 	protected EmailTemplateService emailTemplateService;
 
 	@Autowired
@@ -165,7 +163,6 @@ public class BaseIntegrationTestSDK {
 	public static String passwordForAllUsers = "password";
 	public static String groupAdminUsers = "ADMINS";
 
-	@SuppressWarnings("unchecked")
 	@Before
 	public void setUp() throws Exception {
 		LicenseStatus.setStatus(LicenseStatus.STATUS_VALID);

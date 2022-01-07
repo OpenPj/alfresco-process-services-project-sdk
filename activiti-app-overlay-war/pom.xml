@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>activiti-app-overlay-war</artifactId>
 	<packaging>war</packaging>
-	<name>Alfresco Process Services - SDK Project - Activiti App Overlay War</name>
+	<name>APS - SDK Project - Activiti App Overlay War</name>
 
 	<parent>
 		<groupId>org.alfresco.activiti</groupId>

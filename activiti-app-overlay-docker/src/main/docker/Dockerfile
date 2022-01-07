@@ -17,12 +17,12 @@ USER root
 
 RUN rm -rf $TOMCAT_DIR/webapps/activiti-app
 
-COPY extensions/aps-extensions-jar-${project.version}.jar $TOMCAT_DIR/lib
+COPY --chown=alfresco extensions/aps-extensions-jar-${project.version}.jar $TOMCAT_DIR/lib
 
-COPY logging/logback.xml $TOMCAT_DIR/lib
+COPY --chown=alfresco logging/logback.xml $TOMCAT_DIR/lib
 
-COPY properties/activiti-app.properties $TOMCAT_DIR/lib
+COPY --chown=alfresco properties/activiti-app.properties $TOMCAT_DIR/lib
 
-COPY extensions/activiti-app.war $TOMCAT_DIR/webapps
+COPY --chown=alfresco extensions/activiti-app.war $TOMCAT_DIR/webapps
 
-COPY license/*.* $TOMCAT_DIR/lib/
+COPY --chown=alfresco license/*.* $TOMCAT_DIR/lib/
