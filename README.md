@@ -3,8 +3,10 @@
 The project consists of the following Maven submodules:
 
  * APS extensions JAR (`aps-extensions-jar`): put here your Java extensions
- * Activiti App Overlay WAR (`activiti-app-overlay-war`): it will generate activiti-app WAR overlay with APS Extensions JAR embedded
- * Activiti App Overlay Docker (`activiti-app-overlay-docker`): it will put your overlayed WAR into the APS Docker container
+ * Activiti App Overlay WAR (`activiti-app-overlay-war`): generate activiti-app WAR overlay with APS Extensions JAR embedded
+ * Activiti App Swagger Client (`activiti-app-swagger-client`): generate the APS Java Swagger client
+ * Activiti App Overlay Docker (`activiti-app-overlay-docker`): put your overlayed WAR into the APS Docker container
+ * Activiti App Integration Tests (`activiti-app-integration-tests`): integration tests based on the Java Swagger client
  
 Running Docker will also create volumes for each storage component (contentstore, db and ElasticSearch) for making the development approach in APS consistent and reliable.
 
@@ -32,7 +34,7 @@ To run use `mvn clean install`
  * `com.activiti.extension.*your_app*.listeners`: put here your listeners
  * `com.acitivit.extension.*your_app*.service.tasks`: put here your service tasks
 
-# SDK Packages - Test Runtime
+# SDK Packages - Embedded Test Runtime
 
  * `org.alfresco.activiti.unit.tests`: put here your unit test (with suffix *Test.java)
  * `org.alfresco.activiti.integration.tests`: put here your integration tests (with suffix *IT.java)
@@ -76,17 +78,26 @@ If you want to build and start also the Activiti Admin WAR container:
   
 `mvn clean -Ppurge-volumes`
 
+# Activiti App Integration Tests Module
+This module includes tests for interacting with the APS Docker using the generated Swagger client.
+Put your Java classes here:
+`/activiti-app-integration-tests/src/test/java`
+
 # Supported Maven Profiles for dependencies management and packaging (JAR and WAR)
 
-In order to build you have to define a Maven profile for choosing the version of APS:
- * `aps2.0.1`  (APS 2.0.1 - default)
+In order to build the project, you have to declare a Maven profile related to a specific APS version:
+ * `aps2.1.0`  (APS 2.1.0 - default)
+ * `aps2.0.1`  (APS 2.0.1)
  * `aps1.11.4` (APS 1.11.4)
  * `aps1.11` (APS 1.11.0)
  * `aps1.10` (APS 1.10.0)
  * `aps1.9`  (APS 1.9.0.5)
  
-Build and test with unit tests execution for APS 2.0.1 with:
+Build and test with unit tests execution for APS 2.1.0 with:
 `mvn clean test`
+
+Build and test with unit tests execution for APS 2.0.1 with:
+`mvn clean test -Paps2.0.1`
 
 Build and test with unit tests execution for APS 1.11.4 with:
 `mvn clean test -Paps.1.11.4`
@@ -100,8 +111,11 @@ Build and test with unit tests execution for APS 1.10 with:
 Build and test with unit tests execution for APS 1.9.0.5 with:
 `mvn clean test -Paps1.9`
 
-Build and package with integration tests execution for APS 2.0.1 with:
+Build and package with integration tests execution for APS 2.1.0 with:
 `mvn clean install`
+
+Build and package with integration tests execution for APS 2.0.1 with:
+`mvn clean install -Paps2.0.1`
 
 Build and package with integration tests execution for APS 1.11.4 with:
 `mvn clean install -Paps1.11.4`
@@ -121,11 +135,11 @@ Build your Docker container with:
 Start your APS Docker containers with:
 `mvn docker:start`
 
-Stop all the APS Docker containers with:
-`mvn docker:stop`
-
-Build, test, create and start all the APS containers with:
+Build, execute embedded test runtime, create and start all the APS containers executing integration tests:
 `mvn clean install docker:build docker:start`
+
+After the integration tests execution stop all the APS containers with:
+`mvn docker:stop`
 
 # Prerequisites
  * OpenJDK 11.0.5
@@ -168,4 +182,4 @@ Build, test, create and start all the APS containers with:
  * Test your extensions with a consistent APS architecture running with Docker volumes
 
 # Contributors
-Thanks to Carlo Cavallieri and Jessica Foroni for giving help on isolating the integration tests suite. 
+Thanks to Carlo Cavallieri and Jessica Foroni for giving help on isolating the embedded integration tests runtime suite. 

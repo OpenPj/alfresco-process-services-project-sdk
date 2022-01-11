@@ -11,7 +11,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.alfresco.activiti</groupId>
 	<artifactId>aps-project</artifactId>
-	<version>2.0.1</version>
+	<version>2.1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>APS - SDK Project</name>
 
@@ -30,7 +30,7 @@
 		<maven.compiler.target>11</maven.compiler.target>
 		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
 		<maven-war-plugin.version>3.2.3</maven-war-plugin.version>
-		<docker-maven-plugin.version>0.38.0</docker-maven-plugin.version>
+		<docker-maven-plugin.version>0.38.1</docker-maven-plugin.version>
 		<maven-dependency-plugin.version>3.1.1</maven-dependency-plugin.version>
 		<maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
 		<maven-assembly-plugin.version>3.2.0</maven-assembly-plugin.version>
@@ -180,7 +180,7 @@
 		<profile>
 			<id>aps2.0.1</id>
 			<activation>
-				<activeByDefault>true</activeByDefault>
+				<activeByDefault>false</activeByDefault>
 			</activation>
 
 			<properties>
@@ -201,7 +201,35 @@
 				<elasticsearch-rest-client.version>7.13.4</elasticsearch-rest-client.version>
 				<hibernate.version>5.4.32.Final</hibernate.version>
 				<postgresql.version>10.9</postgresql.version>
-				<skipITs>true</skipITs>
+				<skipITs>false</skipITs>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>aps2.1.0</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+
+			<properties>
+				<!-- APS 2.1.0 -->
+				<aps.version>2.1.0</aps.version>
+				<aps.docker.version>2.1.0</aps.docker.version>
+				<aps.version.major>2</aps.version.major>
+				<aps.version.minor>1</aps.version.minor>
+				<aps.version.revision>0</aps.version.revision>
+				<opencsv.version>5.5.1</opencsv.version>
+				<jackson.version>2.12.4</jackson.version>
+				<bcprov.version>1.69</bcprov.version>
+				<activiti.version>7.1.349</activiti.version>
+				<spring.version>5.3.13.RELEASE</spring.version>
+				<spring-boot.version>2.5.3</spring-boot.version>
+				<spring-security.version>5.6.0</spring-security.version>
+				<elasticsearch.version>7.13.4</elasticsearch.version>
+				<elasticsearch-rest-client.version>7.13.4</elasticsearch-rest-client.version>
+				<hibernate.version>5.4.32.Final</hibernate.version>
+				<postgresql.version>10.9</postgresql.version>
+				<skipITs>false</skipITs>
 			</properties>
 		</profile>
 
@@ -277,8 +305,6 @@
 		</plugins>
 	</build>
 
-
-
 	<repositories>
 		<repository>
 			<id>alfresco-artifacts-repository</id>
@@ -300,9 +326,9 @@
 	<modules>
 		<module>aps-extensions-jar</module>
 		<module>activiti-app-overlay-war</module>
-		<module>activiti-app-overlay-docker</module>
 		<module>activiti-app-swagger-client</module>
-		<!-- <module>activiti-app-integration-tests</module> -->
+		<module>activiti-app-overlay-docker</module>
+		<module>activiti-app-integration-tests</module>
 	</modules>
 
 </project>
