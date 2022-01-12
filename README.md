@@ -86,18 +86,18 @@ Put your Java classes here:
 # Supported Maven Profiles for dependencies management and packaging (JAR and WAR)
 
 In order to build the project, you have to declare a Maven profile related to a specific APS version:
- * `aps2.1.0`  (APS 2.1.0 - default)
- * `aps2.0.1`  (APS 2.0.1)
+ * `aps2.1.0`  (APS 2.1.0)
+ * `aps2.0.1`  (APS 2.0.1 - default)
  * `aps1.11.4` (APS 1.11.4)
  * `aps1.11` (APS 1.11.0)
  * `aps1.10` (APS 1.10.0)
  * `aps1.9`  (APS 1.9.0.5)
  
 Build and test with unit tests execution for APS 2.1.0 with:
-`mvn clean test`
+`mvn clean test -Paps2.1.0`
 
 Build and test with unit tests execution for APS 2.0.1 with:
-`mvn clean test -Paps2.0.1`
+`mvn clean test`
 
 Build and test with unit tests execution for APS 1.11.4 with:
 `mvn clean test -Paps.1.11.4`
@@ -112,10 +112,10 @@ Build and test with unit tests execution for APS 1.9.0.5 with:
 `mvn clean test -Paps1.9`
 
 Build and package with integration tests execution for APS 2.1.0 with:
-`mvn clean install`
+`mvn clean install -Paps2.1.0`
 
 Build and package with integration tests execution for APS 2.0.1 with:
-`mvn clean install -Paps2.0.1`
+`mvn clean install`
 
 Build and package with integration tests execution for APS 1.11.4 with:
 `mvn clean install -Paps1.11.4`
