@@ -145,8 +145,8 @@ After the integration tests execution stop all the APS containers with:
  * OpenJDK 11.0.5
  * Apache Maven 3.6.3
  * Docker (optional)
- * A valid APS license installed in your development environment `<USER_HOME>/.activiti/license` (for testing purpose)
- * A valid Aspose license installed in your development environment `<USER_HOME>/.activiti/license` (for testing purpose)
+ * A valid APS license installed in your development environment `<USER_HOME>/.activiti/enterprise-license` (for testing purpose)
+ * A valid Aspose license installed in your development environment `<USER_HOME>/.activiti/enterprise-license` (for testing purpose)
  * Access to the Alfresco Nexus Repositories (credentials provided by Alfresco)
  * Configure your Maven servers settings.xml with credentials for these repositories:
  
