@@ -118,6 +118,9 @@
 			<plugin>
 				<groupId>io.swagger.codegen.v3</groupId>
 				<artifactId>swagger-codegen-maven-plugin</artifactId>
+				<configuration>
+					<skip>${skip.swagger.client.generation}</skip>
+				</configuration>
 				<executions>
 					<execution>
 						<goals>

@@ -55,6 +55,7 @@
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
+					<skip>${skip.integration.test}</skip>
 					<source>${maven.compiler.source}</source>
 					<target>${maven.compiler.target}</target>
 				</configuration>
@@ -62,6 +63,7 @@
 			<plugin>
 				<artifactId>maven-failsafe-plugin</artifactId>
 				<configuration>
+					<skip>${skip.integration.test}</skip>
 					<argLine>
 						--illegal-access=permit
 					</argLine>

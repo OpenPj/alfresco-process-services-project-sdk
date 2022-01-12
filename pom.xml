@@ -43,6 +43,8 @@
 		<jaxb.runtime.version>2.3.2</jaxb.runtime.version>
 		<maven.enforcer.plugin.version>3.0.0</maven.enforcer.plugin.version>
 		<junit-jupiter.version>5.8.2</junit-jupiter.version>
+		<skip.integration.test>false</skip.integration.test>
+		<skip.swagger.client.generation>false</skip.swagger.client.generation>
 	</properties>
 
 	<dependencyManagement>
@@ -92,6 +94,9 @@
 				<elasticsearch-rest-client.version>5.6.1</elasticsearch-rest-client.version>
 				<hibernate.version>4.2.16.Final</hibernate.version>
 				<postgresql.version>10.1</postgresql.version>
+				<skipITs>true</skipITs>
+				<skip.integration.test>true</skip.integration.test>
+				<skip.swagger.client.generation>true</skip.swagger.client.generation>
 			</properties>
 
 		</profile>
@@ -111,8 +116,8 @@
 				<aps.version.revision>0</aps.version.revision>
 				<opencsv.version>3.7</opencsv.version>
 				<jackson.version>2.9.8</jackson.version>
-				<bcprov.version>1.62</bcprov.version>
-				<activiti.version>5.23.0.0</activiti.version>
+				<bcprov.version>1.68</bcprov.version>
+				<activiti.version>5.23.0.1</activiti.version>
 				<spring.version>4.3.20.RELEASE</spring.version>
 				<spring-boot.version>1.5.21.RELEASE</spring-boot.version>
 				<spring-security.version>4.2.9.RELEASE</spring-security.version>
@@ -120,6 +125,9 @@
 				<elasticsearch-rest-client.version>7.3.1</elasticsearch-rest-client.version>
 				<hibernate.version>4.2.16.Final</hibernate.version>
 				<postgresql.version>10.9</postgresql.version>
+				<skipITs>true</skipITs>
+				<skip.integration.test>true</skip.integration.test>
+				<skip.swagger.client.generation>true</skip.swagger.client.generation>
 			</properties>
 		</profile>
 
@@ -130,7 +138,7 @@
 			</activation>
 
 			<properties>
-				<!-- APS 1.11 -->
+				<!-- APS 1.11.0 -->
 				<aps.version>1.11.0</aps.version>
 				<aps.docker.version>1.11.0</aps.docker.version>
 				<aps.version.major>1</aps.version.major>
@@ -138,15 +146,18 @@
 				<aps.version.revision>0</aps.version.revision>
 				<opencsv.version>3.7</opencsv.version>
 				<jackson.version>2.10.1</jackson.version>
-				<bcprov.version>1.62</bcprov.version>
-				<activiti.version>5.23.0.0</activiti.version>
+				<bcprov.version>1.68</bcprov.version>
+				<activiti.version>5.23.0.1</activiti.version>
 				<spring.version>4.3.24.RELEASE</spring.version>
 				<spring-boot.version>1.5.21.RELEASE</spring-boot.version>
 				<spring-security.version>4.2.12.RELEASE</spring-security.version>
-				<elasticsearch.version>7.6.0</elasticsearch.version>
-				<elasticsearch-rest-client.version>7.6.0</elasticsearch-rest-client.version>
+				<elasticsearch.version>7.13.4</elasticsearch.version>
+				<elasticsearch-rest-client.version>7.13.4</elasticsearch-rest-client.version>
 				<hibernate.version>4.2.16.Final</hibernate.version>
 				<postgresql.version>10.9</postgresql.version>
+				<skipITs>true</skipITs>
+				<skip.integration.test>true</skip.integration.test>
+				<skip.swagger.client.generation>true</skip.swagger.client.generation>
 			</properties>
 		</profile>
 
@@ -170,17 +181,20 @@
 				<spring.version>4.3.30.RELEASE</spring.version>
 				<spring-boot.version>1.5.22.RELEASE</spring-boot.version>
 				<spring-security.version>4.2.20.RELEASE</spring-security.version>
-				<elasticsearch.version>7.6.2</elasticsearch.version>
-				<elasticsearch-rest-client.version>7.6.2</elasticsearch-rest-client.version>
+				<elasticsearch.version>7.13.4</elasticsearch.version>
+				<elasticsearch-rest-client.version>7.13.4</elasticsearch-rest-client.version>
 				<hibernate.version>4.3.11.Final</hibernate.version>
 				<postgresql.version>10.9</postgresql.version>
+				<skipITs>true</skipITs>
+				<skip.integration.test>true</skip.integration.test>
+				<skip.swagger.client.generation>true</skip.swagger.client.generation>
 			</properties>
 		</profile>
 
 		<profile>
 			<id>aps2.0.1</id>
 			<activation>
-				<activeByDefault>false</activeByDefault>
+				<activeByDefault>true</activeByDefault>
 			</activation>
 
 			<properties>
@@ -202,13 +216,15 @@
 				<hibernate.version>5.4.32.Final</hibernate.version>
 				<postgresql.version>10.9</postgresql.version>
 				<skipITs>false</skipITs>
+				<skip.integration.test>false</skip.integration.test>
+				<skip.swagger.client.generation>false</skip.swagger.client.generation>
 			</properties>
 		</profile>
 
 		<profile>
 			<id>aps2.1.0</id>
 			<activation>
-				<activeByDefault>true</activeByDefault>
+				<activeByDefault>false</activeByDefault>
 			</activation>
 
 			<properties>
@@ -230,6 +246,8 @@
 				<hibernate.version>5.4.32.Final</hibernate.version>
 				<postgresql.version>10.9</postgresql.version>
 				<skipITs>false</skipITs>
+				<skip.integration.test>false</skip.integration.test>
+				<skip.swagger.client.generation>false</skip.swagger.client.generation>
 			</properties>
 		</profile>
 

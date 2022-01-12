@@ -65,7 +65,7 @@
 		<docker.es.discovery.port.external>9300</docker.es.discovery.port.external>
 
 
-		<docker.activiti.time.test>240000</docker.activiti.time.test>
+		<docker.activiti.time.test>400000</docker.activiti.time.test>
 	</properties>
 
 	<build>
@@ -181,8 +181,11 @@
 							<alias>aps-current-project</alias>
 							<name>aps-sdk/alfresco-process-services:development</name>
 							<build>
+								<buildOptions>
+									<platforms>linux/amd64,linux/arm64</platforms>
+								</buildOptions>
 								<contextDir>${project.parent.basedir}/target</contextDir>
-								<dockerFile>Dockerfile</dockerFile>
+								<dockerFile>Dockerfile-${aps.version}</dockerFile>
 								<maintainer>p.lucidi@tai.it</maintainer>
 								<tags>
 									<tag>latest</tag>
