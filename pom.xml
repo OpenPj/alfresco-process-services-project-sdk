@@ -176,7 +176,7 @@
 				<postgresql.version>10.9</postgresql.version>
 			</properties>
 		</profile>
-		
+
 		<profile>
 			<id>aps2.0.1</id>
 			<activation>
@@ -204,7 +204,7 @@
 				<skipITs>false</skipITs>
 			</properties>
 		</profile>
-		
+
 		<profile>
 			<id>aps2.1.0</id>
 			<activation>
@@ -318,8 +318,24 @@
 			</snapshots>
 		</repository>
 		<repository>
+			<id>alfresco-public-repository</id>
+			<name>Alfresco public releases</name>
+			<url>https://artifacts.alfresco.com/nexus/content/repositories/public</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
 			<id>maven-central</id>
 			<url>https://repo1.maven.org/maven2/</url>
+		</repository>
+		<repository>
+			<id>AsposeJavaAPI</id>
+			<name>Aspose Java API</name>
+			<url>https://artifact.aspose.com/repo/</url>
 		</repository>
 	</repositories>
 

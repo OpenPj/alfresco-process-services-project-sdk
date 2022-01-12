@@ -1,5 +1,6 @@
 package org.alfresco.activiti.unit.tests;
 
+import static java.lang.Long.parseLong;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -60,22 +61,22 @@ public class FourEyesTest {
 
 	@Autowired
 	protected TenantService tenantService;
-	
+
 	@Autowired
 	protected RuntimeAppRepository runtimeAppRepository;
-	
+
 	@Autowired
 	protected RuntimeAppDefinitionRepository runtimeAppDefinitionRepository;
-	
+
 	@Autowired
 	protected RelatedContentRepository relatedContentRepository;
-	
+
 	@Autowired
 	protected TenantEventRepository tenantEventRepository;
 
 	@Autowired
 	protected GroupRepository groupRepository;
-	
+
 	@Autowired
 	protected GroupCapabilityRepository groupCapabilityRepository;
 
@@ -90,7 +91,7 @@ public class FourEyesTest {
 	@Before
 	public void beforeTest() {
 		List<Tenant> tenants = tenantService.findTenantsByName("testTenant");
-		if(tenants.isEmpty()) {
+		if (tenants.isEmpty()) {
 			tenant1 = tenantService.createTenant("testTenant", null, 100, true);
 		} else {
 			tenant1 = tenants.get(0);
@@ -109,8 +110,9 @@ public class FourEyesTest {
 
 	@Test
 	public void whitelistedBeanInScriptTaskTest() {
-		repositoryService.createDeployment().addClasspathResource("apps/fourEyes/bpmn-models/4 Eyes Principle-9011.bpmn20.xml")
-				.tenantId(tenantId).deploy().getId();
+		repositoryService.createDeployment()
+				.addClasspathResource("apps/fourEyes/bpmn-models/4 Eyes Principle-9011.bpmn20.xml").tenantId(tenantId)
+				.deploy().getId();
 
 		Map<String, Object> processVars = getProcessInitVariables(String.valueOf(user.getId()));
 		Map<String, Object> taskVars = new HashMap<String, Object>();
@@ -147,8 +149,8 @@ public class FourEyesTest {
 
 	private Map<String, Object> getProcessInitVariables(String userId) {
 		Map<String, Object> processInitVariables = new HashMap<String, Object>();
-		processInitVariables.put("initiator", new Long(userId));
-		processInitVariables.put("assignee", new Long(userId));
+		processInitVariables.put("initiator", parseLong(userId));
+		processInitVariables.put("assignee", parseLong(userId));
 		processInitVariables.put("reviewtitle", "Iterating against software");
 		processInitVariables.put("description", "The quick brown fox jumps over the lazy dog.");
 		return processInitVariables;

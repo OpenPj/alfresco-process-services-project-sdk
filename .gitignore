@@ -67,8 +67,9 @@ classes/
 ######################
 # Maven
 ######################
-/log/
-/target/
+log
+target
+version.properties
 
 ######################
 # Gradle
