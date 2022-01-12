@@ -6,6 +6,7 @@ import static org.junit.Assert.assertNotNull;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -42,7 +43,6 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.codec.Base64;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallback;
@@ -182,7 +182,9 @@ public class BaseIntegrationTestSDK {
 
 		// mock init
 
-		// Email Template in APS (es: ${emailTemplateService.processCustomEmailTemplate(emailTemplateService.findCustomEmailTemplate(1, 'template custom').getId(), execution.getVariables()).getBody()}
+		// Email Template in APS (es:
+		// ${emailTemplateService.processCustomEmailTemplate(emailTemplateService.findCustomEmailTemplate(1,
+		// 'template custom').getId(), execution.getVariables()).getBody()}
 		EmailTemplate et = new EmailTemplate();
 		et.setId(1L);
 
@@ -190,7 +192,8 @@ public class BaseIntegrationTestSDK {
 
 		ProcessedEmailTemplate pet = new ProcessedEmailTemplate("test", "body test");
 		try {
-			Mockito.doReturn(pet).when(emailTemplateService).processCustomEmailTemplate(Mockito.anyLong(), Mockito.anyMap());
+			Mockito.doReturn(pet).when(emailTemplateService).processCustomEmailTemplate(Mockito.anyLong(),
+					Mockito.anyMap());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -367,7 +370,7 @@ public class BaseIntegrationTestSDK {
 
 		String value = sb.toString();
 
-		sb = new StringBuilder(new String(Base64.encode(value.getBytes())));
+		sb = new StringBuilder(new String(Base64.getEncoder().encode(value.getBytes())));
 
 		while (sb.charAt(sb.length() - 1) == '=') {
 			sb.deleteCharAt(sb.length() - 1);
