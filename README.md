@@ -143,7 +143,7 @@ After the integration tests execution stop all the APS containers with:
 
 # Prerequisites
  * OpenJDK 11.0.5
- * Apache Maven 3.6.3
+ * Apache Maven 3.8.4
  * Docker (optional)
  * A valid APS license installed in your development environment `<USER_HOME>/.activiti/enterprise-license` (for testing purpose)
  * A valid Aspose license installed in your development environment `<USER_HOME>/.activiti/enterprise-license` (for testing purpose)
