@@ -69,6 +69,7 @@ classes/
 ######################
 log
 target
+version.properties
 
 ######################
 # Gradle

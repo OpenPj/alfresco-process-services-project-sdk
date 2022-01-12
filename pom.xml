@@ -318,6 +318,17 @@
 			</snapshots>
 		</repository>
 		<repository>
+			<id>alfresco-public-repository</id>
+			<name>Alfresco public releases</name>
+			<url>https://artifacts.alfresco.com/nexus/content/repositories/public</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
 			<id>maven-central</id>
 			<url>https://repo1.maven.org/maven2/</url>
 		</repository>
