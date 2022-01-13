@@ -4,7 +4,7 @@ The project consists of the following Maven submodules:
 
  * APS extensions JAR (`aps-extensions-jar`): put here your Java extensions
  * Activiti App Overlay WAR (`activiti-app-overlay-war`): it will generate activiti-app WAR overlay with APS Extensions JAR embedded
- * Activiti App Overlay Docker (`activiti-app-overlay-docker`): it will put your overlayed WAR into the APS Docker container
+ * Activiti App Overlay Docker (`activiti-app-overlay-docker`): it will put your overlayed WAR into the APS Docker container 
  
 Running Docker will also create volumes for each storage component (contentstore, db and ElasticSearch) for making the development approach in APS consistent and reliable.
 
@@ -50,6 +50,10 @@ For building the Docker container with your custom Activiti App WAR:
  * Packaging of Activiti App and Activiti Admin Docker containers with extensions
  
 `mvn docker:start`
+
+Build and deploy with Docker the Activiti Admin App with the activiti-admin Maven profile:
+
+`mvn docker:build -Pactiviti-admin`
 
 Start your Activiti App Docker container with the following architecture:
 
@@ -152,4 +156,4 @@ Build, test, create and start all the APS containers with:
  * Test your extensions with a consistent APS architecture running with Docker volumes
 
 # Contributors
-Thanks to Carlo Cavallieri and Jessica Foroni for giving help on isolating the integration tests suite. 
+Thanks to Luca Stancapiano, Carlo Cavallieri and Jessica Foroni for giving help on isolating the integration tests suite. 
