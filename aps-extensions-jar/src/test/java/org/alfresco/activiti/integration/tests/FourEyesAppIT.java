@@ -24,7 +24,7 @@ public class FourEyesAppIT extends BaseIntegrationTestSDK {
 				UserBean.createUser("admin@app.activiti.com", "admin", new String[] { groupAdminUsers }),
 				UserBean.createUser("adminapi@app.activiti.com", "admin", new String[] { groupAdminUsers }),
 				UserBean.createUser("nonadminapi@app.activiti.com", "admin", new String[] { groupAdminUsers }),
-				UserBean.createUser("p.lucidi@tai.it", "admin", new String[] { groupAdminUsers }), };
+				UserBean.createUser("plucidi@ziaconsulting.com", "admin", new String[] { groupAdminUsers }), };
 	}
 
 	private Map<String, Object> getProcessInitVariables(Long userId) {
