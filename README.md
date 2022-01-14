@@ -17,11 +17,10 @@ Folder structure is based on the same APS project classpath:
  * `/aps-extensions-jar/src/main/resources/apps`: contains your own APS applications extracted
  * `/aps-extensions-jar/src/test/java`: put here your unit and integration tests
  
-To run use `mvn clean install`
+To run use `mvn clean install -DskipITs`
 
  * Runs the embedded container + H2 DB 
  * Runs unit tests with `mvn clean test`
- * Runs integration tests with `mvn clean integration-test`
  * Packaging of App ZIP, JAR and WAR with extensions
  
 # SDK Packages - Runtime - Cross platform
@@ -37,7 +36,6 @@ To run use `mvn clean install`
 # SDK Packages - Embedded Test Runtime
 
  * `org.alfresco.activiti.unit.tests`: put here your unit test (with suffix *Test.java)
- * `org.alfresco.activiti.integration.tests`: put here your integration tests (with suffix *IT.java)
 
 # Activiti App WAR Overlay Module
 
@@ -88,10 +86,6 @@ Put your Java classes here:
 In order to build the project, you have to declare a Maven profile related to a specific APS version:
  * `aps2.1.0`  (APS 2.1.0)
  * `aps2.0.1`  (APS 2.0.1 - default)
- * `aps1.11.4` (APS 1.11.4)
- * `aps1.11` (APS 1.11.0)
- * `aps1.10` (APS 1.10.0)
- * `aps1.9`  (APS 1.9.0.5)
  
 Build and test with unit tests execution for APS 2.1.0 with:
 `mvn clean test -Paps2.1.0`
@@ -99,35 +93,11 @@ Build and test with unit tests execution for APS 2.1.0 with:
 Build and test with unit tests execution for APS 2.0.1 with:
 `mvn clean test`
 
-Build and test with unit tests execution for APS 1.11.4 with:
-`mvn clean test -Paps.1.11.4`
-
-Build and test with unit tests execution for APS 1.11 with:
-`mvn clean test -Paps.1.11`
-
-Build and test with unit tests execution for APS 1.10 with:
-`mvn clean test -Paps1.10`
-
-Build and test with unit tests execution for APS 1.9.0.5 with:
-`mvn clean test -Paps1.9`
-
 Build and package with integration tests execution for APS 2.1.0 with:
 `mvn clean install -Paps2.1.0`
 
 Build and package with integration tests execution for APS 2.0.1 with:
 `mvn clean install`
-
-Build and package with integration tests execution for APS 1.11.4 with:
-`mvn clean install -Paps1.11.4`
-
-Build and package with integration tests execution for APS 1.11 with:
-`mvn clean install -Paps1.11`
-
-Build and package with integration tests execution for APS 1.10 with:
-`mvn clean install -Paps1.10`
-
-Build and package with integration tests execution for APS 1.9.0.5 with:
-`mvn clean install -Paps1.9`
 
 Build your Docker container with:
 `mvn docker:build`
@@ -182,4 +152,4 @@ After the integration tests execution stop all the APS containers with:
  * Test your extensions with a consistent APS architecture running with Docker volumes
 
 # Contributors
-Thanks to Carlo Cavallieri and Jessica Foroni for giving help on isolating the embedded integration tests runtime suite. 
+Thanks to Luca Stancapiano for testing and contributing on recent improvements. 
