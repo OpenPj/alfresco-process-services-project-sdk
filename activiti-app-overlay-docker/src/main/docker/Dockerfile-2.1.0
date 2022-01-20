@@ -26,3 +26,7 @@ COPY --chown=alfresco properties/activiti-app.properties $TOMCAT_DIR/lib
 COPY --chown=alfresco extensions/activiti-app.war $TOMCAT_DIR/webapps
 
 COPY --chown=alfresco license/*.* $TOMCAT_DIR/lib/
+
+RUN chown alfresco:alfresco -R /usr/local/tomcat
+
+USER alfresco
