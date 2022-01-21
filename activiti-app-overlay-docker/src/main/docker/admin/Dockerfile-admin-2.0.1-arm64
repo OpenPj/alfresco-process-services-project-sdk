@@ -4,9 +4,9 @@ ARG TOMCAT_DIR=/usr/local/tomcat
 ARG USERNAME=alfresco
 ARG USERID=33007
 
-RUN useradd -c "Alfresco APS" -M -s "/bin/bash" -u "${USERID}" -o "${USERNAME}"
-
 USER root
+
+RUN useradd -c "Alfresco APS" -M -s "/bin/bash" -u "${USERID}" -o "${USERNAME}"
 
 COPY --chown=${USERNAME} extensions/activiti-admin.war $TOMCAT_DIR/webapps
 COPY --chown=${USERNAME} properties/activiti-admin.properties $TOMCAT_DIR/lib
@@ -14,4 +14,4 @@ COPY --chown=${USERNAME} tomcat/conf/server.xml $TOMCAT_DIR/conf
 
 RUN chown ${USERNAME}:${USERNAME} -R /usr/local/tomcat
 
-USER alfresco
+USER ${USERNAME}

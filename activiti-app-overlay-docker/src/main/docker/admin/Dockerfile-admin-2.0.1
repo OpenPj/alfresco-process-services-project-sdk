@@ -10,4 +10,4 @@ COPY --chown=${USERNAME} tomcat/conf/server.xml $TOMCAT_DIR/conf
 
 RUN chown ${USERNAME}:${USERNAME} -R /usr/local/tomcat
 
-USER alfresco
+USER ${USERNAME}
