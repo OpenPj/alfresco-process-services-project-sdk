@@ -1,10 +1,20 @@
 # Alfresco Process Services SDK Project
 
+| APS SDK Version  | Supported APS versions | Artifact |
+| ------------- | ------------- | ------------- |
+| [APS SDK 2.x](https://github.com/OpenPj/alfresco-process-services-project-sdk/tree/2.x)  | 2.0.1  | [Download APS SDK 2.x](https://github.com/OpenPj/alfresco-process-services-project-sdk/releases/tag/v2.0.1) |
+| [APS SDK 1.x](https://github.com/OpenPj/alfresco-process-services-project-sdk)  | 1.9.0.5, 1.10.0, 1.11.0, 1.11.4  | [Download APS SDK 1.x](https://github.com/OpenPj/alfresco-process-services-project-sdk/releases/tag/v1.7.0) |
+
+# Alfresco Process Services SDK Project 1.7.0
+
 The project consists of the following Maven submodules:
 
  * APS extensions JAR (`aps-extensions-jar`): put here your Java extensions
  * Activiti App Overlay WAR (`activiti-app-overlay-war`): it will generate activiti-app WAR overlay with APS Extensions JAR embedded
- * Activiti App Overlay Docker (`activiti-app-overlay-docker`): it will put your overlayed WAR into the APS Docker container 
+ * Activiti App Swagger Client (`activiti-app-swagger-client`): generate the APS Java Swagger client
+ * Activiti App Overlay Docker (`activiti-app-overlay-docker`): it will put your overlayed WAR into the APS Docker container
+ * Activiti App Integration Tests (`activiti-app-integration-tests`): integration tests based on the Java Swagger client
+ * Full support of Arm64 CPUs (Apple Silicon M1) with native Docker containers and a transparent Maven profile
  
 Running Docker will also create volumes for each storage component (contentstore, db and ElasticSearch) for making the development approach in APS consistent and reliable.
 
@@ -72,37 +82,43 @@ Start your Activiti App Docker container with the following architecture:
   
 `mvn clean -Ppurge-volumes`
 
+# Activiti App Integration Tests Module
+This module includes tests for interacting with the APS Docker using the generated Swagger client.
+
+Put your Java test classes in the following package:
+`/activiti-app-integration-tests/src/test/java`
+
 # Supported Maven Profiles for dependencies management and packaging (JAR and WAR)
 
 In order to build you have to define a Maven profile for choosing the version of APS:
  * `aps1.11.4` (APS 1.11.4 - default)
- * `aps1.11` (APS 1.11.0)
- * `aps1.10` (APS 1.10.0)
- * `aps1.9`  (APS 1.9.0.5)
+ * `aps1.11.0` (APS 1.11.0)
+ * `aps1.10.0` (APS 1.10.0)
+ * `aps1.9.0.5`  (APS 1.9.0.5)
  
 Build and test with unit tests execution for APS 1.11.4 with:
 `mvn clean test`
 
-Build and test with unit tests execution for APS 1.11 with:
-`mvn clean test -Paps.1.11`
+Build and test with unit tests execution for APS 1.11.0 with:
+`mvn clean test -Paps.1.11.0`
 
-Build and test with unit tests execution for APS 1.10 with:
-`mvn clean test -Paps1.10`
+Build and test with unit tests execution for APS 1.10.0 with:
+`mvn clean test -Paps1.10.0`
 
 Build and test with unit tests execution for APS 1.9.0.5 with:
-`mvn clean test -Paps1.9`
+`mvn clean test -Paps1.9.0.5`
 
 Build and package with integration tests execution for APS 1.11.4 with:
 `mvn clean install`
 
 Build and package with integration tests execution for APS 1.11 with:
-`mvn clean install -Paps1.11`
+`mvn clean install -Paps1.11.0`
 
 Build and package with integration tests execution for APS 1.10 with:
-`mvn clean install -Paps1.10`
+`mvn clean install -Paps1.10.0`
 
 Build and package with integration tests execution for APS 1.9.0.5 with:
-`mvn clean install -Paps1.9`
+`mvn clean install -Paps1.9.0.5`
 
 Build your Docker container with:
 `mvn docker:build`
@@ -118,7 +134,7 @@ Build, test, create and start all the APS containers with:
 
 # Prerequisites
  * OpenJDK 11.0.5
- * Apache Maven 3.6.3
+ * Apache Maven 3.8.4
  * Docker (optional)
  * A valid APS license installed in your development environment `<USER_HOME>/.activiti/license` (for testing purpose)
  * Access to the Alfresco Nexus Repositories (credentials provided by Alfresco)
@@ -156,4 +172,4 @@ Build, test, create and start all the APS containers with:
  * Test your extensions with a consistent APS architecture running with Docker volumes
 
 # Contributors
-Thanks to Luca Stancapiano, Carlo Cavallieri and Jessica Foroni for giving help on isolating the integration tests suite. 
+Thanks to Luca Stancapiano, Carlo Cavallieri and Jessica Foroni for giving help on isolating the embedded integration tests suite. 

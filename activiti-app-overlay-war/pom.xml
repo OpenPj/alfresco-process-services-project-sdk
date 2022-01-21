@@ -9,7 +9,7 @@
 	<parent>
 		<groupId>org.alfresco.activiti</groupId>
 		<artifactId>aps-project</artifactId>
-		<version>1.6.3-SNAPSHOT</version>
+		<version>1.7.0</version>
 	</parent>
 
 	<dependencies>

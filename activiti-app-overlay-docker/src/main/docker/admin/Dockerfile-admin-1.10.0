@@ -5,4 +5,4 @@ ARG TOMCAT_DIR=/usr/local/tomcat
 USER root
 
 COPY properties/activiti-admin.properties $TOMCAT_DIR/lib
-COPY admin/tomcat/conf/server.xml $TOMCAT_DIR/conf
+COPY tomcat/conf/server.xml $TOMCAT_DIR/conf

@@ -9,7 +9,7 @@
 	<parent>
 		<groupId>org.alfresco.activiti</groupId>
 		<artifactId>aps-project</artifactId>
-		<version>1.6.3-SNAPSHOT</version>
+		<version>1.7.0</version>
 	</parent>
 
 	<properties>
@@ -66,9 +66,24 @@
 
 
 		<docker.activiti.time.test>360000</docker.activiti.time.test>
+
 	</properties>
 
 	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>exec-maven-plugin</artifactId>
+					<version>${exec-maven-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>com.coderplus.maven.plugins</groupId>
+					<artifactId>copy-rename-maven-plugin</artifactId>
+					<version>${copy-rename-maven-plugin.version}</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 		<plugins>
 			<plugin>
 				<artifactId>maven-dependency-plugin</artifactId>
@@ -110,6 +125,15 @@
 									<overWrite>true</overWrite>
 									<outputDirectory>${project.parent.basedir}/target/extensions</outputDirectory>
 									<destFileName>activiti-app.war</destFileName>
+								</artifactItem>
+								<artifactItem>
+									<groupId>com.activiti</groupId>
+									<artifactId>activiti-admin</artifactId>
+									<version>${aps.version}</version>
+									<type>war</type>
+									<overWrite>true</overWrite>
+									<outputDirectory>${project.parent.basedir}/target/admin/extensions</outputDirectory>
+									<destFileName>activiti-admin.war</destFileName>
 								</artifactItem>
 							</artifactItems>
 							<overWriteReleases>false</overWriteReleases>
@@ -176,19 +200,29 @@
 					<logAll>true</logAll>
 					<verbose>true</verbose>
 					<skipSave>false</skipSave>
+					<skipSave>${docker-maven-plugin.skip.save}</skipSave>
+					<skipBuild>${docker-maven-plugin.build.save}</skipBuild>
+					<autoCreateCustomNetworks>true</autoCreateCustomNetworks>
 					<images>
 						<image>
 							<alias>aps-current-project</alias>
 							<name>aps-sdk/alfresco-process-services:development</name>
 							<build>
+								<buildOptions>
+									<platforms>linux/amd64, linux/arm64</platforms>
+								</buildOptions>
 								<contextDir>${project.parent.basedir}/target</contextDir>
-								<dockerFile>Dockerfile</dockerFile>
+								<dockerFile>Dockerfile-${aps.version}</dockerFile>
 								<tags>
 									<tag>latest</tag>
 									<tag>${project.version}</tag>
 								</tags>
 							</build>
 							<run>
+								<network>
+									<name>aps-network</name>
+									<alias>aps-current-project</alias>
+								</network>
 								<ports>
 									<port>${docker.tomcat.port.external}:${docker.tomcat.port.internal}</port>
 								</ports>
@@ -201,10 +235,6 @@
 								<volumes>
 									<bind>aps-contentstore-volume:/act_data</bind>
 								</volumes>
-								<links>
-									<link>postgre:postgre</link>
-									<link>elasticsearch:elasticsearch</link>
-								</links>
 								<dependsOn>
 									<container>postgre</container>
 									<container>elasticsearch</container>
@@ -215,6 +245,10 @@
 							<alias>postgre</alias>
 							<name>${docker.aps.database.image}</name>
 							<run>
+								<network>
+									<name>aps-network</name>
+									<alias>postgre</alias>
+								</network>
 								<env>
 									<POSTGRES_DB>${docker.aps.database.server.db.name}</POSTGRES_DB>
 									<POSTGRES_USER>${docker.aps.database.username}</POSTGRES_USER>
@@ -237,6 +271,10 @@
 							<alias>elasticsearch</alias>
 							<name>elasticsearch:${elasticsearch.version}</name>
 							<run>
+								<network>
+									<name>aps-network</name>
+									<alias>elasticsearch</alias>
+								</network>
 								<env>
 									<discovery.type>${docker.aps.es.discovery.type}</discovery.type>
 									<ES_JAVA_OPTS>${docker.aps.es.memory.settings}</ES_JAVA_OPTS>
@@ -333,6 +371,106 @@
 			</build>
 		</profile>
 		<profile>
+			<id>arm64</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+				<os>
+					<arch>aarch64</arch>
+				</os>
+			</activation>
+			<properties>
+				<docker-maven-plugin.skip.save>true</docker-maven-plugin.skip.save>
+				<docker-maven-plugin.build.save>true</docker-maven-plugin.build.save>
+				<elasticsearch.version>7.13.4</elasticsearch.version>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.coderplus.maven.plugins</groupId>
+						<artifactId>copy-rename-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>copy-Dockerfile-activiti-app</id>
+								<phase>package</phase>
+								<goals>
+									<goal>copy</goal>
+								</goals>
+								<configuration>
+									<sourceFile>${project.parent.basedir}/target/Dockerfile-${aps.version}-arm64</sourceFile>
+									<destinationFile>${project.parent.basedir}/target/Dockerfile</destinationFile>
+								</configuration>
+							</execution>
+							<execution>
+								<id>copy-Dockerfile-activiti-admin</id>
+								<phase>package</phase>
+								<goals>
+									<goal>copy</goal>
+								</goals>
+								<configuration>
+									<sourceFile>${project.parent.basedir}/target/admin/Dockerfile-admin-${aps.version}-arm64</sourceFile>
+									<destinationFile>${project.parent.basedir}/target/admin/Dockerfile</destinationFile>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>exec-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>build-activiti-app-arm64</id>
+								<phase>package</phase>
+								<goals>
+									<goal>exec</goal>
+								</goals>
+								<configuration>
+									<executable>docker</executable>
+									<workingDirectory>${project.parent.basedir}/target</workingDirectory>
+									<arguments>
+										<argument>buildx</argument>
+										<argument>build</argument>
+										<argument>--platform=linux/arm64</argument>
+										<argument>-taps-sdk/alfresco-process-services:development</argument>
+										<argument>-tlatest</argument>
+										<argument>.</argument>
+										<argument>-o</argument>
+										<argument>type=docker</argument>
+									</arguments>
+									<environmentVariables>
+										<LANG>en_US</LANG>
+									</environmentVariables>
+								</configuration>
+							</execution>
+							<execution>
+								<id>build-activiti-admin-arm64</id>
+								<phase>package</phase>
+								<goals>
+									<goal>exec</goal>
+								</goals>
+								<configuration>
+									<executable>docker</executable>
+									<workingDirectory>${project.parent.basedir}/target/admin</workingDirectory>
+									<arguments>
+										<argument>buildx</argument>
+										<argument>build</argument>
+										<argument>--platform=linux/arm64</argument>
+										<argument>-taps-sdk/alfresco-process-services-admin:development</argument>
+										<argument>-tlatest</argument>
+										<argument>.</argument>
+										<argument>-o</argument>
+										<argument>type=docker</argument>
+									</arguments>
+									<environmentVariables>
+										<LANG>en_US</LANG>
+									</environmentVariables>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
 			<id>activiti-admin</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
@@ -349,20 +487,59 @@
 							<showLogs>true</showLogs>
 							<logAll>true</logAll>
 							<verbose>true</verbose>
-							<skipSave>false</skipSave>
+							<skipSave>${docker-maven-plugin.skip.save}</skipSave>
+							<skipBuild>${docker-maven-plugin.build.save}</skipBuild>
+							<autoCreateCustomNetworks>true</autoCreateCustomNetworks>
 							<images>
 								<image>
-									<alias>aps-current-project</alias>
-									<name>aps-sdk/alfresco-process-services:development</name>
+									<alias>aps-admin</alias>
+									<name>aps-sdk/alfresco-process-services-admin:development</name>
 									<build>
-										<contextDir>${project.parent.basedir}/target</contextDir>
-										<dockerFile>Dockerfile</dockerFile>
+										<contextDir>${project.parent.basedir}/target/admin</contextDir>
+										<dockerFile>Dockerfile-admin-${aps.version}</dockerFile>
 										<tags>
 											<tag>latest</tag>
 											<tag>${project.version}</tag>
 										</tags>
 									</build>
 									<run>
+										<network>
+											<name>aps-network</name>
+											<alias>aps-admin</alias>
+										</network>
+										<ports>
+											<port>${docker.aps-admin.tomcat.port.internal}:${docker.aps-admin.tomcat.port.external}</port>
+										</ports>
+										<wait>
+											<http>
+												<url>http://${docker.host.address}:8081/activiti-admin</url>
+											</http>
+											<time>${docker.activiti.time.test}</time>
+										</wait>
+										<dependsOn>
+											<container>aps-current-project</container>
+										</dependsOn>
+									</run>
+								</image>
+								<image>
+									<alias>aps-current-project</alias>
+									<name>aps-sdk/alfresco-process-services:development</name>
+									<build>
+										<buildOptions>
+											<platforms>linux/amd64, linux/arm64</platforms>
+										</buildOptions>
+										<contextDir>${project.parent.basedir}/target</contextDir>
+										<dockerFile>Dockerfile-${aps.version}</dockerFile>
+										<tags>
+											<tag>latest</tag>
+											<tag>${project.version}</tag>
+										</tags>
+									</build>
+									<run>
+										<network>
+											<name>aps-network</name>
+											<alias>aps-current-project</alias>
+										</network>
 										<ports>
 											<port>${docker.tomcat.port.external}:${docker.tomcat.port.internal}</port>
 										</ports>
@@ -375,44 +552,9 @@
 										<volumes>
 											<bind>aps-contentstore-volume:/act_data</bind>
 										</volumes>
-										<links>
-											<link>postgre:postgre</link>
-											<link>elasticsearch:elasticsearch</link>
-										</links>
 										<dependsOn>
 											<container>postgre</container>
 											<container>elasticsearch</container>
-											<container>aps-admin</container>
-										</dependsOn>
-									</run>
-								</image>
-								<image>
-									<alias>aps-admin</alias>
-									<name>aps-sdk/alfresco-process-services-admin:development</name>
-									<build>
-										<contextDir>${project.parent.basedir}/target</contextDir>
-										<dockerFile>Dockerfile-admin</dockerFile>
-										<tags>
-											<tag>latest</tag>
-											<tag>${project.version}</tag>
-										</tags>
-									</build>
-									<run>
-										<ports>
-											<port>${docker.aps-admin.tomcat.port.internal}:${docker.aps-admin.tomcat.port.external}</port>
-										</ports>
-										<wait>
-											<http>
-												<url>http://${docker.host.address}:8081/activiti-admin</url>
-											</http>
-											<time>${docker.activiti.time.test}</time>
-										</wait>
-										<links>
-											<link>postgre:postgre</link>
-											<link>aps-current-project:aps-current-project</link>
-										</links>
-										<dependsOn>
-											<container>postgre</container>
 										</dependsOn>
 									</run>
 								</image>
@@ -420,6 +562,10 @@
 									<alias>postgre</alias>
 									<name>${docker.aps.database.image}</name>
 									<run>
+										<network>
+											<name>aps-network</name>
+											<alias>postgre</alias>
+										</network>
 										<env>
 											<POSTGRES_DB>${docker.aps.database.server.db.name}</POSTGRES_DB>
 											<POSTGRES_USER>${docker.aps.database.username}</POSTGRES_USER>
@@ -442,6 +588,10 @@
 									<alias>elasticsearch</alias>
 									<name>elasticsearch:${elasticsearch.version}</name>
 									<run>
+										<network>
+											<name>aps-network</name>
+											<alias>elasticsearch</alias>
+										</network>
 										<env>
 											<discovery.type>${docker.aps.es.discovery.type}</discovery.type>
 											<ES_JAVA_OPTS>${docker.aps.es.memory.settings}</ES_JAVA_OPTS>
