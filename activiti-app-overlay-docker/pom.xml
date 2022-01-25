@@ -9,7 +9,7 @@
 	<parent>
 		<groupId>org.alfresco.activiti</groupId>
 		<artifactId>aps-project</artifactId>
-		<version>2.0.1</version>
+		<version>2.0.2</version>
 	</parent>
 
 	<properties>
@@ -186,6 +186,7 @@
 					<verbose>true</verbose>
 					<skipSave>${docker-maven-plugin.skip.save}</skipSave>
 					<skipBuild>${docker-maven-plugin.build.save}</skipBuild>
+					<autoCreateCustomNetworks>true</autoCreateCustomNetworks>
 					<images>
 						<image>
 							<alias>aps-current-project</alias>
@@ -355,12 +356,10 @@
 		<profile>
 			<id>arm64</id>
 			<activation>
-				<activeByDefault>false</activeByDefault> 
-				<!-- 
+				<activeByDefault>false</activeByDefault>
 				<os>
 					<arch>aarch64</arch>
 				</os>
-				-->
 			</activation>
 			<properties>
 				<docker-maven-plugin.skip.save>true</docker-maven-plugin.skip.save>
@@ -390,6 +389,7 @@
 									<goal>copy</goal>
 								</goals>
 								<configuration>
+
 									<sourceFile>${project.parent.basedir}/target/admin/Dockerfile-admin-${aps.version}-arm64</sourceFile>
 									<destinationFile>${project.parent.basedir}/target/admin/Dockerfile</destinationFile>
 								</configuration>
