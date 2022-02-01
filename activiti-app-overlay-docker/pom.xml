@@ -9,7 +9,7 @@
 	<parent>
 		<groupId>org.alfresco.activiti</groupId>
 		<artifactId>aps-project</artifactId>
-		<version>2.0.3-SNAPSHOT</version>
+		<version>2.0.3</version>
 	</parent>
 
 	<properties>
@@ -149,6 +149,9 @@
 									</excludes>
 								</resource>
 							</resources>
+							<nonFilteredFileExtensions>
+								<nonFilteredFileExtension>lic</nonFilteredFileExtension>
+							</nonFilteredFileExtensions>
 						</configuration>
 					</execution>
 					<execution>
