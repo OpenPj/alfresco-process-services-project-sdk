@@ -164,6 +164,9 @@
 									</excludes>
 								</resource>
 							</resources>
+							<nonFilteredFileExtensions>
+								<nonFilteredFileExtension>lic</nonFilteredFileExtension>
+							</nonFilteredFileExtensions>
 						</configuration>
 					</execution>
 					<execution>
