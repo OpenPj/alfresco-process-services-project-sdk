@@ -9,6 +9,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import org.apache.hc.client5.http.auth.UsernamePasswordCredentials;
+import org.apache.hc.client5.http.classic.methods.HttpGet;
 import org.apache.hc.client5.http.classic.methods.HttpPost;
 import org.apache.hc.client5.http.entity.mime.FileBody;
 import org.apache.hc.client5.http.entity.mime.MultipartEntityBuilder;
@@ -68,6 +69,70 @@ public class IntegrationTestUtils {
 					EntityUtils.consume(resEntity);
 				}
 			}
+		} catch (FileNotFoundException e) {
+			fail(e.getMessage(), e);
+		} catch (IOException e) {
+			fail(e.getMessage(), e);
+		}
+	}
+	
+	public static void executePrivateGETRequest(String username, String password, String protocol, String hostname,
+			int port, String endpoint) {
+		try {
+			System.out.println("Start executing private GET request: " + endpoint);
+			final BasicScheme basicAuth = new BasicScheme();
+			basicAuth.initPreemptive(new UsernamePasswordCredentials(username, password.toCharArray()));
+			final HttpHost target = new HttpHost(protocol, hostname, port);
+			final HttpClientContext localContext = HttpClientContext.create();
+			localContext.resetAuthExchange(target, basicAuth);
+
+			try (final CloseableHttpClient httpclient = HttpClients.createDefault()) {
+				final HttpGet httpGet = new HttpGet(endpoint);
+
+				final HttpEntity reqEntity = MultipartEntityBuilder.create().build();
+				httpGet.setEntity(reqEntity);
+
+				System.out.println("Get URL: " + httpGet);
+				try (final CloseableHttpResponse response = httpclient.execute(httpGet, localContext)) {
+					System.out.println("----------------------------------------");
+					System.out.println(response);
+					final HttpEntity resEntity = response.getEntity();
+					if (resEntity != null) {
+						System.out.println("Response content length: " + resEntity.getContentLength());
+					}
+					EntityUtils.consume(resEntity);
+				}
+			}
+			System.out.println("End of executing private GET request: " + endpoint);
+
+		} catch (FileNotFoundException e) {
+			fail(e.getMessage(), e);
+		} catch (IOException e) {
+			fail(e.getMessage(), e);
+		}
+	}
+
+	public static void executePublicGETRequest(String endpoint) {
+		try {
+			System.out.println("Start executing public GET request: " + endpoint);
+			try (final CloseableHttpClient httpclient = HttpClients.createDefault()) {
+				final HttpGet httpGet = new HttpGet(endpoint);
+
+				final HttpEntity reqEntity = MultipartEntityBuilder.create().build();
+				httpGet.setEntity(reqEntity);
+
+				System.out.println("Get URL: " + httpGet);
+				try (final CloseableHttpResponse response = httpclient.execute(httpGet)) {
+					System.out.println("----------------------------------------");
+					System.out.println(response);
+					final HttpEntity resEntity = response.getEntity();
+					if (resEntity != null) {
+						System.out.println("Response content length: " + resEntity.getContentLength());
+					}
+					EntityUtils.consume(resEntity);
+				}
+			}
+			System.out.println("End executing public GET request: " + endpoint);
 		} catch (FileNotFoundException e) {
 			fail(e.getMessage(), e);
 		} catch (IOException e) {

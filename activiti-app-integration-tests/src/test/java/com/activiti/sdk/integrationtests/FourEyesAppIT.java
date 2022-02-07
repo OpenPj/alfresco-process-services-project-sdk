@@ -11,6 +11,7 @@ import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 import com.activiti.sdk.client.ApiClient;
@@ -56,6 +57,9 @@ public class FourEyesAppIT {
 
 	protected static final String ACTIVITI_APP_BASE_PATH = BASE_PATH_PROTOCOL + "://" + BASE_PATH_HOSTNAME + ":"
 			+ BASE_PATH_PORT;
+	
+	protected static final String PRIVATE_ENDPOINT = ACTIVITI_APP_BASE_PATH + "/enterprise/my-api-endpoint";
+	protected static final String PUBLIC_ENDPOINT = ACTIVITI_APP_BASE_PATH + "/rest/my-rest-endpoint";
 
 	@BeforeEach
 	public void initApiClient() {
@@ -74,6 +78,7 @@ public class FourEyesAppIT {
 	}
 
 	@Test
+	@Order(2)
 	public void testFourEyesApp() {
 		System.out.println("--- /Start - Four Eyes App - Integration Test ---");
 		
@@ -191,7 +196,22 @@ public class FourEyesAppIT {
 	}
 
 	@Test
+	@Order(3)
+	public void testCustomPrivateRestEndpoint() {
+		IntegrationTestUtils.executePrivateGETRequest(ACTIVITI_APP_USERNAME, ACTIVITI_APP_PASSWORD, BASE_PATH_PROTOCOL,
+				BASE_PATH_HOSTNAME, BASE_PATH_PORT, PRIVATE_ENDPOINT);
+	}
+
+	@Test
+	@Order(4)
+	public void testCustomPublicRestEndpoint() {
+		IntegrationTestUtils.executePublicGETRequest(PUBLIC_ENDPOINT);
+	}
+
+	@Test
+	@Order(1)
 	public void testAboutApi() {
+		System.out.println("--- Start executing About Api check ---");
 		Map<String, String> response = null;
 		try {
 			response = aboutApi.getAppVersionUsingGET();
@@ -200,7 +220,7 @@ public class FourEyesAppIT {
 		}
 		String edition = response.get("edition");
 		assertEquals(edition, "Alfresco Process Services (powered by Activiti)");
-
+		System.out.println("--- End executing About Api check ---");
 	}
 
 }
