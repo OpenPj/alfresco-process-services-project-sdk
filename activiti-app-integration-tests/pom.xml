@@ -9,8 +9,14 @@
 	<parent>
 		<groupId>org.alfresco.activiti</groupId>
 		<artifactId>aps-project</artifactId>
-		<version>1.7.2-SNAPSHOT</version>
+		<version>1.7.2</version>
 	</parent>
+
+	<properties>
+		<httpclient5.version>5.1.3</httpclient5.version>
+		<junit-jupiter.version>5.8.2</junit-jupiter.version>
+		<commons.lang.version>3.12.0</commons.lang.version>
+	</properties>
 
 	<dependencyManagement>
 		<dependencies>
@@ -33,6 +39,23 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<version>${spring-boot.version}</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents.client5</groupId>
+			<artifactId>httpclient5</artifactId>
+			<version>${httpclient5.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<version>${junit-jupiter.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons.lang.version}</version>
 		</dependency>
 	</dependencies>
 
@@ -74,6 +97,33 @@
 							<goal>integration-test</goal>
 							<goal>verify</goal>
 						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-app-zip</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>org.alfresco.activiti</groupId>
+									<artifactId>aps-extensions-jar</artifactId>
+									<version>${project.version}</version>
+									<classifier>App</classifier>
+									<type>zip</type>
+									<overWrite>true</overWrite>
+									<outputDirectory>${project.basedir}/target/apps</outputDirectory>
+								</artifactItem>
+							</artifactItems>
+							<overWriteReleases>false</overWriteReleases>
+							<overWriteSnapshots>true</overWriteSnapshots>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>

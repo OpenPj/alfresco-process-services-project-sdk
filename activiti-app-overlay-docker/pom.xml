@@ -9,7 +9,7 @@
 	<parent>
 		<groupId>org.alfresco.activiti</groupId>
 		<artifactId>aps-project</artifactId>
-		<version>1.7.2-SNAPSHOT</version>
+		<version>1.7.2</version>
 	</parent>
 
 	<properties>
@@ -422,7 +422,7 @@
 						<executions>
 							<execution>
 								<id>build-activiti-app-arm64</id>
-								<phase>package</phase>
+								<phase>pre-integration-test</phase>
 								<goals>
 									<goal>exec</goal>
 								</goals>
@@ -446,7 +446,7 @@
 							</execution>
 							<execution>
 								<id>build-activiti-admin-arm64</id>
-								<phase>package</phase>
+								<phase>pre-integration-test</phase>
 								<goals>
 									<goal>exec</goal>
 								</goals>
