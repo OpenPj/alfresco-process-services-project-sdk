@@ -9,7 +9,7 @@
 	<parent>
 		<groupId>org.alfresco.activiti</groupId>
 		<artifactId>aps-project</artifactId>
-		<version>2.0.4-SNAPSHOT</version>
+		<version>2.0.4</version>
 	</parent>
 
 	<properties>
@@ -362,7 +362,7 @@
 				<activeByDefault>false</activeByDefault>
 				<os>
 					<arch>aarch64</arch>
-				</os>
+				</os> 
 			</activation>
 			<properties>
 				<docker-maven-plugin.skip.save>true</docker-maven-plugin.skip.save>
@@ -405,7 +405,7 @@
 						<executions>
 							<execution>
 								<id>build-activiti-app-arm64</id>
-								<phase>package</phase>
+								<phase>pre-integration-test</phase>
 								<goals>
 									<goal>exec</goal>
 								</goals>
@@ -429,7 +429,7 @@
 							</execution>
 							<execution>
 								<id>build-activiti-admin-arm64</id>
-								<phase>package</phase>
+								<phase>pre-integration-test</phase>
 								<goals>
 									<goal>exec</goal>
 								</goals>
