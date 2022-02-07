@@ -52,12 +52,12 @@ public class FourEyesAppIT {
 	protected static final String BASE_PATH_PROTOCOL = "http";
 	protected static final String BASE_PATH_HOSTNAME = "localhost";
 	protected static final int BASE_PATH_PORT = 8080;
-	
-	protected static final String appZipFile = "aps-extensions-jar-2.0.4-App.zip";
+
+	protected static final String appZipFile = "aps-extensions-jar-2.0.5-App.zip";
 
 	protected static final String ACTIVITI_APP_BASE_PATH = BASE_PATH_PROTOCOL + "://" + BASE_PATH_HOSTNAME + ":"
 			+ BASE_PATH_PORT;
-	
+
 	protected static final String PRIVATE_ENDPOINT = ACTIVITI_APP_BASE_PATH + "/enterprise/my-api-endpoint";
 	protected static final String PUBLIC_ENDPOINT = ACTIVITI_APP_BASE_PATH + "/rest/my-rest-endpoint";
 
@@ -81,7 +81,7 @@ public class FourEyesAppIT {
 	@Order(2)
 	public void testFourEyesApp() {
 		System.out.println("--- /Start - Four Eyes App - Integration Test ---");
-		
+
 		// Importing the Four Eyes App in APS
 		IntegrationTestUtils.importApp(appZipFile, ACTIVITI_APP_USERNAME, ACTIVITI_APP_PASSWORD, BASE_PATH_PROTOCOL,
 				BASE_PATH_HOSTNAME, BASE_PATH_PORT);
