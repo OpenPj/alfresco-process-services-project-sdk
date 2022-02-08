@@ -98,9 +98,9 @@ public class FourEyesTest {
 		}
 		tenantId = "tenant_" + String.valueOf(tenant1.getId());
 		// Create test tenant and user
-		user = userService.findActiveUserByEmail("p.lucidi@tai.it");
+		user = userService.findActiveUserByEmail("plucidi@ziaconsulting.com");
 		if (user == null) {
-			user = userService.createNewUser("p.lucidi@tai.it", "Piergiorgio", "Lucidi", "test", null,
+			user = userService.createNewUser("plucidi@ziaconsulting.com", "Piergiorgio", "Lucidi", "test", null,
 					UserStatus.ACTIVE, AccountType.ENTERPRISE, tenant1.getId());
 		}
 

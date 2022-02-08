@@ -1,4 +1,4 @@
-FROM alfresco/process-services:${aps.docker.version}
+FROM tomcat:9.0.56-jdk11-openjdk
 
 ENV ACTIVITI_DATASOURCE_USERNAME: ${docker.aps.database.username}
 ENV ACTIVITI_DATASOURCE_PASSWORD: ${docker.aps.database.password}
@@ -12,17 +12,25 @@ ENV ACTIVITI_ES_DISCOVERY_HOSTS: ${docker.aps.es.discovery.host}
 ENV ACTIVITI_ES_CLUSTER_NAME: ${docker.aps.es.cluster.name}
 
 ARG TOMCAT_DIR=/usr/local/tomcat
+ARG USERNAME=alfresco
+ARG USERID=33007
 
 USER root
 
+RUN useradd -c "Alfresco APS" -M -s "/bin/bash" -u "${USERID}" -o "${USERNAME}"
+
 RUN rm -rf $TOMCAT_DIR/webapps/activiti-app
 
-COPY --chown=alfresco extensions/aps-extensions-jar-${project.version}.jar $TOMCAT_DIR/lib
+COPY --chown=${USERNAME} extensions/aps-extensions-jar-${project.version}.jar $TOMCAT_DIR/lib
 
-COPY --chown=alfresco logging/logback.xml $TOMCAT_DIR/lib
+COPY --chown=${USERNAME} logging/logback.xml $TOMCAT_DIR/lib
 
-COPY --chown=alfresco properties/activiti-app.properties $TOMCAT_DIR/lib
+COPY --chown=${USERNAME} properties/activiti-app.properties $TOMCAT_DIR/lib
 
-COPY --chown=alfresco extensions/activiti-app.war $TOMCAT_DIR/webapps
+COPY --chown=${USERNAME} extensions/activiti-app.war $TOMCAT_DIR/webapps
 
-COPY --chown=alfresco license/*.* $TOMCAT_DIR/lib/
+COPY --chown=${USERNAME} license/*.* $TOMCAT_DIR/lib/
+
+RUN chown ${USERNAME}:${USERNAME} -R /usr/local/tomcat
+
+USER ${USERNAME}

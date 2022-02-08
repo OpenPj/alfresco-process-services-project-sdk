@@ -1,4 +1,4 @@
-# Alfresco Process Services SDK Project
+# Alfresco Process Services SDK Project 2.0.5
 
 The project consists of the following Maven submodules:
 
@@ -7,8 +7,55 @@ The project consists of the following Maven submodules:
  * Activiti App Swagger Client (`activiti-app-swagger-client`): generate the APS Java Swagger client
  * Activiti App Overlay Docker (`activiti-app-overlay-docker`): put your overlayed WAR into the APS Docker container
  * Activiti App Integration Tests (`activiti-app-integration-tests`): integration tests based on the Java Swagger client
+ * Full support of Arm64 CPUs (Apple Silicon M1) with native Docker containers and a transparent Maven profile
  
 Running Docker will also create volumes for each storage component (contentstore, db and ElasticSearch) for making the development approach in APS consistent and reliable.
+
+# Prerequisites
+ * OpenJDK 11.0.5
+ * Apache Maven 3.8.4
+ * Docker (optional)
+ * A valid APS license installed in your development environment `<USER_HOME>/.activiti/enterprise-license` (for development purpose)
+ * A valid Aspose license installed in your development environment `<USER_HOME>/.activiti/enterprise-license` (for development purpose)
+ * Access to the Alfresco Nexus Repositories (credentials provided by Alfresco)
+ * Configure your Maven servers settings.xml with credentials for these repositories:
+ 
+ ``` 
+    <server>
+	  <id>activiti-enterprise-releases</id>
+	  <username>yourAlfrescoUsername</username>
+	  <password>yourAlfrescoPassword</password>
+	</server>
+	<server>
+	  <id>enterprise-releases</id>
+	  <username>yourAlfrescoUsername</username>
+	  <password>yourAlfrescoPassword</password>
+	</server>
+	<server>
+	  <id>internal-thirdparty</id>
+	  <username>yourAlfrescoUsername</username>
+	  <password>yourAlfrescoPassword</password>
+	</server>
+  ```
+
+# Quickstart
+
+Full Maven lifecycle command:
+
+ * `mvn clean install docker:build docker:start`
+ 
+Stop all the Docker containers with:
+ 
+ * `mvn docker:stop`
+
+Full Maven lifecycle command deploying also Activiti Admin:
+
+ * `mvn clean install docker:build docker:start -Pactiviti-admin`
+ 
+Stop all the Docker containers with:
+
+ * `mvn docker:stop -Pactiviti-admin`
+
 
 # APS Extensions JAR Module
 
@@ -17,11 +64,10 @@ Folder structure is based on the same APS project classpath:
  * `/aps-extensions-jar/src/main/resources/apps`: contains your own APS applications extracted
  * `/aps-extensions-jar/src/test/java`: put here your unit and integration tests
  
-To run use `mvn clean install`
+To run use `mvn clean install -DskipITs`
 
  * Runs the embedded container + H2 DB 
  * Runs unit tests with `mvn clean test`
- * Runs integration tests with `mvn clean integration-test`
  * Packaging of App ZIP, JAR and WAR with extensions
  
 # SDK Packages - Runtime - Cross platform
@@ -37,7 +83,6 @@ To run use `mvn clean install`
 # SDK Packages - Embedded Test Runtime
 
  * `org.alfresco.activiti.unit.tests`: put here your unit test (with suffix *Test.java)
- * `org.alfresco.activiti.integration.tests`: put here your integration tests (with suffix *IT.java)
 
 # Activiti App WAR Overlay Module
 
@@ -80,18 +125,15 @@ If you want to build and start also the Activiti Admin WAR container:
 
 # Activiti App Integration Tests Module
 This module includes tests for interacting with the APS Docker using the generated Swagger client.
-Put your Java classes here:
+
+Put your Java test classes in the following package:
 `/activiti-app-integration-tests/src/test/java`
 
 # Supported Maven Profiles for dependencies management and packaging (JAR and WAR)
 
-In order to build the project, you have to declare a Maven profile related to a specific APS version:
+In order to build the project, you can declare a Maven profile related to a specific APS version:
  * `aps2.1.0`  (APS 2.1.0 - default)
  * `aps2.0.1`  (APS 2.0.1)
- * `aps1.11.4` (APS 1.11.4)
- * `aps1.11` (APS 1.11.0)
- * `aps1.10` (APS 1.10.0)
- * `aps1.9`  (APS 1.9.0.5)
  
 Build and test with unit tests execution for APS 2.1.0 with:
 `mvn clean test`
@@ -99,35 +141,11 @@ Build and test with unit tests execution for APS 2.1.0 with:
 Build and test with unit tests execution for APS 2.0.1 with:
 `mvn clean test -Paps2.0.1`
 
-Build and test with unit tests execution for APS 1.11.4 with:
-`mvn clean test -Paps.1.11.4`
-
-Build and test with unit tests execution for APS 1.11 with:
-`mvn clean test -Paps.1.11`
-
-Build and test with unit tests execution for APS 1.10 with:
-`mvn clean test -Paps1.10`
-
-Build and test with unit tests execution for APS 1.9.0.5 with:
-`mvn clean test -Paps1.9`
-
 Build and package with integration tests execution for APS 2.1.0 with:
 `mvn clean install`
 
 Build and package with integration tests execution for APS 2.0.1 with:
 `mvn clean install -Paps2.0.1`
-
-Build and package with integration tests execution for APS 1.11.4 with:
-`mvn clean install -Paps1.11.4`
-
-Build and package with integration tests execution for APS 1.11 with:
-`mvn clean install -Paps1.11`
-
-Build and package with integration tests execution for APS 1.10 with:
-`mvn clean install -Paps1.10`
-
-Build and package with integration tests execution for APS 1.9.0.5 with:
-`mvn clean install -Paps1.9`
 
 Build your Docker container with:
 `mvn docker:build`
@@ -140,33 +158,6 @@ Build, execute embedded test runtime, create and start all the APS containers ex
 
 After the integration tests execution stop all the APS containers with:
 `mvn docker:stop`
-
-# Prerequisites
- * OpenJDK 11.0.5
- * Apache Maven 3.8.4
- * Docker (optional)
- * A valid APS license installed in your development environment `<USER_HOME>/.activiti/enterprise-license` (for testing purpose)
- * A valid Aspose license installed in your development environment `<USER_HOME>/.activiti/enterprise-license` (for testing purpose)
- * Access to the Alfresco Nexus Repositories (credentials provided by Alfresco)
- * Configure your Maven servers settings.xml with credentials for these repositories:
- 
- ``` 
-    <server>
-	  <id>activiti-enterprise-releases</id>
-	  <username>yourAlfrescoUsername</username>
-	  <password>yourAlfrescoPassword</password>
-	</server>
-	<server>
-	  <id>enterprise-releases</id>
-	  <username>yourAlfrescoUsername</username>
-	  <password>yourAlfrescoPassword</password>
-	</server>
-	<server>
-	  <id>internal-thirdparty</id>
-	  <username>yourAlfrescoUsername</username>
-	  <password>yourAlfrescoPassword</password>
-	</server>
-  ```
 
 # Building your Docker container (optional)
  * Put a valid APS and Aspose license in `/activiti-app-overlay-docker/src/main/docker/license`
@@ -182,4 +173,4 @@ After the integration tests execution stop all the APS containers with:
  * Test your extensions with a consistent APS architecture running with Docker volumes
 
 # Contributors
-Thanks to Carlo Cavallieri and Jessica Foroni for giving help on isolating the embedded integration tests runtime suite. 
+Thanks to Luca Stancapiano for testing and contributing on recent improvements. 

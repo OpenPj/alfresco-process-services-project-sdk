@@ -9,7 +9,7 @@
 	<parent>
 		<groupId>org.alfresco.activiti</groupId>
 		<artifactId>aps-project</artifactId>
-		<version>2.1.0-SNAPSHOT</version>
+		<version>2.0.5</version>
 	</parent>
 
 	<properties>
@@ -118,6 +118,9 @@
 			<plugin>
 				<groupId>io.swagger.codegen.v3</groupId>
 				<artifactId>swagger-codegen-maven-plugin</artifactId>
+				<configuration>
+					<skip>${skip.swagger.client.generation}</skip>
+				</configuration>
 				<executions>
 					<execution>
 						<goals>
