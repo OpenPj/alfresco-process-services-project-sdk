@@ -2,10 +2,10 @@
 
 | APS SDK Version  | Supported APS versions | Artifact |
 | ------------- | ------------- | ------------- |
-| [APS SDK 2.x (2.x branch)](https://github.com/OpenPj/alfresco-process-services-project-sdk/tree/2.x)  | 2.1.0, 2.0.1  | [Download APS SDK v2.0.5](https://github.com/OpenPj/alfresco-process-services-project-sdk/releases/tag/v2.0.5.1) |
-| [APS SDK 1.x (master branch)](https://github.com/OpenPj/alfresco-process-services-project-sdk)  | 1.11.4, 1.11.0, 1.10.0, 1.9.0.5 | [Download APS SDK v1.7.2](https://github.com/OpenPj/alfresco-process-services-project-sdk/releases/tag/v1.7.2) |
+| [APS SDK 2.x (2.x branch)](https://github.com/OpenPj/alfresco-process-services-project-sdk/tree/2.x)  | 2.1.0, 2.0.1  | [Download APS SDK v2.0.6](https://github.com/OpenPj/alfresco-process-services-project-sdk/releases/tag/v2.0.6) |
+| [APS SDK 1.x (master branch)](https://github.com/OpenPj/alfresco-process-services-project-sdk)  | 1.11.4, 1.11.0, 1.10.0, 1.9.0.5 | [Download APS SDK v1.7.3](https://github.com/OpenPj/alfresco-process-services-project-sdk/releases/tag/v1.7.3) |
 
-# Alfresco Process Services SDK Project 1.7.2
+# Alfresco Process Services SDK Project 1.7.3
 
 The project consists of the following Maven submodules:
 
@@ -14,9 +14,55 @@ The project consists of the following Maven submodules:
  * Activiti App Swagger Client (`activiti-app-swagger-client`): generate the APS Java Swagger client
  * Activiti App Overlay Docker (`activiti-app-overlay-docker`): it will put your overlayed WAR into the APS Docker container
  * Activiti App Integration Tests (`activiti-app-integration-tests`): integration tests based on the Java Swagger client
- * Full support of Arm64 CPUs (Apple Silicon M1) with native Docker containers and a transparent Maven profile
+
+## Capabilities
+ * Full support of Arm64 CPUs (Apple Silicon M1) with native Docker containers and a transparent Maven profile 
+ * Running Docker will also create persistent volumes for each storage component (contentstore, db and ElasticSearch) for making the development approach in APS consistent and reliable
+
+# Prerequisites
+ * OpenJDK 11
+ * Apache Maven 3.8.4
+ * Docker (optional)
+ * For running unit tests: valid  _activiti.lic_  and  _Aspose.Total.Java.lic_  licenses in `<USER_HOME>/.activiti/enterprise-license`
+ * For integration tests and building containers: valid  _activiti.lic_  and  _Aspose.Total.Java.lic_  licenses in `activiti-app-overlay-docker/src/main/docker/license`
+ * Access to the Alfresco Nexus Repositories (credentials provided by Alfresco)
+ * Configure your Maven servers settings.xml with credentials for these repositories:
  
-Running Docker will also create volumes for each storage component (contentstore, db and ElasticSearch) for making the development approach in APS consistent and reliable.
+ ``` 
+    <server>
+	  <id>activiti-enterprise-releases</id>
+	  <username>yourAlfrescoUsername</username>
+	  <password>yourAlfrescoPassword</password>
+	</server>
+	<server>
+	  <id>enterprise-releases</id>
+	  <username>yourAlfrescoUsername</username>
+	  <password>yourAlfrescoPassword</password>
+	</server>
+	<server>
+	  <id>internal-thirdparty</id>
+	  <username>yourAlfrescoUsername</username>
+	  <password>yourAlfrescoPassword</password>
+	</server>
+  ```
+  
+# Quickstart
+
+Full Maven lifecycle command:
+
+ * `mvn clean install docker:build docker:start`
+ 
+Stop all the Docker containers with:
+ 
+ * `mvn docker:stop`
+
+Full Maven lifecycle command deploying also Activiti Admin:
+
+ * `mvn clean install docker:build docker:start -Pactiviti-admin`
+ 
+Stop all the Docker containers with:
+
+ * `mvn docker:stop -Pactiviti-admin`
 
 # APS Extensions JAR Module
 
@@ -132,36 +178,10 @@ Stop all the APS Docker containers with:
 Build, test, create and start all the APS containers with:
 `mvn clean install docker:build docker:start`
 
-# Prerequisites
- * OpenJDK 11.0.5
- * Apache Maven 3.8.4
- * Docker (optional)
- * A valid APS license installed in your development environment `<USER_HOME>/.activiti/license` (for testing purpose)
- * Access to the Alfresco Nexus Repositories (credentials provided by Alfresco)
- * Configure your Maven servers settings.xml with credentials for these repositories:
- 
- ``` 
-    <server>
-	  <id>activiti-enterprise-releases</id>
-	  <username>yourAlfrescoUsername</username>
-	  <password>yourAlfrescoPassword</password>
-	</server>
-	<server>
-	  <id>enterprise-releases</id>
-	  <username>yourAlfrescoUsername</username>
-	  <password>yourAlfrescoPassword</password>
-	</server>
-	<server>
-	  <id>internal-thirdparty</id>
-	  <username>yourAlfrescoUsername</username>
-	  <password>yourAlfrescoPassword</password>
-	</server>
-  ```
-
 # Building your Docker container (optional)
- * Put a valid license in `/activiti-app-overlay-docker/src/main/docker/license`
- * Put your logback.xml in `/activiti-app-overlay-war/src/main/webapp/WEB-INF/classes`
- * Put your activiti-app.properties in `/activiti-app-overlay-docker/src/main/docker/properties`
+ * Put a valid  _activiti.lic_  and  _Aspose.Total.Java.lic_  in `/activiti-app-overlay-docker/src/main/docker/license`
+ * Update if you need  _logback.xml_  in `/activiti-app-overlay-war/src/main/webapp/WEB-INF/classes`
+ * Update if you need your  _activiti-app.properties_  in `/activiti-app-overlay-docker/src/main/docker/properties`
 
 # Few things to notice
 
