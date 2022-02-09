@@ -1,4 +1,4 @@
-# Alfresco Process Services SDK Project 2.0.5
+# Alfresco Process Services SDK Project 2.0.6
 
 The project consists of the following Maven submodules:
 
@@ -7,16 +7,17 @@ The project consists of the following Maven submodules:
  * Activiti App Swagger Client (`activiti-app-swagger-client`): generate the APS Java Swagger client
  * Activiti App Overlay Docker (`activiti-app-overlay-docker`): put your overlayed WAR into the APS Docker container
  * Activiti App Integration Tests (`activiti-app-integration-tests`): integration tests based on the Java Swagger client
- * Full support of Arm64 CPUs (Apple Silicon M1) with native Docker containers and a transparent Maven profile
- 
-Running Docker will also create volumes for each storage component (contentstore, db and ElasticSearch) for making the development approach in APS consistent and reliable.
+
+## Capabilities
+ * Full support of Arm64 CPUs (Apple Silicon M1) with native Docker containers and a transparent Maven profile 
+ * Running Docker will also create persistent volumes for each storage component (contentstore, db and ElasticSearch) for making the development approach in APS consistent and reliable
 
 # Prerequisites
- * OpenJDK 11.0.5
+ * OpenJDK 11
  * Apache Maven 3.8.4
  * Docker (optional)
- * A valid APS license installed in your development environment `<USER_HOME>/.activiti/enterprise-license` (for development purpose)
- * A valid Aspose license installed in your development environment `<USER_HOME>/.activiti/enterprise-license` (for development purpose)
+ * For running unit tests: valid  _activiti.lic_  and  _Aspose.Total.Java.lic_  in `<USER_HOME>/.activiti/enterprise-license`
+ * For integration tests and building containers: valid  _activiti.lic_  and  _Aspose.Total.Java.lic_  in `activiti-app-overlay-docker/src/main/docker/license`
  * Access to the Alfresco Nexus Repositories (credentials provided by Alfresco)
  * Configure your Maven servers settings.xml with credentials for these repositories:
  
@@ -160,9 +161,9 @@ After the integration tests execution stop all the APS containers with:
 `mvn docker:stop`
 
 # Building your Docker container (optional)
- * Put a valid APS and Aspose license in `/activiti-app-overlay-docker/src/main/docker/license`
- * Put your logback.xml in `/activiti-app-overlay-war/src/main/webapp/WEB-INF/classes`
- * Put your activiti-app.properties in `/activiti-app-overlay-docker/src/main/docker/properties`
+ * Put a valid  _activiti.lic_  and  _Aspose.Total.Java.lic_  in `/activiti-app-overlay-docker/src/main/docker/license`
+ * Update if you need  _logback.xml_  in `/activiti-app-overlay-war/src/main/webapp/WEB-INF/classes`
+ * Update if you need your  _activiti-app.properties_  in `/activiti-app-overlay-docker/src/main/docker/properties`
 
 # Few things to notice
 

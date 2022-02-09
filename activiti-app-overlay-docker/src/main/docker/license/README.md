@@ -1,3 +1,3 @@
 # License
 
-Put here your APS and Aspose license files (activiti.lic and transform.lic)  
+Put here your APS license file ( _activiti.lic_ ) and the Aspose license file ( _Aspose.Total.Java.lic_ ) 
