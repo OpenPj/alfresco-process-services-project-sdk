@@ -5,7 +5,7 @@
 | [APS SDK 2.x (2.x branch)](https://github.com/OpenPj/alfresco-process-services-project-sdk/tree/2.x)  | 2.1.0, 2.0.1  | [Download APS SDK v2.0.6](https://github.com/OpenPj/alfresco-process-services-project-sdk/releases/tag/v2.0.6) |
 | [APS SDK 1.x (master branch)](https://github.com/OpenPj/alfresco-process-services-project-sdk)  | 1.11.4, 1.11.0, 1.10.0, 1.9.0.5 | [Download APS SDK v1.7.3](https://github.com/OpenPj/alfresco-process-services-project-sdk/releases/tag/v1.7.3) |
 
-# Alfresco Process Services SDK Project 1.7.3
+# Alfresco Process Services SDK Project 1.7.4-SNAPSHOT
 
 The project consists of the following Maven submodules:
 
