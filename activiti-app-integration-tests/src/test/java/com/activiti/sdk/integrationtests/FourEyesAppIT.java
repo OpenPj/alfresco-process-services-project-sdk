@@ -58,8 +58,8 @@ public class FourEyesAppIT {
 	protected static final String ACTIVITI_APP_BASE_PATH = BASE_PATH_PROTOCOL + "://" + BASE_PATH_HOSTNAME + ":"
 			+ BASE_PATH_PORT;
 
-	protected static final String PRIVATE_ENDPOINT = ACTIVITI_APP_BASE_PATH + "/enterprise/my-api-endpoint";
-	protected static final String PUBLIC_ENDPOINT = ACTIVITI_APP_BASE_PATH + "/rest/my-rest-endpoint";
+	protected static final String PRIVATE_ENDPOINT = ACTIVITI_APP_BASE_PATH + "/activiti-app/api/enterprise/my-api-endpoint";
+	protected static final String PUBLIC_ENDPOINT = ACTIVITI_APP_BASE_PATH + "/activiti-app/app/rest/my-rest-endpoint";
 
 	@BeforeEach
 	public void initApiClient() {
@@ -205,7 +205,8 @@ public class FourEyesAppIT {
 	@Test
 	@Order(4)
 	public void testCustomPublicRestEndpoint() {
-		IntegrationTestUtils.executePublicGETRequest(PUBLIC_ENDPOINT);
+		IntegrationTestUtils.executePublicGETRequest(ACTIVITI_APP_USERNAME, ACTIVITI_APP_PASSWORD, BASE_PATH_PROTOCOL,
+				BASE_PATH_HOSTNAME, BASE_PATH_PORT, PRIVATE_ENDPOINT);
 	}
 
 	@Test

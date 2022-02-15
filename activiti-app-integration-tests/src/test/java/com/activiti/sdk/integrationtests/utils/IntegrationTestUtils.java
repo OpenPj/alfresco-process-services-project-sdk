@@ -112,17 +112,20 @@ public class IntegrationTestUtils {
 		}
 	}
 
-	public static void executePublicGETRequest(String endpoint) {
+	public static void executePublicGETRequest(String username, String password, String protocol, String hostname,
+			int port, String endpoint) {
 		try {
 			System.out.println("Start executing public GET request: " + endpoint);
+			final BasicScheme basicAuth = new BasicScheme();
+			basicAuth.initPreemptive(new UsernamePasswordCredentials(username, password.toCharArray()));
+			final HttpHost target = new HttpHost(protocol, hostname, port);
+			final HttpClientContext localContext = HttpClientContext.create();
+			localContext.resetAuthExchange(target, basicAuth);
 			try (final CloseableHttpClient httpclient = HttpClients.createDefault()) {
 				final HttpGet httpGet = new HttpGet(endpoint);
 
-				final HttpEntity reqEntity = MultipartEntityBuilder.create().build();
-				httpGet.setEntity(reqEntity);
-
 				System.out.println("Get URL: " + httpGet);
-				try (final CloseableHttpResponse response = httpclient.execute(httpGet)) {
+				try (final CloseableHttpResponse response = httpclient.execute(httpGet,localContext)) {
 					System.out.println("----------------------------------------");
 					System.out.println(response);
 					final HttpEntity resEntity = response.getEntity();
