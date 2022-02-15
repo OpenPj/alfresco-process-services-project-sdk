@@ -53,7 +53,7 @@ public class APSProcessUtils {
 		return currentProcessDefinition;
 	}
 
-	public ProcessInstanceRepresentation startProcess(Process process) {
+	public ProcessInstanceRepresentation startProcess(ProcessTester process) {
 		ProcessInstanceRepresentation currentProcessInstance = null;
 		String appName = process.getAppName();
 		if (StringUtils.isNotEmpty(appName)) {
