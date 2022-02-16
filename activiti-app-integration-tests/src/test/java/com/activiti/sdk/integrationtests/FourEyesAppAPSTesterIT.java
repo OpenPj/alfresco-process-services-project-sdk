@@ -6,8 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import com.activiti.sdk.integrationtests.utils.APSTester;
 import com.activiti.sdk.integrationtests.utils.APSTester.APSTesterBuilder;
-import com.activiti.sdk.integrationtests.utils.Process;
-import com.activiti.sdk.integrationtests.utils.Task;
 
 public class FourEyesAppAPSTesterIT {
 
@@ -27,25 +25,21 @@ public class FourEyesAppAPSTesterIT {
 		System.out.println("--- /Start - Four Eyes App - Integration Test ---");
 
 		// Importing the Four Eyes App in APS
+		// NOTE: test flows, but that methods available in each instance
+		// make sense
 		apsTester
-			.afterLoadingApp(appZipFile)
-			.startProcess(
-				new Process()
-				.start("4 Eyes Principle")
-				.withFormValue("reviewtitle", "Review from APS SDK")
-				.withFormValue("description", "Description from APS SDK"))
-				.thenSubmitTask(
-						new Task()
-						.name("First approval").outcome("submit")
-						.withFormValue("reviewtitle", "Review from APS SDK")
-						.withFormValue("description", "Description from APS SDK"))
-				.thenSubmitTask(
-						new Task()
-						.name("Second approval").outcome("submit")
-						.withFormValue("reviewtitle", "Review from APS SDK")
-						.withFormValue("description", "Description from APS SDK"))
-				.thenCheckThatTheProcessIsFinished();
-				//.removeAppNamed("4 Eyes Principle");
+			.afterLoadingAppArchive(appZipFile)
+			.startProcessForApp("4 Eyes Principle")
+			.withFormValue("reviewtitle", "Review from APS SDK")
+			.withFormValue("description", "Description from APS SDK")
+			.thenSubmitTask("First approval", "submit")
+			.withFormValue("reviewtitle", "Review from APS SDK")
+			.withFormValue("description", "Description from APS SDK")
+			.thenSubmitTask("Second approval", "submit")
+			.withFormValue("reviewtitle", "Review from APS SDK")
+			.withFormValue("description", "Description from APS SDK")
+			.thenCheckThatTheProcessIsFinished();
+			//.removeAppNamed("4 Eyes Principle");
 
 		System.out.println("--- /End - Four Eyes App - Integration Test ---");
 

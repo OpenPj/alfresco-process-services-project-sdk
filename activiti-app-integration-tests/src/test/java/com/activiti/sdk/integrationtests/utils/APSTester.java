@@ -5,8 +5,6 @@ import static org.junit.jupiter.api.Assertions.fail;
 import java.util.List;
 import java.util.Optional;
 
-import org.apache.commons.lang3.StringUtils;
-
 import com.activiti.sdk.client.ApiClient;
 import com.activiti.sdk.client.api.AboutApi;
 import com.activiti.sdk.client.api.AppDefinitionsApi;
@@ -17,8 +15,9 @@ import com.activiti.sdk.client.api.RuntimeAppDeploymentsApi;
 import com.activiti.sdk.client.api.TaskFormsApi;
 import com.activiti.sdk.client.api.TasksApi;
 import com.activiti.sdk.client.model.AppDefinitionRepresentation;
-import com.activiti.sdk.client.model.ProcessInstanceRepresentation;
 import com.activiti.sdk.client.model.TaskRepresentation;
+
+import org.apache.commons.lang3.StringUtils;
 
 public class APSTester {
 
@@ -31,22 +30,20 @@ public class APSTester {
 	private final String host;
 	private final int port;
 
-	protected ApiClient apiClient;
-	protected AboutApi aboutApi;
-	protected AppDefinitionsApi appDefinitionsApi;
-	protected RuntimeAppDefinitionsApi runtimeAppDefinitionsApi;
-	protected RuntimeAppDeploymentsApi runtimeAppDeploymentsApi;
-	protected ProcessDefinitionsApi processDefinitionsApi;
-	protected ProcessInstancesApi processInstancesApi;
-	protected TasksApi tasksApi;
-	protected TaskFormsApi taskFormsApi;
+	ApiClient apiClient;
+	AboutApi aboutApi;
+	AppDefinitionsApi appDefinitionsApi;
+	RuntimeAppDefinitionsApi runtimeAppDefinitionsApi;
+	RuntimeAppDeploymentsApi runtimeAppDeploymentsApi;
+	ProcessDefinitionsApi processDefinitionsApi;
+	ProcessInstancesApi processInstancesApi;
+	TasksApi tasksApi;
+	TaskFormsApi taskFormsApi;
 
-	protected APSAppUtils appUtils;
-	protected APSProcessUtils processUtils;
-	protected APSTaskUtils taskUtils;
+	APSAppUtils appUtils;
+	APSProcessUtils processUtils;
+	APSTaskUtils taskUtils;
 
-	protected Long currentAppDefId = null;
-	protected ProcessInstanceRepresentation currentProcessInstance = null;
 	protected AppDefinitionRepresentation currentAppDef = null;
 
 	public APSTester(APSTesterBuilder builder) {
@@ -74,72 +71,58 @@ public class APSTester {
 		taskUtils = new APSTaskUtils(tasksApi, taskFormsApi);
 	}
 
-	public APSTester afterLoadingApp(String appZipFile) {
+	public APSTester afterLoadingAppArchive(String appZipFile) {
 		appUtils.importAndPublishApp(appZipFile, this.username, this.password, this.proto, this.host, this.port);
 		return this;
 	}
 
+	/*
 	public APSTester removeAppNamed(String appName) {
 		currentAppDefId = appUtils.getAppDefinitionId(appName);
 		currentAppDef = appUtils.getAppDef(appName);
 		appUtils.removeApp(currentAppDef);
 		return this;
 	}
+	*/
 
-	public APSTester startProcess(Process process) {
-		currentProcessInstance = processUtils.startProcess(process);
-		currentAppDefId = appUtils.getAppDefinitionId(process.getAppName());
-		return this;
+	public ProcessTester startProcessForApp(String appName) {
+		// TODO: fail() if app name does not exist.
+		return new ProcessTester(this, appName);
 	}
 
-	public APSTester thenSubmitTask(Task task) {
-		if (StringUtils.isNotEmpty(task.getName()) || StringUtils.isNotEmpty(task.getOutcome())) {
-			Optional<TaskRepresentation> currentTask = taskUtils.findTaskWithName(currentProcessInstance.getId(),
-					currentAppDefId, task.getName());
-
-			if (currentTask.isEmpty()) {
-				Optional<List<TaskRepresentation>> currentTasks = taskUtils
-						.findTaskWithProcessInstanceId(currentProcessInstance.getId(), currentAppDefId);
-				fail("Task not found: " + task + " current active tasks are: " + currentTasks);
-			}
-
-			taskUtils.completeTask(task, currentTask.get().getId());
-
-		} else {
-			fail("Cannot submit task with no name or no outcome: " + task);
+	void thenSubmitTask(TaskTester task) {
+		/* Not needed, required arguments moved to constructor
+		if (StringUtils.isEmpty(task.getName())) {
+			fail("Cannot submit task with no name: " + task);
 		}
-		return this;
-	}
-
-	public ProcessInstanceRepresentation getCurrentProcessInstace() {
-		return this.currentProcessInstance;
-	}
-
-	public TaskRepresentation getCurrentTask() {
-		return taskUtils.findTaskWithProcessInstanceId(currentProcessInstance.getId(), currentAppDefId).get().get(0);
-	}
-
-	public List<TaskRepresentation> getCurrentTasks() {
-		return taskUtils.findTaskWithProcessInstanceId(currentProcessInstance.getId(), currentAppDefId).get();
-	}
-
-	public APSTester thenCheckThatTheProcessIsFinished() {
-		Optional<List<TaskRepresentation>> tasks = taskUtils
-				.findTaskWithProcessInstanceId(currentProcessInstance.getId(), currentAppDefId);
-		if (tasks.isPresent()) {
-			List<TaskRepresentation> currentTasks = tasks.get();
-			if (currentTasks.size() > 0) {
-				fail("The process is not finished, tasks active: " + currentTasks);
-			}
+		if (StringUtils.isEmpty(task.getOutcome())) {
+			fail("Cannot submit task with no outcome: " + task);
 		}
-		return this;
+		*/
+
+		// TODO: check that all required form fields have been provided.
+
+		ProcessTester process = task.processTester;
+		Optional<TaskRepresentation> currentTask = taskUtils.findTaskWithName(process.currentProcessInstance.getId(),
+				process.currentAppDefId, task.getName());
+
+		if (currentTask.isEmpty()) {
+			Optional<List<TaskRepresentation>> currentTasks = taskUtils
+					.findTaskWithProcessInstanceId(process.currentProcessInstance.getId(), process.currentAppDefId);
+			fail("Task not found: " + task + " current active tasks are: " + currentTasks);
+		}
+
+		taskUtils.completeTask(task, currentTask.get().getId());
 	}
 
+
+	/*
 	public APSTester reset() {
 		currentProcessInstance = null;
 		currentAppDefId = null;
 		return this;
 	}
+	*/
 
 	public static class APSTesterBuilder {
 

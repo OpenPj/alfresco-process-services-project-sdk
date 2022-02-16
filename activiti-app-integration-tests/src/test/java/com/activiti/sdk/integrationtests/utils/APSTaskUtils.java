@@ -67,7 +67,7 @@ public class APSTaskUtils {
 		return Optional.of(currentTasks);
 	}
 
-	public void completeTask(Task task, String taskId) {
+	public void completeTask(TaskTester task, String taskId) {
 		CompleteFormRepresentation form = new CompleteFormRepresentation();
 		form.setOutcome(task.getOutcome());
 		
