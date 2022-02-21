@@ -1,4 +1,4 @@
-# Alfresco Process Services SDK Project 2.0.7-SNAPSHOT
+# Alfresco Process Services SDK Project 2.0.7
 
 The project consists of the following Maven submodules:
 
@@ -105,7 +105,7 @@ Packaging of Activiti App Docker containers with extensions
 
 Start your Activiti App Docker container with the following architecture:
 
-  * PostgreSQL 10.9
+  * PostgreSQL
   * ElasticSearch
   * aps-db-volume: Docker volume for PostgreSQL
   * aps-es-volume: Docker volume for ElasticSearch
@@ -133,17 +133,24 @@ Put your Java test classes in the following package:
 # Supported Maven Profiles for dependencies management and packaging (JAR and WAR)
 
 In order to build the project, you can declare a Maven profile related to a specific APS version:
- * `aps2.1.0`  (APS 2.1.0 - default)
+ * `aps2.2.0`  (APS 2.2.0 - default)
+ * `aps2.1.0`  (APS 2.1.0)
  * `aps2.0.1`  (APS 2.0.1)
  
-Build and test with unit tests execution for APS 2.1.0 with:
+Build and test with unit tests execution for APS 2.2.0 with:
 `mvn clean test`
+
+Build and test with unit tests execution for APS 2.1.0 with:
+`mvn clean test -Paps2.1.0`
 
 Build and test with unit tests execution for APS 2.0.1 with:
 `mvn clean test -Paps2.0.1`
 
-Build and package with integration tests execution for APS 2.1.0 with:
+Build and package with integration tests execution for APS 2.2.0 with:
 `mvn clean install`
+
+Build and package with integration tests execution for APS 2.1.0 with:
+`mvn clean install -Paps2.1.0`
 
 Build and package with integration tests execution for APS 2.0.1 with:
 `mvn clean install -Paps2.0.1`
