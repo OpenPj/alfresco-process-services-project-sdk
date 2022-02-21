@@ -25,6 +25,16 @@
 				<version>${elasticsearch-rest-client.version}</version>
 			</dependency>
 			<dependency>
+				<groupId>org.elasticsearch.client</groupId>
+				<artifactId>elasticsearch-rest-high-level-client</artifactId>
+				<version>${elasticsearch-rest-client.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.elasticsearch</groupId>
+				<artifactId>elasticsearch-x-content</artifactId>
+				<version>${elasticsearch.version}</version>
+			</dependency>
+			<dependency>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-dependencies</artifactId>
 				<version>${spring-boot.version}</version>
@@ -97,6 +107,21 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.elasticsearch</groupId>
+			<artifactId>elasticsearch</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.elasticsearch.client</groupId>
+			<artifactId>elasticsearch-rest-high-level-client</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.elasticsearch</groupId>
+			<artifactId>elasticsearch-x-content</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -225,7 +250,7 @@
 							<descriptors>
 								<descriptor>src/main/assembly/assembly.xml</descriptor>
 							</descriptors>
-							<!-- if you have special character issues, this is an option to play
+							<!-- if you have special character issues, this is an option to play 
 								with. not required in most cases -->
 							<!-- <archiverConfig> <encoding>UTF-8</encoding> </archiverConfig> -->
 						</configuration>
