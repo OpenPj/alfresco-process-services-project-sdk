@@ -3,7 +3,7 @@
 | APS SDK Version  | Supported APS versions | Artifact | Upgrade steps |
 | ------------- | ------------- | ------------- | ------------- |
 | [APS SDK 2.x (2.x branch)](https://github.com/OpenPj/alfresco-process-services-project-sdk/tree/2.x)  | 2.2.0, 2.1.0, 2.0.1  | [Download APS SDK v2.0.9](https://github.com/OpenPj/alfresco-process-services-project-sdk/releases/tag/v2.0.9) | [Upgrading to add support for APS 2.2.0](https://github.com/OpenPj/alfresco-process-services-project-sdk/wiki/Upgrading-APS-SDK-2.x-project-to-support-APS-2.2.0) |
-| [APS SDK 1.x (master branch)](https://github.com/OpenPj/alfresco-process-services-project-sdk)  | 1.11.4, 1.11.0, 1.10.0, 1.9.0.5 | [Download APS SDK v1.7.3](https://github.com/OpenPj/alfresco-process-services-project-sdk/releases/tag/v1.7.3) |
+| [APS SDK 1.x (master branch)](https://github.com/OpenPj/alfresco-process-services-project-sdk)  | 1.11.4, 1.11.0, 1.10.0, 1.9.0.5 | [Download APS SDK v1.7.4](https://github.com/OpenPj/alfresco-process-services-project-sdk/releases/tag/v1.7.4) |
 
 # Alfresco Process Services SDK Project 1.7.4
 
