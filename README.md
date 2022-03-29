@@ -16,7 +16,7 @@ The project consists of the following Maven submodules:
  * OpenJDK 11
  * Apache Maven 3.8.5
  * Docker (optional)
- * Put valid  _activiti.lic_  and  _Aspose.Total.Java.lic_  in the `/license` folder for running unit / integration tests and for building containers: 
+ * Put valid  _activiti.lic_  and  _Aspose.Total.Java.lic_  in the `/license` folder for running unit / integration tests and for building containers 
  * Access to the Alfresco Nexus Repositories (credentials provided by Alfresco)
  * Configure your Maven servers settings.xml with credentials for these repositories:
  
