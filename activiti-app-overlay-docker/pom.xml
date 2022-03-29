@@ -9,7 +9,7 @@
 	<parent>
 		<groupId>org.alfresco.activiti</groupId>
 		<artifactId>aps-project</artifactId>
-		<version>1.7.4-SNAPSHOT</version>
+		<version>1.7.4</version>
 	</parent>
 
 	<properties>
@@ -65,7 +65,7 @@
 		<docker.es.discovery.port.external>9300</docker.es.discovery.port.external>
 
 
-		<docker.activiti.time.test>360000</docker.activiti.time.test>
+		<docker.activiti.time.test>720000</docker.activiti.time.test>
 
 	</properties>
 
@@ -185,6 +185,26 @@
 										<include>**/*.jar</include>
 										<include>**/*.so</include>
 										<include>**/*.gz</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+					<execution>
+						<id>copy-license-for-containers-and-ITs</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.basedir}/src/main/docker/license</outputDirectory>
+							<overwrite>false</overwrite>
+							<resources>
+								<resource>
+									<directory>${project.parent.basedir}/license</directory>
+									<filtering>false</filtering>
+									<includes>
+										<include>*.lic</include>
 									</includes>
 								</resource>
 							</resources>

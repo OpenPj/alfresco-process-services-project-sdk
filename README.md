@@ -2,10 +2,10 @@
 
 | APS SDK Version  | Supported APS versions | Artifact | Upgrade steps |
 | ------------- | ------------- | ------------- | ------------- |
-| [APS SDK 2.x (2.x branch)](https://github.com/OpenPj/alfresco-process-services-project-sdk/tree/2.x)  | 2.2.0, 2.1.0, 2.0.1  | [Download APS SDK v2.0.8](https://github.com/OpenPj/alfresco-process-services-project-sdk/releases/tag/v2.0.8) | [Upgrading to add support for APS 2.2.0](https://github.com/OpenPj/alfresco-process-services-project-sdk/wiki/Upgrading-APS-SDK-2.x-project-to-support-APS-2.2.0) |
+| [APS SDK 2.x (2.x branch)](https://github.com/OpenPj/alfresco-process-services-project-sdk/tree/2.x)  | 2.2.0, 2.1.0, 2.0.1  | [Download APS SDK v2.0.9](https://github.com/OpenPj/alfresco-process-services-project-sdk/releases/tag/v2.0.9) | [Upgrading to add support for APS 2.2.0](https://github.com/OpenPj/alfresco-process-services-project-sdk/wiki/Upgrading-APS-SDK-2.x-project-to-support-APS-2.2.0) |
 | [APS SDK 1.x (master branch)](https://github.com/OpenPj/alfresco-process-services-project-sdk)  | 1.11.4, 1.11.0, 1.10.0, 1.9.0.5 | [Download APS SDK v1.7.3](https://github.com/OpenPj/alfresco-process-services-project-sdk/releases/tag/v1.7.3) |
 
-# Alfresco Process Services SDK Project 1.7.3
+# Alfresco Process Services SDK Project 1.7.4
 
 The project consists of the following Maven submodules:
 
@@ -23,8 +23,7 @@ The project consists of the following Maven submodules:
  * OpenJDK 11
  * Apache Maven 3.8.4
  * Docker (optional)
- * For running unit tests: valid  _activiti.lic_  and  _Aspose.Total.Java.lic_  licenses in `<USER_HOME>/.activiti/enterprise-license`
- * For integration tests and building containers: valid  _activiti.lic_  and  _Aspose.Total.Java.lic_  licenses in `activiti-app-overlay-docker/src/main/docker/license`
+ * Put valid  _activiti.lic_  and  _Aspose.Total.Java.lic_  in the `/license` folder for running unit / integration tests and for building containers
  * Access to the Alfresco Nexus Repositories (credentials provided by Alfresco)
  * Configure your Maven servers settings.xml with credentials for these repositories:
  
@@ -179,7 +178,6 @@ Build, test, create and start all the APS containers with:
 `mvn clean install docker:build docker:start`
 
 # Building your Docker container (optional)
- * Put a valid  _activiti.lic_  and  _Aspose.Total.Java.lic_  in `/activiti-app-overlay-docker/src/main/docker/license`
  * Update if you need  _logback.xml_  in `/activiti-app-overlay-war/src/main/webapp/WEB-INF/classes`
  * Update if you need your  _activiti-app.properties_  in `/activiti-app-overlay-docker/src/main/docker/properties`
 
