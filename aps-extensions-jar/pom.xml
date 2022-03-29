@@ -1,6 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>aps-extensions-jar</artifactId>
 	<packaging>jar</packaging>
@@ -9,7 +7,7 @@
 	<parent>
 		<groupId>org.alfresco.activiti</groupId>
 		<artifactId>aps-project</artifactId>
-		<version>2.0.8</version>
+		<version>2.0.9</version>
 	</parent>
 
 	<dependencyManagement>
@@ -225,7 +223,7 @@
 										</goals>
 									</pluginExecutionFilter>
 									<action>
-										<ignore></ignore>
+										<ignore />
 									</action>
 								</pluginExecution>
 							</pluginExecutions>
@@ -278,17 +276,39 @@
 						<phase>generate-test-resources</phase>
 						<configuration>
 							<target>
-								<copy
-									todir="${project.basedir}/src/test/resources/activiti"
-									overwrite="true">
-									<file
-										file="${project.basedir}/src/test/resources/activiti/${aps.version}/version.properties" />
+								<copy todir="${project.basedir}/src/test/resources/activiti" overwrite="true">
+									<file file="${project.basedir}/src/test/resources/activiti/${aps.version}/version.properties" />
 								</copy>
 							</target>
 						</configuration>
 						<goals>
 							<goal>run</goal>
 						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-license-for-unit-tests</id>
+						<phase>generate-test-resources</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.basedir}/src/test/resources</outputDirectory>
+							<overwrite>false</overwrite>
+							<resources>
+								<resource>
+									<directory>${project.parent.basedir}/license</directory>
+									<filtering>false</filtering>
+									<includes>
+										<include>*.lic</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>
