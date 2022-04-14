@@ -4,6 +4,7 @@
 /activiti_data_dev/
 /target/www/**
 /src/test/javascript/coverage/
+activiti-app-overlay-docker/src/main/docker/license/
 
 ######################
 # Node
