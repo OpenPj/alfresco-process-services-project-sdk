@@ -1,1 +1,7 @@
 FROM alfresco/alfresco-identity-service:1.7.0
+
+ARG jboss.socket.binding.port-offset=100
+ARG jboss.bind.address.management=0.0.0.0
+ARG jboss.bind.address=0.0.0.0
+
+EXPOSE 8180 8543

@@ -502,6 +502,9 @@
 			<id>activiti-admin</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
+				<property>
+					<name>identity.filename</name>
+				</property>
 			</activation>
 			<build>
 				<plugins>
@@ -817,7 +820,8 @@
 												<status>200</status>
 												<method>GET</method>
 											</http>
-											<time>120000</time>
+											<time>120000
+											</time>
 										</wait>
 										<volumes>
 											<bind>aps-es-volume:/usr/share/elasticsearch/data</bind>
