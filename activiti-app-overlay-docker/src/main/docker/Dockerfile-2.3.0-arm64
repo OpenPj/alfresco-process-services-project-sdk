@@ -25,7 +25,7 @@ COPY --chown=${USERNAME} extensions/aps-extensions-jar-${project.version}.jar $T
 
 COPY --chown=${USERNAME} logging/logback.xml $TOMCAT_DIR/lib
 
-COPY --chown=${USERNAME} properties/activiti-app.properties $TOMCAT_DIR/lib
+COPY --chown=${USERNAME} properties/activiti-app.properties properties/activiti-${identity.filename}.properties $TOMCAT_DIR/lib/
 
 COPY --chown=${USERNAME} extensions/activiti-app.war $TOMCAT_DIR/webapps
 

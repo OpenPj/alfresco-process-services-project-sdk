@@ -634,7 +634,7 @@
 												<status>200</status>
 												<method>GET</method>
 											</http>
-											<time>60000</time>
+											<time>120000</time>
 										</wait>
 										<volumes>
 											<bind>aps-es-volume:/usr/share/elasticsearch/data</bind>
@@ -683,6 +683,9 @@
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
+			<properties>
+				<identity.filename>identity-service</identity.filename>
+			</properties>
 			<build>
 				<plugins>
 					<plugin>
@@ -814,7 +817,7 @@
 												<status>200</status>
 												<method>GET</method>
 											</http>
-											<time>60000</time>
+											<time>120000</time>
 										</wait>
 										<volumes>
 											<bind>aps-es-volume:/usr/share/elasticsearch/data</bind>
