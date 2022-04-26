@@ -57,8 +57,8 @@
 		<docker.aps-admin.tomcat.port.internal>8081</docker.aps-admin.tomcat.port.internal>
 		<docker.aps-admin.tomcat.port.external>8081</docker.aps-admin.tomcat.port.external>
 
-		<docker.identity-service.tomcat.port.internal>8082</docker.identity-service.tomcat.port.internal>
-		<docker.identity-service.tomcat.port.external>8082</docker.identity-service.tomcat.port.external>
+		<docker.identity-service.tomcat.port.internal>8180</docker.identity-service.tomcat.port.internal>
+		<docker.identity-service.tomcat.port.external>8180</docker.identity-service.tomcat.port.external>
 		
 		<docker.es.service.port.internal>9200</docker.es.service.port.internal>
 		<docker.es.service.port.external>9200</docker.es.service.port.external>
@@ -67,6 +67,7 @@
 
 
 		<docker.activiti.time.test>400000</docker.activiti.time.test>
+		<identity.filename>none</identity.filename>
 	</properties>
 
 	<build>
@@ -502,9 +503,6 @@
 			<id>activiti-admin</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
-				<property>
-					<name>identity.filename</name>
-				</property>
 			</activation>
 			<build>
 				<plugins>
@@ -723,6 +721,30 @@
 										</network>
 										<ports>
 											<port>${docker.identity-service.tomcat.port.internal}:${docker.identity-service.tomcat.port.external}</port>
+										</ports>
+										<dependsOn>
+											<container>aps-admin</container>
+										</dependsOn>
+									</run>
+								</image>
+								<image>
+									<alias>aps-admin</alias>
+									<name>aps-sdk/alfresco-process-services-admin:development</name>
+									<build>
+										<contextDir>${project.parent.basedir}/target/admin</contextDir>
+										<dockerFile>Dockerfile-admin-${aps.version}</dockerFile>
+										<tags>
+											<tag>latest</tag>
+											<tag>${project.version}</tag>
+										</tags>
+									</build>
+									<run>
+										<network>
+											<name>aps-network</name>
+											<alias>aps-admin</alias>
+										</network>
+										<ports>
+											<port>${docker.aps-admin.tomcat.port.internal}:${docker.aps-admin.tomcat.port.external}</port>
 										</ports>
 										<wait>
 											<http>
