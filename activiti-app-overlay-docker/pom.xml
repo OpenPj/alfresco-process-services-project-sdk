@@ -435,9 +435,19 @@
 									<goal>copy</goal>
 								</goals>
 								<configuration>
-
 									<sourceFile>${project.parent.basedir}/target/admin/Dockerfile-admin-${aps.version}-arm64</sourceFile>
 									<destinationFile>${project.parent.basedir}/target/admin/Dockerfile</destinationFile>
+								</configuration>
+							</execution>
+							<execution>
+								<id>copy-Dockerfile-identity-service</id>
+								<phase>package</phase>
+								<goals>
+									<goal>copy</goal>
+								</goals>
+								<configuration>
+									<sourceFile>${project.parent.basedir}/target/identity-service/Dockerfile-identity-service-${aps.version}-arm64</sourceFile>
+									<destinationFile>${project.parent.basedir}/target/identity-service/Dockerfile</destinationFile>
 								</configuration>
 							</execution>
 						</executions>
@@ -484,6 +494,30 @@
 										<argument>build</argument>
 										<argument>--platform=linux/arm64</argument>
 										<argument>-taps-sdk/alfresco-process-services-admin:development</argument>
+										<argument>-tlatest</argument>
+										<argument>.</argument>
+										<argument>-o</argument>
+										<argument>type=docker</argument>
+									</arguments>
+									<environmentVariables>
+										<LANG>en_US</LANG>
+									</environmentVariables>
+								</configuration>
+							</execution>
+							<execution>
+								<id>build-identity-service-arm64</id>
+								<phase>pre-integration-test</phase>
+								<goals>
+									<goal>exec</goal>
+								</goals>
+								<configuration>
+									<executable>docker</executable>
+									<workingDirectory>${project.parent.basedir}/target/identity-service</workingDirectory>
+									<arguments>
+										<argument>buildx</argument>
+										<argument>build</argument>
+										<argument>--platform=linux/arm64</argument>
+										<argument>-taps-sdk/alfresco-identity-service:development</argument>
 										<argument>-tlatest</argument>
 										<argument>.</argument>
 										<argument>-o</argument>
