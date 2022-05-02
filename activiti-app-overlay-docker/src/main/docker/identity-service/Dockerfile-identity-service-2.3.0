@@ -2,4 +2,4 @@ FROM alfresco/alfresco-identity-service:1.7.0
 
 CMD ["-Djboss.socket.binding.port-offset=100"]
 
-EXPOSE 8180 8543
+EXPOSE 8180
