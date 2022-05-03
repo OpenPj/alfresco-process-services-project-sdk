@@ -137,7 +137,12 @@ Put your Java test classes in the following package:
 
 In order to build you have to define a Maven profile for choosing the version of APS:
  * `aps1.11.4` (APS 1.11.4 - default)
+ * `aps1.11.3` (APS 1.11.3)
+ * `aps1.11.2` (APS 1.11.2)
+ * `aps1.11.1.1` (APS 1.11.1.1)
+ * `aps1.11.1` (APS 1.11.1)
  * `aps1.11.0` (APS 1.11.0)
+ * `aps1.10.0.1` (APS 1.10.0.1)
  * `aps1.10.0` (APS 1.10.0)
  * `aps1.9.0.5`  (APS 1.9.0.5)
  

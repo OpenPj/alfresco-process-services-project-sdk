@@ -11,7 +11,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.alfresco.activiti</groupId>
 	<artifactId>aps-project</artifactId>
-	<version>1.7.5-SNAPSHOT</version>
+	<version>1.7.5</version>
 	<packaging>pom</packaging>
 	<name>Alfresco Process Services - SDK Project</name>
 
@@ -190,7 +190,7 @@
 		<profile>
 			<id>aps1.11.1</id>
 			<activation>
-				<activeByDefault>true</activeByDefault>
+				<activeByDefault>false</activeByDefault>
 			</activation>
 
 			<properties>
@@ -213,11 +213,92 @@
 				<postgresql.version>10.9</postgresql.version>
 			</properties>
 		</profile>
+		
+		<profile>
+			<id>aps1.11.1.1</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+
+			<properties>
+				<!-- APS 1.11.1.1 -->
+				<aps.version>1.11.1.1</aps.version>
+				<aps.docker.version>1.11.1.1</aps.docker.version>
+				<aps.version.major>1</aps.version.major>
+				<aps.version.minor>11</aps.version.minor>
+				<aps.version.revision>1.1</aps.version.revision>
+				<opencsv.version>3.7</opencsv.version>
+				<jackson.version>2.10.1</jackson.version>
+				<bcprov.version>1.62</bcprov.version>
+				<activiti.version>5.23.0.0</activiti.version>
+				<spring.version>4.3.24.RELEASE</spring.version>
+				<spring-boot.version>1.5.21.RELEASE</spring-boot.version>
+				<spring-security.version>4.2.12.RELEASE</spring-security.version>
+				<elasticsearch.version>7.6.0</elasticsearch.version>
+				<elasticsearch-rest-client.version>7.6.0</elasticsearch-rest-client.version>
+				<hibernate.version>4.2.16.Final</hibernate.version>
+				<postgresql.version>10.9</postgresql.version>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>aps1.11.2</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+
+			<properties>
+				<!-- APS 1.11.2 -->
+				<aps.version>1.11.2</aps.version>
+				<aps.docker.version>1.11.2</aps.docker.version>
+				<aps.version.major>1</aps.version.major>
+				<aps.version.minor>11</aps.version.minor>
+				<aps.version.revision>2</aps.version.revision>
+				<opencsv.version>3.7</opencsv.version>
+				<jackson.version>2.10.1</jackson.version>
+				<bcprov.version>1.62</bcprov.version>
+				<activiti.version>5.23.0.0</activiti.version>
+				<spring.version>4.3.24.RELEASE</spring.version>
+				<spring-boot.version>1.5.21.RELEASE</spring-boot.version>
+				<spring-security.version>4.2.12.RELEASE</spring-security.version>
+				<elasticsearch.version>7.6.0</elasticsearch.version>
+				<elasticsearch-rest-client.version>7.6.0</elasticsearch-rest-client.version>
+				<hibernate.version>4.2.16.Final</hibernate.version>
+				<postgresql.version>10.9</postgresql.version>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>aps1.11.3</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+
+			<properties>
+				<!-- APS 1.11.3 -->
+				<aps.version>1.11.3</aps.version>
+				<aps.docker.version>1.11.3</aps.docker.version>
+				<aps.version.major>1</aps.version.major>
+				<aps.version.minor>11</aps.version.minor>
+				<aps.version.revision>3</aps.version.revision>
+				<opencsv.version>3.7</opencsv.version>
+				<jackson.version>2.10.1</jackson.version>
+				<bcprov.version>1.62</bcprov.version>
+				<activiti.version>5.23.0.0</activiti.version>
+				<spring.version>4.3.24.RELEASE</spring.version>
+				<spring-boot.version>1.5.21.RELEASE</spring-boot.version>
+				<spring-security.version>4.2.12.RELEASE</spring-security.version>
+				<elasticsearch.version>7.6.0</elasticsearch.version>
+				<elasticsearch-rest-client.version>7.6.0</elasticsearch-rest-client.version>
+				<hibernate.version>4.2.16.Final</hibernate.version>
+				<postgresql.version>10.9</postgresql.version>
+			</properties>
+		</profile>
 
 		<profile>
 			<id>aps1.11.4</id>
 			<activation>
-				<activeByDefault>false</activeByDefault>
+				<activeByDefault>true</activeByDefault>
 			</activation>
 
 			<properties>

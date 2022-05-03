@@ -141,3 +141,7 @@ Desktop.ini
 .eslintcache
 /keycloak-assembly/target
 /keycloak-theme/target
+
+/aps-extensions-jar/src/test/resources/activiti.lic
+/aps-extensions-jar/src/test/resources/transform.lic
+/activiti-app-overlay-docker/src/main/docker/license/
