@@ -194,7 +194,7 @@
 			</activation>
 
 			<properties>
-				<!-- APS 1.11.0 -->
+				<!-- APS 1.11.1 -->
 				<aps.version>1.11.1</aps.version>
 				<aps.docker.version>1.11.1</aps.docker.version>
 				<aps.version.major>1</aps.version.major>
