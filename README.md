@@ -193,3 +193,6 @@ After the integration tests execution stop all the APS containers with:
 
 # Contributors
 Thanks to Luca Stancapiano for testing and contributing on recent improvements. 
+
+# Enterprise support
+Official maintenance and support of this project is delivered by Zia Consulting
