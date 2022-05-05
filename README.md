@@ -196,3 +196,6 @@ Build, test, create and start all the APS containers with:
 
 # Contributors
 Thanks to Luca Stancapiano, Carlo Cavallieri and Jessica Foroni for giving help on isolating the embedded integration tests suite. 
+
+# Enterprise support
+Official maintenance and support of this project is delivered by Zia Consulting
