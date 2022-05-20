@@ -40,8 +40,8 @@ public class IntegrationTestUtils {
 	 */
 	public static void importApp(String appZipFile, String username, String password, String protocol, String hostname,
 			Integer port) {
-		Path resourceFourEyesAppZip = Paths.get("target", "apps", appZipFile);
-		File file = resourceFourEyesAppZip.toFile();
+		Path resourceAppZip = Paths.get("target", "apps", appZipFile);
+		File file = resourceAppZip.toFile();
 		try {
 
 			final BasicScheme basicAuth = new BasicScheme();

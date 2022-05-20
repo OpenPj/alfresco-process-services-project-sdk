@@ -1,14 +1,11 @@
-FROM tomcat:9-jdk11-openjdk-slim
+FROM alfresco/process-services-admin:${aps.docker.version}
 
 ARG TOMCAT_DIR=/usr/local/tomcat
 ARG USERNAME=alfresco
-ARG USERID=33007
 
 USER root
 
-RUN useradd -c "Alfresco APS" -M -s "/bin/bash" -u "${USERID}" -o "${USERNAME}"
-
-COPY --chown=${USERNAME} extensions/activiti-admin.war $TOMCAT_DIR/webapps
+ADD --chown=${USERNAME} jdbc $TOMCAT_DIR/lib
 COPY --chown=${USERNAME} properties/activiti-admin.properties $TOMCAT_DIR/lib
 COPY --chown=${USERNAME} tomcat/conf/server.xml $TOMCAT_DIR/conf
 

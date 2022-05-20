@@ -57,7 +57,6 @@ local.properties
 *.ipr
 *.ids
 *.orig
-classes/
 
 ######################
 # Visual Studio Code
@@ -69,7 +68,6 @@ classes/
 ######################
 log
 target
-version.properties
 
 ######################
 # Gradle

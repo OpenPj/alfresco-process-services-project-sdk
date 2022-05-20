@@ -1,4 +1,4 @@
-# Alfresco Process Services SDK Project 2.0.7-SNAPSHOT
+# Alfresco Process Services SDK Project 2.1.4
 
 The project consists of the following Maven submodules:
 
@@ -14,10 +14,9 @@ The project consists of the following Maven submodules:
 
 # Prerequisites
  * OpenJDK 11
- * Apache Maven 3.8.4
+ * Apache Maven 3.8.5
  * Docker (optional)
- * For running unit tests: valid  _activiti.lic_  and  _Aspose.Total.Java.lic_  in `<USER_HOME>/.activiti/enterprise-license`
- * For integration tests and building containers: valid  _activiti.lic_  and  _Aspose.Total.Java.lic_  in `activiti-app-overlay-docker/src/main/docker/license`
+ * Put valid  _activiti.lic_  and  _transform.lic_  (or  _Aspose.Total.Java.lic_  )  in the `/license` folder for running unit / integration tests and for building containers 
  * Access to the Alfresco Nexus Repositories (credentials provided by Alfresco)
  * Configure your Maven servers settings.xml with credentials for these repositories:
  
@@ -105,7 +104,7 @@ Packaging of Activiti App Docker containers with extensions
 
 Start your Activiti App Docker container with the following architecture:
 
-  * PostgreSQL 10.9
+  * PostgreSQL
   * ElasticSearch
   * aps-db-volume: Docker volume for PostgreSQL
   * aps-es-volume: Docker volume for ElasticSearch
@@ -133,17 +132,37 @@ Put your Java test classes in the following package:
 # Supported Maven Profiles for dependencies management and packaging (JAR and WAR)
 
 In order to build the project, you can declare a Maven profile related to a specific APS version:
- * `aps2.1.0`  (APS 2.1.0 - default)
- * `aps2.0.1`  (APS 2.0.1)
+ * `aps2.3.1` (APS 2.3.1 - default)
+ * `aps2.3.0` (APS 2.3.0)
+ * `aps2.2.0.1` (APS 2.2.0.1)
+ * `aps2.2.0` (APS 2.2.0)
+ * `aps2.1.0` (APS 2.1.0)
+ * `aps2.0.1` (APS 2.0.1)
+ * `aps2.0.0` (APS 2.0.0)
  
-Build and test with unit tests execution for APS 2.1.0 with:
+Build and test with unit tests execution for APS 2.3.1 with:
 `mvn clean test`
+
+Build and test with unit tests execution for APS 2.3.0 with:
+`mvn clean test -Paps2.3.0`
+
+Build and test with unit tests execution for APS 2.2.0 with:
+`mvn clean test -Paps2.2.0`
+
+Build and test with unit tests execution for APS 2.1.0 with:
+`mvn clean test -Paps2.1.0`
 
 Build and test with unit tests execution for APS 2.0.1 with:
 `mvn clean test -Paps2.0.1`
 
-Build and package with integration tests execution for APS 2.1.0 with:
+Build and package with integration tests execution for APS 2.3.0 with:
 `mvn clean install`
+
+Build and package with integration tests execution for APS 2.2.0 with:
+`mvn clean install -Paps2.2.0`
+
+Build and package with integration tests execution for APS 2.1.0 with:
+`mvn clean install -Paps2.1.0`
 
 Build and package with integration tests execution for APS 2.0.1 with:
 `mvn clean install -Paps2.0.1`
@@ -161,7 +180,6 @@ After the integration tests execution stop all the APS containers with:
 `mvn docker:stop`
 
 # Building your Docker container (optional)
- * Put a valid  _activiti.lic_  and  _Aspose.Total.Java.lic_  in `/activiti-app-overlay-docker/src/main/docker/license`
  * Update if you need  _logback.xml_  in `/activiti-app-overlay-war/src/main/webapp/WEB-INF/classes`
  * Update if you need your  _activiti-app.properties_  in `/activiti-app-overlay-docker/src/main/docker/properties`
 
@@ -175,3 +193,6 @@ After the integration tests execution stop all the APS containers with:
 
 # Contributors
 Thanks to Luca Stancapiano for testing and contributing on recent improvements. 
+
+# Enterprise support
+Official maintenance and support of this project is delivered by Zia Consulting

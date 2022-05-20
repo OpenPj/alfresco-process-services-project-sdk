@@ -8,6 +8,7 @@ USER root
 
 RUN useradd -c "Alfresco APS" -M -s "/bin/bash" -u "${USERID}" -o "${USERNAME}"
 
+ADD --chown=${USERNAME} jdbc $TOMCAT_DIR/lib
 COPY --chown=${USERNAME} extensions/activiti-admin.war $TOMCAT_DIR/webapps
 COPY --chown=${USERNAME} properties/activiti-admin.properties $TOMCAT_DIR/lib
 COPY --chown=${USERNAME} tomcat/conf/server.xml $TOMCAT_DIR/conf
