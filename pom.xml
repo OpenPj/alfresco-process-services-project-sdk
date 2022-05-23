@@ -46,6 +46,7 @@
 		<exec-maven-plugin.version>3.0.0</exec-maven-plugin.version>
 		<copy-rename-maven-plugin.version>1.0</copy-rename-maven-plugin.version>
 		<docker-maven-plugin.skip.save>false</docker-maven-plugin.skip.save>
+		<picocli.version>4.6.3</picocli.version>
 	</properties>
 
 	<dependencyManagement>
@@ -421,6 +422,7 @@
 		<module>activiti-app-overlay-war</module>
 		<module>activiti-app-swagger-client</module>
 		<module>activiti-app-overlay-docker</module>
+		<module>aps-cli</module>
 		<module>activiti-app-integration-tests</module>
 	</modules>
 
