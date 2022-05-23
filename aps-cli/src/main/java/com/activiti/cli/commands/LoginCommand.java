@@ -1,7 +1,11 @@
 package com.activiti.cli.commands;
 
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.HashMap;
 import java.util.Map;
+
+import org.apache.commons.lang3.StringUtils;
 
 import com.activiti.cli.args.LoginArgs;
 import com.activiti.sdk.client.ApiClient;
@@ -32,17 +36,30 @@ public class LoginCommand extends LoginArgs implements Runnable {
 
 	@Override
 	public void run() {
-		
+		CommandLine cli = spec.commandLine();
+
 		apiClient = new ApiClient();
 		apiClient.setUsername(username);
-		apiClient.setPassword(password.toString());
-		
-		spec.commandLine().getOut().println("Username: "+username);
-		spec.commandLine().getOut().println("Password: "+password.toString());
-		
+
+		if (StringUtils.isNotEmpty(password)) {
+			apiClient.setPassword(password.toString());
+		} else if (StringUtils.isNotEmpty(passwordEnvironmentVariable)) {
+			apiClient.setPassword((System.getenv(passwordEnvironmentVariable)));
+		} else if (passwordFile != null) {
+			try {
+				apiClient.setPassword(new String(Files.readAllBytes(passwordFile.toPath())));
+			} catch (IOException e) {
+				cli.getOut().println(e.getMessage());
+				e.printStackTrace(cli.getOut());
+			}
+		}
+
+		spec.commandLine().getOut().println("Username: " + username);
+		spec.commandLine().getOut().println("Password: " + password.toString());
+
 		String basePath = protocol + "://" + host + ":" + port;
 		apiClient.setBasePath(basePath);
-		
+
 		aboutApi = new AboutApi(apiClient);
 		appDefinitionsApi = new AppDefinitionsApi(apiClient);
 		runtimeAppDefinitionsApi = new RuntimeAppDefinitionsApi(apiClient);
@@ -50,23 +67,22 @@ public class LoginCommand extends LoginArgs implements Runnable {
 		processInstancesApi = new ProcessInstancesApi(apiClient);
 		tasksApi = new TasksApi(apiClient);
 		taskFormsApi = new TaskFormsApi(apiClient);
-		
-		CommandLine cli = spec.commandLine();
+
 		Map<String, String> response = new HashMap<String, String>();
 		try {
 			response = aboutApi.getAppVersionUsingGET();
 		} catch (ApiException e) {
-			cli.getOut().println(e.getMessage()+" body: "+e.getResponseBody());
+			cli.getOut().println(e.getMessage() + " body: " + e.getResponseBody());
 			e.printStackTrace(cli.getOut());
 		}
-		cli.getOut().println("User "+username+" successfully logged in APS");
+		cli.getOut().println("User " + username + " successfully logged in APS");
 		cli.getOut().println(response);
-		
+
 	}
-	
+
 	public static void main(String[] args) {
-        int exitCode = new CommandLine(new LoginCommand()).execute(args); 
-        System.exit(exitCode); 
-    }
+		int exitCode = new CommandLine(new LoginCommand()).execute(args);
+		System.exit(exitCode);
+	}
 
 }

@@ -1,11 +1,11 @@
 package com.activiti.cli.args;
 
+import java.io.File;
+
 import picocli.CommandLine.Option;
 
 public class LoginArgs extends CommonArgs {
 	
-	private static final String DEFAULT_USERNAME_VALUE = "admin@app.activiti.com";
-	private static final char[] DEFAULT_PASSWORD_VALUE = "admin".toCharArray();
 	private static final String DEFAULT_PROTOCOL_VALUE = "http";
 	private static final String DEFAULT_HOST_VALUE = "localhost";
 	private static final Integer DEFAULT_PORT_VALUE = 8080;
@@ -14,8 +14,14 @@ public class LoginArgs extends CommonArgs {
 	@Option(names = { "-u", "--username" }, description = "User name", required = true)
 	protected String username;
 
-	@Option(names = { "-p", "--password" }, description = "Password", required = true, interactive = true)
+	@Option(names = { "-p", "--password" }, description = "Password", arity = "0..1", interactive = true)
 	protected String password;
+	
+	@Option(names = {"-pf" ,"--password:file"}, description = "Password from file")
+    protected File passwordFile;
+
+    @Option(names = {"-pe" ,"--password:env"}, description = "Password from property")
+    protected String passwordEnvironmentVariable;
 	
 	@Option(names = { "-pr", "--protocol" }, description = "Protocol of your APS instance")
 	protected String protocol = DEFAULT_PROTOCOL_VALUE;

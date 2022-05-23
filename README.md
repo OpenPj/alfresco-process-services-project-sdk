@@ -1,4 +1,4 @@
-# Alfresco Process Services SDK Project 2.1.4
+# Alfresco Process Services SDK Project 2.1.4-SNAPSHOT
 
 The project consists of the following Maven submodules:
 
@@ -6,6 +6,7 @@ The project consists of the following Maven submodules:
  * Activiti App Overlay WAR (`activiti-app-overlay-war`): generate activiti-app WAR overlay with APS Extensions JAR embedded
  * Activiti App Swagger Client (`activiti-app-swagger-client`): generate the APS Java Swagger client
  * Activiti App Overlay Docker (`activiti-app-overlay-docker`): put your overlayed WAR into the APS Docker container
+ * APS CLI (`aps-cli`): manage your APS instance using a CLI
  * Activiti App Integration Tests (`activiti-app-integration-tests`): integration tests based on the Java Swagger client
 
 ## Capabilities
@@ -122,6 +123,35 @@ If you want to build and start also the Activiti Admin WAR container:
   * Purge all the Docker volumes:
   
 `mvn clean -Ppurge-volumes`
+
+# APS CLI Module (current in development)
+This module includes a CLI implementation in order to manage your APS instance for system administration purpose.
+Run the CLI with the following command for getting APS instance details using the login command:
+
+`java -cp "aps-cli-2.1.4-SNAPSHOT-jar-with-dependencies.jar" com.activiti.cli.commands.LoginCommand -u "admin@app.activiti.com" -p`
+
+Or defining an alias in this way:
+
+`alias login='java -cp "aps-cli-2.1.4-SNAPSHOT-with-dependencies.jar" com.activiti.cli.commands.LoginCommand -u "admin@app.activiti.com" -p'`
+
+The same command can be executed with this short version:
+`login -u "admin@app.activiti.com" -p'`
+
+The password will be passed using an interactive prompt as the following:
+## Login interaction
+```
+Enter value for --password (Password):
+Username: admin@app.activiti.com
+Password: admin
+User admin@app.activiti.com successfully logged in APS
+```
+## Result of the CLI call:
+
+`{revisionVersion=1, edition=Alfresco Process Services (powered by Activiti), type=bpmSuite, majorVersion=2, minorVersion=3}`
+
+For passing the password directly in the command use put the password after the -p parameter:
+`java -cp "aps-cli-2.1.4-SNAPSHOT-jar-with-dependencies.jar" com.activiti.cli.commands.LoginCommand -u "admin@app.activiti.com" -p admin`
+
 
 # Activiti App Integration Tests Module
 This module includes tests for interacting with the APS Docker using the generated Swagger client.

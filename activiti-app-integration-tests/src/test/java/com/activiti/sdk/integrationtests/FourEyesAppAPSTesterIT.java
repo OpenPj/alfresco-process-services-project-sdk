@@ -11,7 +11,7 @@ public class FourEyesAppAPSTesterIT {
 
 	protected static final String ACTIVITI_APP_USERNAME = "admin@app.activiti.com";
 	protected static final String ACTIVITI_APP_PASSWORD = "admin";
-	protected static final String appZipFile = "aps-extensions-jar-2.0.7-SNAPSHOT-App.zip";
+	protected static final String appZipFile = "aps-extensions-jar-2.1.4-SNAPSHOT-App.zip";
 	protected APSTester apsTester;
 
 	@BeforeEach
