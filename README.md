@@ -149,7 +149,7 @@ User admin@app.activiti.com successfully logged in APS
 
 `{revisionVersion=1, edition=Alfresco Process Services (powered by Activiti), type=bpmSuite, majorVersion=2, minorVersion=3}`
 
-For passing the password directly in the command use put the password after the -p parameter:
+For passing the password directly in the command put the password after the -p parameter:
 `java -cp "aps-cli-2.1.4-SNAPSHOT-jar-with-dependencies.jar" com.activiti.cli.commands.LoginCommand -u "admin@app.activiti.com" -p admin`
 
 
