@@ -33,4 +33,7 @@ COPY --chown=${USERNAME} license/*.* $TOMCAT_DIR/lib/
 
 RUN chown ${USERNAME}:${USERNAME} -R /usr/local/tomcat
 
+RUN mkdir -p ${CONTENT_STORAGE_DIR}
+RUN chown ${USERNAME}:${USERNAME} ${CONTENT_STORAGE_DIR}
+
 USER ${USERNAME}

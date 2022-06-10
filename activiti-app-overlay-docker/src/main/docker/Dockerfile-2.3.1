@@ -13,6 +13,7 @@ ENV ACTIVITI_ES_CLUSTER_NAME: ${docker.aps.es.cluster.name}
 
 ARG TOMCAT_DIR=/usr/local/tomcat
 ARG USERNAME=alfresco
+ARG CONTENT_STORAGE_DIR=/act_data
 
 USER root
 
@@ -29,5 +30,8 @@ COPY --chown=${USERNAME} extensions/activiti-app.war $TOMCAT_DIR/webapps
 COPY --chown=${USERNAME} license/*.* $TOMCAT_DIR/lib/
 
 RUN chown ${USERNAME}:${USERNAME} -R /usr/local/tomcat
+
+RUN mkdir -p ${CONTENT_STORAGE_DIR}
+RUN chown ${USERNAME}:${USERNAME} ${CONTENT_STORAGE_DIR}
 
 USER ${USERNAME}
