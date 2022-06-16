@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>org.alfresco.activiti</groupId>
 		<artifactId>aps-project</artifactId>
-		<version>2.1.5</version>
+		<version>2.1.6</version>
 	</parent>
 
 	<properties>
@@ -17,17 +17,17 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>org.alfresco.activiti</groupId>
-				<artifactId>activiti-app-swagger-client</artifactId>
-				<version>${project.version}</version>
+				<groupId>com.github.OpenPj</groupId>
+				<artifactId>aps-2x-client</artifactId>
+				<version>${aps.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
 	<dependencies>
 		<dependency>
-			<groupId>org.alfresco.activiti</groupId>
-			<artifactId>activiti-app-swagger-client</artifactId>
+			<groupId>com.github.OpenPj</groupId>
+			<artifactId>aps-2x-client</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -114,5 +114,12 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<repositories>
+		<repository>
+			<id>jitpack.io</id>
+			<url>https://jitpack.io</url>
+		</repository>
+	</repositories>
 
 </project>

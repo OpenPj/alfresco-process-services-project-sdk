@@ -1,4 +1,4 @@
-FROM tomcat:9-jdk11-openjdk
+FROM alfresco/process-services:${aps.docker.version}
 
 ENV ACTIVITI_DATASOURCE_USERNAME: ${docker.aps.database.username}
 ENV ACTIVITI_DATASOURCE_PASSWORD: ${docker.aps.database.password}
@@ -13,12 +13,9 @@ ENV ACTIVITI_ES_CLUSTER_NAME: ${docker.aps.es.cluster.name}
 
 ARG TOMCAT_DIR=/usr/local/tomcat
 ARG USERNAME=alfresco
-ARG USERID=33007
 ARG CONTENT_STORAGE_DIR=/act_data
 
 USER root
-
-RUN useradd -c "Alfresco APS" -M -s "/bin/bash" -u "${USERID}" -o "${USERNAME}"
 
 RUN rm -rf $TOMCAT_DIR/webapps/activiti-app
 

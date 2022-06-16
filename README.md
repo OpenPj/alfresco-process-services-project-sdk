@@ -1,10 +1,9 @@
-# Alfresco Process Services SDK Project 2.1.5
+# Alfresco Process Services SDK Project 2.1.6
 
 The project consists of the following Maven submodules:
 
  * APS extensions JAR (`aps-extensions-jar`): put here your Java extensions
  * Activiti App Overlay WAR (`activiti-app-overlay-war`): generate activiti-app WAR overlay with APS Extensions JAR embedded
- * Activiti App Swagger Client (`activiti-app-swagger-client`): generate the APS Java Swagger client
  * Activiti App Overlay Docker (`activiti-app-overlay-docker`): put your overlayed WAR into the APS Docker container
  * Activiti App Integration Tests (`activiti-app-integration-tests`): integration tests based on the Java Swagger client
 
