@@ -236,7 +236,7 @@
 		<profile>
 			<id>aps2.3.0</id>
 			<activation>
-				<activeByDefault>false</activeByDefault>
+				<activeByDefault>true</activeByDefault>
 			</activation>
 
 			<properties>
@@ -302,7 +302,7 @@
 		<profile>
 			<id>aps2.3.2</id>
 			<activation>
-				<activeByDefault>true</activeByDefault>
+				<activeByDefault>false</activeByDefault>
 			</activation>
 
 			<properties>
