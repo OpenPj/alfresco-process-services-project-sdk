@@ -1,4 +1,4 @@
-# Alfresco Process Services SDK Project 2.1.6
+# Alfresco Process Services SDK Project 2.1.7
 
 The project consists of the following Maven submodules:
 
@@ -13,7 +13,7 @@ The project consists of the following Maven submodules:
 
 # Prerequisites
  * OpenJDK 11
- * Apache Maven 3.8.5
+ * Apache Maven 3.8.6
  * Docker (optional)
  * Put valid  _activiti.lic_  and  _transform.lic_  (or  _Aspose.Total.Java.lic_  )  in the `/license` folder for running unit / integration tests and for building containers 
  * Access to the Alfresco Nexus Repositories (credentials provided by Alfresco)
@@ -47,11 +47,19 @@ Stop all the Docker containers with:
  
  * `mvn docker:stop`
 
-Full Maven lifecycle command deploying also Activiti Admin:
+Full Maven lifecycle command building and deploying also the Activiti Admin application, this is needed at least for the first build run:
 
  * `mvn clean install docker:build docker:start -Pactiviti-admin`
  
 Stop all the Docker containers with:
+
+ * `mvn docker:stop -Pactiviti-admin`
+ 
+Full Maven lifecycle command deploying also the Activiti Admin app without rebuilding its container, very useful after a first build run, for making the entire build faster:
+
+ * `mvn clean install docker:build docker:start -Pactiviti-admin,skip.admin`
+ 
+ Stop all the Docker containers with:
 
  * `mvn docker:stop -Pactiviti-admin`
 
@@ -128,26 +136,25 @@ This module includes tests for interacting with the APS Docker using the generat
 Put your Java test classes in the following package:
 `/activiti-app-integration-tests/src/test/java`
 
-# Supported Maven Profiles for dependencies management and packaging (JAR and WAR)
+# Supported Maven Profiles for dependencies management and packaging (JAR, WAR and Docker containers)
 
 In order to build the project, you can declare a Maven profile related to a specific APS version:
- * `aps2.3.2` (APS 2.3.2 - default)
+ * `aps2.3.4` (APS 2.3.4 - default)
+ * `aps2.3.3` (APS 2.3.3)
+ * `aps2.3.2` (APS 2.3.2)
  * `aps2.3.1` (APS 2.3.1)
  * `aps2.3.0` (APS 2.3.0)
  * `aps2.2.0.1` (APS 2.2.0.1)
  * `aps2.2.0` (APS 2.2.0)
  * `aps2.1.0` (APS 2.1.0)
  * `aps2.0.1` (APS 2.0.1)
- * `aps2.0.0` (APS 2.0.0)
- 
-Build and test with unit tests execution for APS 2.3.2 with:
+ * `aps2.0.0` (APS 2.0.0) 
+
+Build and test with unit tests execution for APS 2.3.4 with:
 `mvn clean test`
 
 Build and test with unit tests execution for APS 2.3.1 with:
 `mvn clean test -Paps2.3.1`
-
-Build and test with unit tests execution for APS 2.3.0 with:
-`mvn clean test -Paps2.3.0`
 
 Build and test with unit tests execution for APS 2.2.0 with:
 `mvn clean test -Paps2.2.0`
@@ -157,18 +164,6 @@ Build and test with unit tests execution for APS 2.1.0 with:
 
 Build and test with unit tests execution for APS 2.0.1 with:
 `mvn clean test -Paps2.0.1`
-
-Build and package with integration tests execution for APS 2.3.2 with:
-`mvn clean install`
-
-Build and package with integration tests execution for APS 2.2.0 with:
-`mvn clean install -Paps2.2.0`
-
-Build and package with integration tests execution for APS 2.1.0 with:
-`mvn clean install -Paps2.1.0`
-
-Build and package with integration tests execution for APS 2.0.1 with:
-`mvn clean install -Paps2.0.1`
 
 Build your Docker container with:
 `mvn docker:build`
@@ -181,6 +176,9 @@ Build, execute embedded test runtime, create and start all the APS containers ex
 
 After the integration tests execution stop all the APS containers with:
 `mvn docker:stop`
+
+Skip the build of the Activiti Admin container with:
+`mvn clean install docker:build docker:start -Pactiviti-admin,skip.admin`
 
 # Building your Docker container (optional)
  * Update if you need  _logback.xml_  in `/activiti-app-overlay-war/src/main/webapp/WEB-INF/classes`

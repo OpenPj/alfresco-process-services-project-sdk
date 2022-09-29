@@ -53,7 +53,7 @@ public class FourEyesAppIT {
 	protected static final String BASE_PATH_HOSTNAME = "localhost";
 	protected static final int BASE_PATH_PORT = 8080;
 
-	protected static final String appZipFile = "aps-extensions-jar-2.1.6-App.zip";
+	protected static final String appZipFile = "aps-extensions-jar-2.1.7-App.zip";
 
 	protected static final String ACTIVITI_APP_BASE_PATH = BASE_PATH_PROTOCOL + "://" + BASE_PATH_HOSTNAME + ":"
 			+ BASE_PATH_PORT;

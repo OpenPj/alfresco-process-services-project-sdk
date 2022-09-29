@@ -1,6 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>activiti-app-overlay-docker</artifactId>
 	<packaging>jar</packaging>
@@ -9,7 +7,7 @@
 	<parent>
 		<groupId>org.alfresco.activiti</groupId>
 		<artifactId>aps-project</artifactId>
-		<version>2.1.6</version>
+		<version>2.1.7</version>
 	</parent>
 
 	<properties>
@@ -66,6 +64,9 @@
 
 
 		<docker.activiti.time.test>400000</docker.activiti.time.test>
+
+		<copy-jdbc-driver-for-admin.phase>package</copy-jdbc-driver-for-admin.phase>
+		<build-activiti-admin-arm64.phase>pre-integration-test</build-activiti-admin-arm64.phase>
 	</properties>
 
 	<build>
@@ -75,7 +76,7 @@
 				<executions>
 					<execution>
 						<id>copy-jdbc-driver-for-admin</id>
-						<phase>package</phase>
+						<phase>${copy-jdbc-driver-for-admin.phase}</phase>
 						<goals>
 							<goal>copy</goal>
 						</goals>
@@ -260,9 +261,7 @@
 									</http>
 									<time>${docker.activiti.time.test}</time>
 									<exec>
-										<postStart>
-											
-										</postStart>
+										<postStart></postStart>
 									</exec>
 								</wait>
 								<volumes>
@@ -438,7 +437,6 @@
 									<goal>copy</goal>
 								</goals>
 								<configuration>
-
 									<sourceFile>${project.parent.basedir}/target/admin/Dockerfile-admin-${aps.version}-arm64</sourceFile>
 									<destinationFile>${project.parent.basedir}/target/admin/Dockerfile</destinationFile>
 								</configuration>
@@ -475,7 +473,7 @@
 							</execution>
 							<execution>
 								<id>build-activiti-admin-arm64</id>
-								<phase>pre-integration-test</phase>
+								<phase>${build-activiti-admin-arm64.phase}</phase>
 								<goals>
 									<goal>exec</goal>
 								</goals>
@@ -513,7 +511,6 @@
 						<groupId>io.fabric8</groupId>
 						<artifactId>docker-maven-plugin</artifactId>
 						<configuration>
-							<extensions>true</extensions>
 							<keepRunning>false</keepRunning>
 							<skip>false</skip>
 							<showLogs>true</showLogs>
@@ -527,6 +524,7 @@
 									<alias>aps-admin</alias>
 									<name>aps-sdk/alfresco-process-services-admin:development</name>
 									<build>
+										<skip>${skip.admin}</skip>
 										<contextDir>${project.parent.basedir}/target/admin</contextDir>
 										<dockerFile>Dockerfile-admin-${aps.version}</dockerFile>
 										<tags>
@@ -683,6 +681,69 @@
 								</execution>
 							</executions>
 						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>skip.admin</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<skip.admin>true</skip.admin>
+				<copy-jdbc-driver-for-admin.phase>none</copy-jdbc-driver-for-admin.phase>
+				<build-activiti-admin-arm64.phase>none</build-activiti-admin-arm64.phase>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-dependency-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>copy-jar-extensions</id>
+								<phase>package</phase>
+								<goals>
+									<goal>copy</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>org.alfresco.activiti</groupId>
+											<artifactId>aps-extensions-jar</artifactId>
+											<version>${project.version}</version>
+											<type>jar</type>
+											<overWrite>true</overWrite>
+											<outputDirectory>${project.parent.basedir}/target/extensions</outputDirectory>
+										</artifactItem>
+									</artifactItems>
+									<overWriteReleases>false</overWriteReleases>
+									<overWriteSnapshots>true</overWriteSnapshots>
+								</configuration>
+							</execution>
+							<execution>
+								<id>copy-war-extensions</id>
+								<phase>package</phase>
+								<goals>
+									<goal>copy</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>org.alfresco.activiti</groupId>
+											<artifactId>activiti-app-overlay-war</artifactId>
+											<version>${project.version}</version>
+											<type>war</type>
+											<overWrite>true</overWrite>
+											<outputDirectory>${project.parent.basedir}/target/extensions</outputDirectory>
+											<destFileName>activiti-app.war</destFileName>
+										</artifactItem>
+									</artifactItems>
+									<overWriteReleases>false</overWriteReleases>
+									<overWriteSnapshots>true</overWriteSnapshots>
+								</configuration>
+							</execution>
+						</executions>
 					</plugin>
 				</plugins>
 			</build>
