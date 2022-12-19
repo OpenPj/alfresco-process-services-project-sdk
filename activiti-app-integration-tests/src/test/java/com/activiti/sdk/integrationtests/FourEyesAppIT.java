@@ -21,6 +21,7 @@ import com.activiti.sdk.client.api.AppDefinitionsApi;
 import com.activiti.sdk.client.api.ProcessDefinitionsApi;
 import com.activiti.sdk.client.api.ProcessInstancesApi;
 import com.activiti.sdk.client.api.RuntimeAppDefinitionsApi;
+import com.activiti.sdk.client.api.RuntimeAppDeploymentsApi;
 import com.activiti.sdk.client.api.TaskFormsApi;
 import com.activiti.sdk.client.api.TasksApi;
 import com.activiti.sdk.client.model.AppDefinitionRepresentation;
@@ -42,6 +43,7 @@ public class FourEyesAppIT {
 	protected AboutApi aboutApi;
 	protected AppDefinitionsApi appDefinitionsApi;
 	protected RuntimeAppDefinitionsApi runtimeAppDefinitionsApi;
+	protected RuntimeAppDeploymentsApi runtimeAppDeploymentsApi;
 	protected ProcessDefinitionsApi processDefinitionsApi;
 	protected ProcessInstancesApi processInstancesApi;
 	protected TasksApi tasksApi;
@@ -53,7 +55,7 @@ public class FourEyesAppIT {
 	protected static final String BASE_PATH_HOSTNAME = "localhost";
 	protected static final int BASE_PATH_PORT = 8080;
 
-	protected static final String appZipFile = "aps-extensions-jar-2.1.7-App.zip";
+	protected static final String appZipFile = "aps-extensions-jar-2.1.8-App.zip";
 
 	protected static final String ACTIVITI_APP_BASE_PATH = BASE_PATH_PROTOCOL + "://" + BASE_PATH_HOSTNAME + ":"
 			+ BASE_PATH_PORT;
@@ -75,6 +77,8 @@ public class FourEyesAppIT {
 		processInstancesApi = new ProcessInstancesApi(apiClient);
 		tasksApi = new TasksApi(apiClient);
 		taskFormsApi = new TaskFormsApi(apiClient);
+		runtimeAppDeploymentsApi = new RuntimeAppDeploymentsApi(apiClient);
+		
 	}
 
 	@Test
@@ -88,11 +92,11 @@ public class FourEyesAppIT {
 
 		// Getting the App Definition Id
 		ResultListDataRepresentationAppDefinitionRepresentation apps = null;
+		Long appDefId = null;
 		try {
 			apps = runtimeAppDefinitionsApi.getAppDefinitionsUsingGET();
 			List<AppDefinitionRepresentation> appDefs = apps.getData();
 			Iterator<AppDefinitionRepresentation> iteratorApps = appDefs.iterator();
-			Long appDefId = null;
 			while (iteratorApps.hasNext()) {
 				AppDefinitionRepresentation appDefinitionRepresentation = (AppDefinitionRepresentation) iteratorApps
 						.next();
@@ -192,6 +196,13 @@ public class FourEyesAppIT {
 
 		} catch (ApiException e) {
 			fail(e.getMessage(), e);
+		} finally {
+			try {
+				appDefinitionsApi.deleteAppDefinitionUsingDELETE(appDefId);
+				runtimeAppDeploymentsApi.deleteAppDeploymentUsingDELETE(appDefId);
+			} catch (ApiException e) {
+				fail(e.getMessage(), e);
+			}
 		}
 	}
 

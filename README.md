@@ -1,4 +1,4 @@
-# Alfresco Process Services SDK Project 2.1.7
+# Alfresco Process Services SDK Project 2.1.8
 
 The project consists of the following Maven submodules:
 
@@ -139,7 +139,8 @@ Put your Java test classes in the following package:
 # Supported Maven Profiles for dependencies management and packaging (JAR, WAR and Docker containers)
 
 In order to build the project, you can declare a Maven profile related to a specific APS version:
- * `aps2.3.4` (APS 2.3.4 - default)
+ * `aps2.3.5` (APS 2.3.5 - default)
+ * `aps2.3.4` (APS 2.3.4)
  * `aps2.3.3` (APS 2.3.3)
  * `aps2.3.2` (APS 2.3.2)
  * `aps2.3.1` (APS 2.3.1)
@@ -150,7 +151,7 @@ In order to build the project, you can declare a Maven profile related to a spec
  * `aps2.0.1` (APS 2.0.1)
  * `aps2.0.0` (APS 2.0.0) 
 
-Build and test with unit tests execution for APS 2.3.4 with:
+Build and test with unit tests execution for APS 2.3.5 with:
 `mvn clean test`
 
 Build and test with unit tests execution for APS 2.3.1 with:
@@ -161,9 +162,6 @@ Build and test with unit tests execution for APS 2.2.0 with:
 
 Build and test with unit tests execution for APS 2.1.0 with:
 `mvn clean test -Paps2.1.0`
-
-Build and test with unit tests execution for APS 2.0.1 with:
-`mvn clean test -Paps2.0.1`
 
 Build your Docker container with:
 `mvn docker:build`

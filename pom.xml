@@ -9,7 +9,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.alfresco.activiti</groupId>
 	<artifactId>aps-project</artifactId>
-	<version>2.1.7</version>
+	<version>2.1.8</version>
 	<packaging>pom</packaging>
 	<name>APS - SDK Project</name>
 
@@ -84,6 +84,7 @@
 				<aps.version.major>2</aps.version.major>
 				<aps.version.minor>0</aps.version.minor>
 				<aps.version.revision>0</aps.version.revision>
+				<aps.2x.client.version>2.0.0</aps.2x.client.version>
 				<opencsv.version>5.5.1</opencsv.version>
 				<jackson.version>2.12.4</jackson.version>
 				<bcprov.version>1.69</bcprov.version>
@@ -116,6 +117,7 @@
 				<aps.version.major>2</aps.version.major>
 				<aps.version.minor>0</aps.version.minor>
 				<aps.version.revision>1</aps.version.revision>
+				<aps.2x.client.version>2.0.1</aps.2x.client.version>
 				<opencsv.version>5.5.1</opencsv.version>
 				<jackson.version>2.12.4</jackson.version>
 				<bcprov.version>1.69</bcprov.version>
@@ -148,6 +150,7 @@
 				<aps.version.major>2</aps.version.major>
 				<aps.version.minor>1</aps.version.minor>
 				<aps.version.revision>0</aps.version.revision>
+				<aps.2x.client.version>2.1.0</aps.2x.client.version>
 				<opencsv.version>5.5.1</opencsv.version>
 				<jackson.version>2.12.4</jackson.version>
 				<bcprov.version>1.69</bcprov.version>
@@ -181,6 +184,7 @@
 				<aps.version.major>2</aps.version.major>
 				<aps.version.minor>2</aps.version.minor>
 				<aps.version.revision>0</aps.version.revision>
+				<aps.2x.client.version>2.2.0</aps.2x.client.version>
 				<opencsv.version>5.5.2</opencsv.version>
 				<jackson.version>2.13.1</jackson.version>
 				<bcprov.version>1.70</bcprov.version>
@@ -214,6 +218,7 @@
 				<aps.version.major>2</aps.version.major>
 				<aps.version.minor>2</aps.version.minor>
 				<aps.version.revision>0.1</aps.version.revision>
+				<aps.2x.client.version>2.2.0.1</aps.2x.client.version>
 				<opencsv.version>5.5.2</opencsv.version>
 				<jackson.version>2.13.1</jackson.version>
 				<bcprov.version>1.70</bcprov.version>
@@ -247,6 +252,7 @@
 				<aps.version.major>2</aps.version.major>
 				<aps.version.minor>3</aps.version.minor>
 				<aps.version.revision>0</aps.version.revision>
+				<aps.2x.client.version>v2.3.0</aps.2x.client.version>
 				<opencsv.version>5.5.2</opencsv.version>
 				<jackson.version>2.13.2</jackson.version>
 				<bcprov.version>1.70</bcprov.version>
@@ -280,6 +286,7 @@
 				<aps.version.major>2</aps.version.major>
 				<aps.version.minor>3</aps.version.minor>
 				<aps.version.revision>1</aps.version.revision>
+				<aps.2x.client.version>2.3.1</aps.2x.client.version>
 				<opencsv.version>5.5.2</opencsv.version>
 				<jackson.version>2.13.2</jackson.version>
 				<bcprov.version>1.70</bcprov.version>
@@ -313,6 +320,7 @@
 				<aps.version.major>2</aps.version.major>
 				<aps.version.minor>3</aps.version.minor>
 				<aps.version.revision>2</aps.version.revision>
+				<aps.2x.client.version>2.3.2</aps.2x.client.version>
 				<opencsv.version>5.6</opencsv.version>
 				<jackson.version>2.13.3</jackson.version>
 				<bcprov.version>1.70</bcprov.version>
@@ -346,6 +354,7 @@
 				<aps.version.major>2</aps.version.major>
 				<aps.version.minor>3</aps.version.minor>
 				<aps.version.revision>3</aps.version.revision>
+				<aps.2x.client.version>2.3.3</aps.2x.client.version>
 				<opencsv.version>5.6</opencsv.version>
 				<jackson.version>2.13.3</jackson.version>
 				<bcprov.version>1.70</bcprov.version>
@@ -369,7 +378,7 @@
 		<profile>
 			<id>aps2.3.4</id>
 			<activation>
-				<activeByDefault>true</activeByDefault>
+				<activeByDefault>false</activeByDefault>
 			</activation>
 
 			<properties>
@@ -379,6 +388,40 @@
 				<aps.version.major>2</aps.version.major>
 				<aps.version.minor>3</aps.version.minor>
 				<aps.version.revision>4</aps.version.revision>
+				<aps.2x.client.version>2.3.4</aps.2x.client.version>
+				<opencsv.version>5.6</opencsv.version>
+				<jackson.version>2.13.3</jackson.version>
+				<bcprov.version>1.70</bcprov.version>
+				<activiti.version>7.4.0</activiti.version>
+				<spring.version>5.3.22.RELEASE</spring.version>
+				<spring-boot.version>2.5.12</spring-boot.version>
+				<spring-security.version>5.7.3</spring-security.version>
+				<elasticsearch.version>7.17.6</elasticsearch.version>
+				<elasticsearch-rest-client.version>7.17.6</elasticsearch-rest-client.version>
+				<hibernate.version>5.4.32.Final</hibernate.version>
+				<h2.version>2.1.214</h2.version>
+				<postgresql.version>13.1</postgresql.version>
+				<skipITs>false</skipITs>
+				<skip.integration.test>false</skip.integration.test>
+				<skip.swagger.client.generation>false</skip.swagger.client.generation>
+				<docker-maven-plugin.skip.save>false</docker-maven-plugin.skip.save>
+				<docker-maven-plugin.build.save>false</docker-maven-plugin.build.save>
+			</properties>
+		</profile>
+		<profile>
+			<id>aps2.3.5</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+
+			<properties>
+				<!-- APS 2.3.5 -->
+				<aps.version>2.3.5</aps.version>
+				<aps.docker.version>2.3.5</aps.docker.version>
+				<aps.version.major>2</aps.version.major>
+				<aps.version.minor>3</aps.version.minor>
+				<aps.version.revision>5</aps.version.revision>
+				<aps.2x.client.version>2.3.5</aps.2x.client.version>
 				<opencsv.version>5.6</opencsv.version>
 				<jackson.version>2.13.3</jackson.version>
 				<bcprov.version>1.70</bcprov.version>

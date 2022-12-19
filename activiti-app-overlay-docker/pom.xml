@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>org.alfresco.activiti</groupId>
 		<artifactId>aps-project</artifactId>
-		<version>2.1.7</version>
+		<version>2.1.8</version>
 	</parent>
 
 	<properties>
@@ -67,6 +67,9 @@
 
 		<copy-jdbc-driver-for-admin.phase>package</copy-jdbc-driver-for-admin.phase>
 		<build-activiti-admin-arm64.phase>pre-integration-test</build-activiti-admin-arm64.phase>
+		
+		<aps.debug.port>5005</aps.debug.port>
+		<catalina.opts.debug>-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=${aps.debug.port}</catalina.opts.debug>
 	</properties>
 
 	<build>
@@ -254,6 +257,7 @@
 								</network>
 								<ports>
 									<port>${docker.tomcat.port.external}:${docker.tomcat.port.internal}</port>
+									<port>${aps.debug.port}:${aps.debug.port}</port>
 								</ports>
 								<wait>
 									<http>
@@ -577,6 +581,7 @@
 										</network>
 										<ports>
 											<port>${docker.tomcat.port.external}:${docker.tomcat.port.internal}</port>
+											<port>${aps.debug.port}:${aps.debug.port}</port>
 										</ports>
 										<wait>
 											<http>
