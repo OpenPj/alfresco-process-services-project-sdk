@@ -9,7 +9,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.alfresco.activiti</groupId>
 	<artifactId>aps-project</artifactId>
-	<version>2.1.8</version>
+	<version>2.1.9</version>
 	<packaging>pom</packaging>
 	<name>APS - SDK Project</name>
 
@@ -286,7 +286,7 @@
 				<aps.version.major>2</aps.version.major>
 				<aps.version.minor>3</aps.version.minor>
 				<aps.version.revision>1</aps.version.revision>
-				<aps.2x.client.version>2.3.1</aps.2x.client.version>
+				<aps.2x.client.version>v2.3.1</aps.2x.client.version>
 				<opencsv.version>5.5.2</opencsv.version>
 				<jackson.version>2.13.2</jackson.version>
 				<bcprov.version>1.70</bcprov.version>
@@ -320,7 +320,7 @@
 				<aps.version.major>2</aps.version.major>
 				<aps.version.minor>3</aps.version.minor>
 				<aps.version.revision>2</aps.version.revision>
-				<aps.2x.client.version>2.3.2</aps.2x.client.version>
+				<aps.2x.client.version>v2.3.2</aps.2x.client.version>
 				<opencsv.version>5.6</opencsv.version>
 				<jackson.version>2.13.3</jackson.version>
 				<bcprov.version>1.70</bcprov.version>
@@ -354,7 +354,7 @@
 				<aps.version.major>2</aps.version.major>
 				<aps.version.minor>3</aps.version.minor>
 				<aps.version.revision>3</aps.version.revision>
-				<aps.2x.client.version>2.3.3</aps.2x.client.version>
+				<aps.2x.client.version>v2.3.3</aps.2x.client.version>
 				<opencsv.version>5.6</opencsv.version>
 				<jackson.version>2.13.3</jackson.version>
 				<bcprov.version>1.70</bcprov.version>
@@ -388,7 +388,7 @@
 				<aps.version.major>2</aps.version.major>
 				<aps.version.minor>3</aps.version.minor>
 				<aps.version.revision>4</aps.version.revision>
-				<aps.2x.client.version>2.3.4</aps.2x.client.version>
+				<aps.2x.client.version>v2.3.4</aps.2x.client.version>
 				<opencsv.version>5.6</opencsv.version>
 				<jackson.version>2.13.3</jackson.version>
 				<bcprov.version>1.70</bcprov.version>
@@ -421,7 +421,7 @@
 				<aps.version.major>2</aps.version.major>
 				<aps.version.minor>3</aps.version.minor>
 				<aps.version.revision>5</aps.version.revision>
-				<aps.2x.client.version>2.3.5</aps.2x.client.version>
+				<aps.2x.client.version>v2.3.5</aps.2x.client.version>
 				<opencsv.version>5.6</opencsv.version>
 				<jackson.version>2.13.3</jackson.version>
 				<bcprov.version>1.70</bcprov.version>
@@ -553,7 +553,7 @@
 		<repository>
 			<id>AsposeJavaAPI</id>
 			<name>Aspose Java API</name>
-			<url>https://artifact.aspose.com/repo/</url>
+			<url>https://releases.aspose.com/java/repo/</url>
 		</repository>
 	</repositories>
 

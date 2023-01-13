@@ -1,4 +1,4 @@
-# Alfresco Process Services SDK Project 2.1.8
+# Alfresco Process Services SDK Project 2.1.9
 
 The project consists of the following Maven submodules:
 
@@ -13,7 +13,7 @@ The project consists of the following Maven submodules:
 
 # Prerequisites
  * OpenJDK 11
- * Apache Maven 3.8.6
+ * Apache Maven 3.8.7
  * Docker (optional)
  * Put valid  _activiti.lic_  and  _transform.lic_  (or  _Aspose.Total.Java.lic_  )  in the `/license` folder for running unit / integration tests and for building containers 
  * Access to the Alfresco Nexus Repositories (credentials provided by Alfresco)
