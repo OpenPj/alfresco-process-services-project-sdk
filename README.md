@@ -3,9 +3,9 @@
 | APS SDK Version  | Supported APS versions | Artifact | Upgrade steps | License Management |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
 | [APS SDK 2.x (2.x branch)](https://github.com/OpenPj/alfresco-process-services-project-sdk/tree/2.x)  | 2.3.5, 2.3.4, 2.3.3, 2.3.2, 2.3.1, 2.3.0, 2.2.0.1, 2.2.0, 2.1.0, 2.0.1, 2.0.0  | [Download APS SDK v2.1.9](https://github.com/OpenPj/alfresco-process-services-project-sdk/releases/tag/v2.1.9) | [Upgrading APS SDK 2.x project to support APS 2.2.0 (only for APS SDK versions earlier than 2.0.8)](https://github.com/OpenPj/alfresco-process-services-project-sdk/wiki/Upgrading-APS-SDK-2.x-project-to-support-APS-2.2.0-(only-for-APS-SDK-versions-earlier-than-2.0.8)) | [Adding the License Management to your current project (only for APS SDK versions earlier than 2.0.9)](https://github.com/OpenPj/alfresco-process-services-project-sdk/wiki/Adding-the-License-Management-to-your-current-project-(only-for-APS-SDK-versions-earlier-than-2.0.9-or-1.7.4)) | 
-| [APS SDK 1.x (master branch)](https://github.com/OpenPj/alfresco-process-services-project-sdk)  | 1.11.4, 1.11.3, 1.11.2, 1.11.1.1, 1.11.1, 1.11.0, 1.10.0.1, 1.10.0, 1.9.0.5 | [Download APS SDK v1.7.5](https://github.com/OpenPj/alfresco-process-services-project-sdk/releases/tag/v.1.7.5) | | [Adding the License Management to your current project (only for APS SDK versions earlier than 1.7.4)](https://github.com/OpenPj/alfresco-process-services-project-sdk/wiki/Adding-the-License-Management-to-your-current-project-(only-for-APS-SDK-versions-earlier-than-2.0.9-or-1.7.4))|
+| [APS SDK 1.x (master branch)](https://github.com/OpenPj/alfresco-process-services-project-sdk)  | 1.11.5, 1.11.4.3, 1.11.4.2, 1.11.4.1, 1.11.4, 1.11.3, 1.11.2, 1.11.1.1, 1.11.1, 1.11.0, 1.10.0.1, 1.10.0, 1.9.0.5 | [Download APS SDK v1.7.5](https://github.com/OpenPj/alfresco-process-services-project-sdk/releases/tag/v.1.7.5) | | [Adding the License Management to your current project (only for APS SDK versions earlier than 1.7.4)](https://github.com/OpenPj/alfresco-process-services-project-sdk/wiki/Adding-the-License-Management-to-your-current-project-(only-for-APS-SDK-versions-earlier-than-2.0.9-or-1.7.4))|
 
-# Alfresco Process Services SDK Project 1.7.5
+# Alfresco Process Services SDK Project 1.8.0-SNAPSHOT
 
 The project consists of the following Maven submodules:
 
@@ -21,7 +21,7 @@ The project consists of the following Maven submodules:
 
 # Prerequisites
  * OpenJDK 11
- * Apache Maven 3.8.4
+ * Apache Maven 3.9.0
  * Docker (optional)
  * Put valid  _activiti.lic_  and  _Aspose.Total.Java.lic_  in the `/license` folder for running unit / integration tests and for building containers
  * Access to the Alfresco Nexus Repositories (credentials provided by Alfresco)
@@ -136,7 +136,11 @@ Put your Java test classes in the following package:
 # Supported Maven Profiles for dependencies management and packaging (JAR and WAR)
 
 In order to build you have to define a Maven profile for choosing the version of APS:
- * `aps1.11.4` (APS 1.11.4 - default)
+ * `aps1.11.5` (APS 1.11.5 - default)
+ * `aps1.11.4.3` (APS 1.11.4.3)
+ * `aps1.11.4.2` (APS 1.11.4.2)
+ * `aps1.11.4.1` (APS 1.11.4.1)
+ * `aps1.11.4` (APS 1.11.4)
  * `aps1.11.3` (APS 1.11.3)
  * `aps1.11.2` (APS 1.11.2)
  * `aps1.11.1.1` (APS 1.11.1.1)
@@ -146,7 +150,7 @@ In order to build you have to define a Maven profile for choosing the version of
  * `aps1.10.0` (APS 1.10.0)
  * `aps1.9.0.5`  (APS 1.9.0.5)
  
-Build and test with unit tests execution for APS 1.11.4 with:
+Build and test with unit tests execution for APS 1.11.5 with:
 `mvn clean test`
 
 Build and test with unit tests execution for APS 1.11.0 with:
@@ -158,7 +162,7 @@ Build and test with unit tests execution for APS 1.10.0 with:
 Build and test with unit tests execution for APS 1.9.0.5 with:
 `mvn clean test -Paps1.9.0.5`
 
-Build and package with integration tests execution for APS 1.11.4 with:
+Build and package with integration tests execution for APS 1.11.5 with:
 `mvn clean install`
 
 Build and package with integration tests execution for APS 1.11 with:
