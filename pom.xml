@@ -11,7 +11,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.alfresco.activiti</groupId>
 	<artifactId>aps-project</artifactId>
-	<version>1.7.5</version>
+	<version>1.8.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Alfresco Process Services - SDK Project</name>
 
@@ -29,22 +29,22 @@
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
 		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-		<maven-war-plugin.version>3.2.3</maven-war-plugin.version>
-		<docker-maven-plugin.version>0.38.1</docker-maven-plugin.version>
-		<maven-dependency-plugin.version>3.1.1</maven-dependency-plugin.version>
-		<maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
-		<maven-assembly-plugin.version>3.2.0</maven-assembly-plugin.version>
-		<maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
-		<maven-failsafe-plugin.version>2.22.2</maven-failsafe-plugin.version>
-		<maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
+		<maven-war-plugin.version>3.3.2</maven-war-plugin.version>
+		<docker-maven-plugin.version>0.41.0</docker-maven-plugin.version>
+		<maven-dependency-plugin.version>3.5.0</maven-dependency-plugin.version>
+		<maven-resources-plugin.version>3.3.0</maven-resources-plugin.version>
+		<maven-assembly-plugin.version>3.4.2</maven-assembly-plugin.version>
+		<maven-surefire-plugin.version>3.0.0-M8</maven-surefire-plugin.version>
+		<maven-failsafe-plugin.version>3.0.0-M8</maven-failsafe-plugin.version>
+		<maven-antrun-plugin.version>3.1.0</maven-antrun-plugin.version>
 		<maven-eclipse-lifecycle-mapping.version>1.0.0</maven-eclipse-lifecycle-mapping.version>
 		<stax-ex.version>2.0.1</stax-ex.version>
 		<jaxb.api.version>2.3.0</jaxb.api.version>
 		<jaxb.runtime.version>2.3.2</jaxb.runtime.version>
-		<maven.enforcer.plugin.version>3.0.0</maven.enforcer.plugin.version>
+		<maven.enforcer.plugin.version>3.2.1</maven.enforcer.plugin.version>
 		<skip.integration.test>false</skip.integration.test>
 		<skip.swagger.client.generation>false</skip.swagger.client.generation>
-		<exec-maven-plugin.version>3.0.0</exec-maven-plugin.version>
+		<exec-maven-plugin.version>3.1.0</exec-maven-plugin.version>
 		<copy-rename-maven-plugin.version>1.0</copy-rename-maven-plugin.version>
 		<docker-maven-plugin.skip.save>false</docker-maven-plugin.skip.save>
 	</properties>
@@ -298,7 +298,7 @@
 		<profile>
 			<id>aps1.11.4</id>
 			<activation>
-				<activeByDefault>true</activeByDefault>
+				<activeByDefault>false</activeByDefault>
 			</activation>
 
 			<properties>
@@ -317,6 +317,114 @@
 				<spring-security.version>4.2.20.RELEASE</spring-security.version>
 				<elasticsearch.version>7.6.2</elasticsearch.version>
 				<elasticsearch-rest-client.version>7.6.2</elasticsearch-rest-client.version>
+				<hibernate.version>4.3.11.Final</hibernate.version>
+				<postgresql.version>10.9</postgresql.version>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>aps1.11.4.1</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+
+			<properties>
+				<!-- APS 1.11.4.1 -->
+				<aps.version>1.11.4.1</aps.version>
+				<aps.docker.version>1.11.4.1</aps.docker.version>
+				<aps.version.major>1</aps.version.major>
+				<aps.version.minor>11</aps.version.minor>
+				<aps.version.revision>4.1</aps.version.revision>
+				<opencsv.version>5.4</opencsv.version>
+				<jackson.version>2.12.3</jackson.version>
+				<bcprov.version>1.68</bcprov.version>
+				<activiti.version>5.23.0.1</activiti.version>
+				<spring.version>4.3.30.RELEASE</spring.version>
+				<spring-boot.version>1.5.22.RELEASE</spring-boot.version>
+				<spring-security.version>4.2.20.RELEASE</spring-security.version>
+				<elasticsearch.version>7.6.2</elasticsearch.version>
+				<elasticsearch-rest-client.version>7.6.2</elasticsearch-rest-client.version>
+				<hibernate.version>4.3.11.Final</hibernate.version>
+				<postgresql.version>10.9</postgresql.version>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>aps1.11.4.2</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+
+			<properties>
+				<!-- APS 1.11.4.2 -->
+				<aps.version>1.11.4.2</aps.version>
+				<aps.docker.version>1.11.4.2</aps.docker.version>
+				<aps.version.major>1</aps.version.major>
+				<aps.version.minor>11</aps.version.minor>
+				<aps.version.revision>4.2</aps.version.revision>
+				<opencsv.version>5.4</opencsv.version>
+				<jackson.version>2.12.3</jackson.version>
+				<bcprov.version>1.68</bcprov.version>
+				<activiti.version>5.23.0.1</activiti.version>
+				<spring.version>4.3.30.RELEASE</spring.version>
+				<spring-boot.version>1.5.22.RELEASE</spring-boot.version>
+				<spring-security.version>4.2.20.RELEASE</spring-security.version>
+				<elasticsearch.version>7.6.2</elasticsearch.version>
+				<elasticsearch-rest-client.version>7.6.2</elasticsearch-rest-client.version>
+				<hibernate.version>4.3.11.Final</hibernate.version>
+				<postgresql.version>10.9</postgresql.version>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>aps1.11.4.3</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+
+			<properties>
+				<!-- APS 1.11.4.3 -->
+				<aps.version>1.11.4.3</aps.version>
+				<aps.docker.version>1.11.4.3</aps.docker.version>
+				<aps.version.major>1</aps.version.major>
+				<aps.version.minor>11</aps.version.minor>
+				<aps.version.revision>4.3</aps.version.revision>
+				<opencsv.version>5.4</opencsv.version>
+				<jackson.version>2.12.3</jackson.version>
+				<bcprov.version>1.68</bcprov.version>
+				<activiti.version>5.23.0.1</activiti.version>
+				<spring.version>4.3.30.RELEASE</spring.version>
+				<spring-boot.version>1.5.22.RELEASE</spring-boot.version>
+				<spring-security.version>4.2.20.RELEASE</spring-security.version>
+				<elasticsearch.version>7.6.2</elasticsearch.version>
+				<elasticsearch-rest-client.version>7.6.2</elasticsearch-rest-client.version>
+				<hibernate.version>4.3.11.Final</hibernate.version>
+				<postgresql.version>10.9</postgresql.version>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>aps1.11.5</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+
+			<properties>
+				<!-- APS 1.11.5 -->
+				<aps.version>1.11.5</aps.version>
+				<aps.docker.version>1.11.5</aps.docker.version>
+				<aps.version.major>1</aps.version.major>
+				<aps.version.minor>11</aps.version.minor>
+				<aps.version.revision>5</aps.version.revision>
+				<opencsv.version>5.7.1</opencsv.version>
+				<jackson.version>2.13.3</jackson.version>
+				<bcprov.version>1.68</bcprov.version>
+				<activiti.version>5.23.0.1</activiti.version>
+				<spring.version>4.3.30.RELEASE</spring.version>
+				<spring-boot.version>1.5.22.RELEASE</spring-boot.version>
+				<spring-security.version>4.2.20.RELEASE</spring-security.version>
+				<elasticsearch.version>7.17.5</elasticsearch.version>
+				<elasticsearch-rest-client.version>7.17.5</elasticsearch-rest-client.version>
 				<hibernate.version>4.3.11.Final</hibernate.version>
 				<postgresql.version>10.9</postgresql.version>
 			</properties>

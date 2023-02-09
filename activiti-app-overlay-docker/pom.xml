@@ -1,6 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>activiti-app-overlay-docker</artifactId>
 	<packaging>jar</packaging>
@@ -9,7 +7,7 @@
 	<parent>
 		<groupId>org.alfresco.activiti</groupId>
 		<artifactId>aps-project</artifactId>
-		<version>1.7.5</version>
+		<version>1.8.0-SNAPSHOT</version>
 	</parent>
 
 	<properties>
@@ -66,6 +64,9 @@
 
 
 		<docker.activiti.time.test>720000</docker.activiti.time.test>
+
+		<aps.debug.port>5005</aps.debug.port>
+		<catalina.opts.debug>-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=0.0.0.0:${aps.debug.port}</catalina.opts.debug>
 
 	</properties>
 
@@ -216,7 +217,6 @@
 				<groupId>io.fabric8</groupId>
 				<artifactId>docker-maven-plugin</artifactId>
 				<configuration>
-					<extensions>true</extensions>
 					<keepRunning>false</keepRunning>
 					<skip>false</skip>
 					<showLogs>true</showLogs>
@@ -242,12 +242,16 @@
 								</tags>
 							</build>
 							<run>
+								<env>
+									<CATALINA_OPTS>${catalina.opts.debug}</CATALINA_OPTS>
+								</env>
 								<network>
 									<name>aps-network</name>
 									<alias>aps-current-project</alias>
 								</network>
 								<ports>
 									<port>${docker.tomcat.port.external}:${docker.tomcat.port.internal}</port>
+									<port>${aps.debug.port}:${aps.debug.port}</port>
 								</ports>
 								<wait>
 									<http>
@@ -334,24 +338,24 @@
 							<driver>local</driver>
 						</volume>
 					</volumes>
-					<executions>
-						<execution>
-							<id>start-docker</id>
-							<phase>pre-integration-test</phase>
-							<goals>
-								<goal>build</goal>
-								<goal>start</goal>
-							</goals>
-						</execution>
-						<execution>
-							<id>stop-docker</id>
-							<phase>post-integration-test</phase>
-							<goals>
-								<goal>stop</goal>
-							</goals>
-						</execution>
-					</executions>
 				</configuration>
+				<executions>
+					<execution>
+						<id>start-docker</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>build</goal>
+							<goal>start</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>stop-docker</id>
+						<phase>post-integration-test</phase>
+						<goals>
+							<goal>stop</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
@@ -504,7 +508,6 @@
 						<groupId>io.fabric8</groupId>
 						<artifactId>docker-maven-plugin</artifactId>
 						<configuration>
-							<extensions>true</extensions>
 							<keepRunning>false</keepRunning>
 							<skip>false</skip>
 							<showLogs>true</showLogs>
@@ -559,12 +562,16 @@
 										</tags>
 									</build>
 									<run>
+										<env>
+											<CATALINA_OPTS>${catalina.opts.debug}</CATALINA_OPTS>
+										</env>
 										<network>
 											<name>aps-network</name>
 											<alias>aps-current-project</alias>
 										</network>
 										<ports>
 											<port>${docker.tomcat.port.external}:${docker.tomcat.port.internal}</port>
+											<port>${aps.debug.port}:${aps.debug.port}</port>
 										</ports>
 										<wait>
 											<http>
@@ -651,24 +658,24 @@
 									<driver>local</driver>
 								</volume>
 							</volumes>
-							<executions>
-								<execution>
-									<id>start-docker</id>
-									<phase>pre-integration-test</phase>
-									<goals>
-										<goal>build</goal>
-										<goal>start</goal>
-									</goals>
-								</execution>
-								<execution>
-									<id>stop-docker</id>
-									<phase>post-integration-test</phase>
-									<goals>
-										<goal>stop</goal>
-									</goals>
-								</execution>
-							</executions>
 						</configuration>
+						<executions>
+							<execution>
+								<id>start-docker</id>
+								<phase>pre-integration-test</phase>
+								<goals>
+									<goal>build</goal>
+									<goal>start</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>stop-docker</id>
+								<phase>post-integration-test</phase>
+								<goals>
+									<goal>stop</goal>
+								</goals>
+							</execution>
+						</executions>
 					</plugin>
 				</plugins>
 			</build>

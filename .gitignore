@@ -4,7 +4,9 @@
 /activiti_data_dev/
 /target/www/**
 /src/test/javascript/coverage/
-
+/license/activiti.lic
+/license/Aspose.Total.Java.lic
+/aps-extensions-jar/src/test/resources/Aspose.Total.Java.lic
 ######################
 # Node
 ######################
