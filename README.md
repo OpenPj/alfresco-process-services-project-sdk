@@ -62,6 +62,10 @@ Full Maven lifecycle command deploying also Activiti Admin:
 Stop all the Docker containers with:
 
  * `mvn docker:stop -Pactiviti-admin`
+ 
+## Remote Debugging
+
+A debug port is available on port `5005` from the `aps-sdk/alfresco-process-services` container including the custom `activiti-app.war`.
 
 # APS Extensions JAR Module
 
