@@ -67,6 +67,30 @@ Stop all the Docker containers with:
 
 A debug port is available on port `5005` from the `aps-sdk/alfresco-process-services` container including the custom `activiti-app.war`.
 
+Remember to eventually disable remote debugging for your production release commenting `CATALINA_OPTS` and `port` elements in the `/activiti-app-overlay-docker/pom.xml` as shown in the following snippets:
+
+```xml
+
+<run>
+	<env>
+		<!-- <CATALINA_OPTS>${catalina.opts.debug}</CATALINA_OPTS> -->
+	</env>
+	....
+	<ports>
+		<port>${docker.tomcat.port.external}:${docker.tomcat.port.internal}</port>
+		<!-- <port>${aps.debug.port}:${aps.debug.port}</port> -->
+	</ports>					
+```
+
+Another good practice could be creating a separated Maven module with a `pom.xml` totally dedicatd to your production release.
+
+## Changing the default extensions deployment method
+ By default the APS SDK is deploying extensions as a unique JAR embedded in the `activiti-app.war`.
+ If you want to deploy your extensions in the `tomcat/lib` folder check out the following steps:
+ 
+ * Remove or comment the `aps-extensions-jar` dependency in the `/activiti-app-overlay-war/pom.xml`
+ * Uncomment the `COPY` command of the related Dockerfile from the folder: `/activiti-app-overlay-docker/src/main/docker`
+
 # APS Extensions JAR Module
 
 Folder structure is based on the same APS project classpath:
