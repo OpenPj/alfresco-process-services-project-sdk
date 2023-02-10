@@ -19,7 +19,7 @@ USER root
 
 RUN rm -rf $TOMCAT_DIR/webapps/activiti-app
 
-COPY --chown=${USERNAME} extensions/aps-extensions-jar-${project.version}.jar $TOMCAT_DIR/lib
+#COPY --chown=${USERNAME} extensions/aps-extensions-jar-${project.version}.jar $TOMCAT_DIR/lib
 
 COPY --chown=${USERNAME} logging/logback.xml $TOMCAT_DIR/lib
 

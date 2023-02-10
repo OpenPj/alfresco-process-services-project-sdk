@@ -1,4 +1,4 @@
-# Alfresco Process Services SDK Project 2.1.9
+# Alfresco Process Services SDK Project 2.2.0
 
 The project consists of the following Maven submodules:
 
@@ -13,7 +13,7 @@ The project consists of the following Maven submodules:
 
 # Prerequisites
  * OpenJDK 11
- * Apache Maven 3.8.7
+ * Apache Maven 3.9.0
  * Docker (optional)
  * Put valid  _activiti.lic_  and  _transform.lic_  (or  _Aspose.Total.Java.lic_  )  in the `/license` folder for running unit / integration tests and for building containers 
  * Access to the Alfresco Nexus Repositories (credentials provided by Alfresco)
@@ -63,6 +63,32 @@ Full Maven lifecycle command deploying also the Activiti Admin app without rebui
 
  * `mvn docker:stop -Pactiviti-admin`
 
+## Remote Debugging
+
+A debug port is available on port `5005` from the `aps-sdk/alfresco-process-services` container including the custom `activiti-app.war`.
+
+Remember to eventually disable remote debugging for your production release commenting `CATALINA_OPTS` and `port` elements in the `/activiti-app-overlay-docker/pom.xml` as shown in the following snippets:
+
+```xml
+<run>
+	<env>
+		<!-- <CATALINA_OPTS>${catalina.opts.debug}</CATALINA_OPTS> -->
+	</env>
+	....
+	<ports>
+		<port>${docker.tomcat.port.external}:${docker.tomcat.port.internal}</port>
+		<!-- <port>${aps.debug.port}:${aps.debug.port}</port> -->
+	</ports>					
+```
+
+Another good practice could be creating a separated Maven module with a `pom.xml` totally dedicatd to build your container for production release.
+
+## Changing the default extensions deployment method
+By default the APS SDK is deploying extensions as a unique JAR embedded in the `activiti-app.war`.
+If you want to deploy your extensions in the `tomcat/lib` folder check out the following steps:
+
+ * Remove or comment the `aps-extensions-jar` dependency in the `/activiti-app-overlay-war/pom.xml`
+ * Uncomment the `COPY` command of the related Dockerfile from the folder: `/activiti-app-overlay-docker/src/main/docker`
 
 # APS Extensions JAR Module
 
@@ -139,7 +165,8 @@ Put your Java test classes in the following package:
 # Supported Maven Profiles for dependencies management and packaging (JAR, WAR and Docker containers)
 
 In order to build the project, you can declare a Maven profile related to a specific APS version:
- * `aps2.3.5` (APS 2.3.5 - default)
+ * `aps2.3.6` (APS 2.3.6 - default)
+ * `aps2.3.5` (APS 2.3.5)
  * `aps2.3.4` (APS 2.3.4)
  * `aps2.3.3` (APS 2.3.3)
  * `aps2.3.2` (APS 2.3.2)
@@ -151,7 +178,7 @@ In order to build the project, you can declare a Maven profile related to a spec
  * `aps2.0.1` (APS 2.0.1)
  * `aps2.0.0` (APS 2.0.0) 
 
-Build and test with unit tests execution for APS 2.3.5 with:
+Build and test with unit tests execution for APS 2.3.6 with:
 `mvn clean test`
 
 Build and test with unit tests execution for APS 2.3.1 with:
