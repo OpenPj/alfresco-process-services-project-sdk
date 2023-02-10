@@ -70,7 +70,6 @@ A debug port is available on port `5005` from the `aps-sdk/alfresco-process-serv
 Remember to eventually disable remote debugging for your production release commenting `CATALINA_OPTS` and `port` elements in the `/activiti-app-overlay-docker/pom.xml` as shown in the following snippets:
 
 ```xml
-
 <run>
 	<env>
 		<!-- <CATALINA_OPTS>${catalina.opts.debug}</CATALINA_OPTS> -->
@@ -82,7 +81,7 @@ Remember to eventually disable remote debugging for your production release comm
 	</ports>					
 ```
 
-Another good practice could be creating a separated Maven module with a `pom.xml` totally dedicatd to your production release.
+Another good practice could be creating a separated Maven module with a `pom.xml` totally dedicatd to build your container for production release.
 
 ## Changing the default extensions deployment method
  By default the APS SDK is deploying extensions as a unique JAR embedded in the `activiti-app.war`.
