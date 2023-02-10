@@ -54,7 +54,7 @@ public class FourEyesAppIT {
 	protected static final String BASE_CONTEXT_PATH = "/activiti-app/api";
 	protected static final int BASE_PATH_PORT = 8080;
 
-	protected static final String appZipFile = "aps-extensions-jar-1.8.0-SNAPSHOT-App.zip";
+	protected static final String appZipFile = "aps-extensions-jar-1.8.0-App.zip";
 
 	protected static final String ACTIVITI_APP_BASE_PATH = BASE_PATH_PROTOCOL + "://" + BASE_PATH_HOSTNAME + ":"
 			+ BASE_PATH_PORT + BASE_CONTEXT_PATH;
