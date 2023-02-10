@@ -13,7 +13,7 @@
 	<artifactId>aps-project</artifactId>
 	<version>1.8.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>Alfresco Process Services - SDK Project</name>
+	<name>Alfresco Process Services - 1.x - SDK Project</name>
 
 	<developers>
 		<developer>
@@ -28,7 +28,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
-		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+		<maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
 		<maven-war-plugin.version>3.3.2</maven-war-plugin.version>
 		<docker-maven-plugin.version>0.41.0</docker-maven-plugin.version>
 		<maven-dependency-plugin.version>3.5.0</maven-dependency-plugin.version>
@@ -38,9 +38,8 @@
 		<maven-failsafe-plugin.version>3.0.0-M8</maven-failsafe-plugin.version>
 		<maven-antrun-plugin.version>3.1.0</maven-antrun-plugin.version>
 		<maven-eclipse-lifecycle-mapping.version>1.0.0</maven-eclipse-lifecycle-mapping.version>
-		<stax-ex.version>2.0.1</stax-ex.version>
 		<jaxb.api.version>2.3.0</jaxb.api.version>
-		<jaxb.runtime.version>2.3.2</jaxb.runtime.version>
+		<jaxb.runtime.version>2.3.0</jaxb.runtime.version>
 		<maven.enforcer.plugin.version>3.2.1</maven.enforcer.plugin.version>
 		<skip.integration.test>false</skip.integration.test>
 		<skip.swagger.client.generation>false</skip.swagger.client.generation>
@@ -48,27 +47,6 @@
 		<copy-rename-maven-plugin.version>1.0</copy-rename-maven-plugin.version>
 		<docker-maven-plugin.skip.save>false</docker-maven-plugin.skip.save>
 	</properties>
-
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.jvnet.staxex</groupId>
-				<artifactId>stax-ex</artifactId>
-				<version>${stax-ex.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>javax.xml.bind</groupId>
-				<artifactId>jaxb-api</artifactId>
-				<version>${jaxb.api.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.glassfish.jaxb</groupId>
-				<artifactId>jaxb-runtime</artifactId>
-				<version>${jaxb.runtime.version}</version>
-				<scope>runtime</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 
 	<profiles>
 

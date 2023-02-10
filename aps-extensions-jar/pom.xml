@@ -1,4 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>aps-extensions-jar</artifactId>
 	<packaging>jar</packaging>
@@ -235,7 +237,7 @@
 							<descriptors>
 								<descriptor>src/main/assembly/assembly.xml</descriptor>
 							</descriptors>
-							<!-- if you have special character issues, this is an option to play
+							<!-- if you have special character issues, this is an option to play 
 								with. not required in most cases -->
 							<!-- <archiverConfig> <encoding>UTF-8</encoding> </archiverConfig> -->
 						</configuration>
@@ -279,8 +281,11 @@
 						<phase>generate-test-resources</phase>
 						<configuration>
 							<target>
-								<copy todir="${project.basedir}/src/test/resources/activiti" overwrite="true">
-									<file file="${project.basedir}/src/test/resources/activiti/${aps.version}/version.properties" />
+								<copy
+									todir="${project.basedir}/src/test/resources/activiti"
+									overwrite="true">
+									<file
+										file="${project.basedir}/src/test/resources/activiti/${aps.version}/version.properties" />
 								</copy>
 							</target>
 						</configuration>
