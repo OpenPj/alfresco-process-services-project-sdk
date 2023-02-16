@@ -43,6 +43,11 @@ The project consists of the following Maven submodules:
 	  <username>yourAlfrescoUsername</username>
 	  <password>yourAlfrescoPassword</password>
 	</server>
+	<server>
+	  <id>alfresco-artifacts-repository</id>
+	  <username>yourAlfrescoUsername</username>
+	  <password>yourAlfrescoPassword</password>
+	</server>
   ```
   
 # Quickstart
