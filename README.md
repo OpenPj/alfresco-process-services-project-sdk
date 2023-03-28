@@ -1,4 +1,4 @@
-# Alfresco Process Services SDK Project 2.2.0
+# Alfresco Process Services SDK Project 2.2.1
 
 The project consists of the following Maven submodules:
 
@@ -13,7 +13,7 @@ The project consists of the following Maven submodules:
 
 # Prerequisites
  * OpenJDK 11
- * Apache Maven 3.9.0
+ * Apache Maven 3.9.1
  * Docker (optional)
  * Put valid  _activiti.lic_  and  _transform.lic_  (or  _Aspose.Total.Java.lic_  )  in the `/license` folder for running unit / integration tests and for building containers 
  * Access to the Alfresco Nexus Repositories (credentials provided by Alfresco)
@@ -165,7 +165,8 @@ Put your Java test classes in the following package:
 # Supported Maven Profiles for dependencies management and packaging (JAR, WAR and Docker containers)
 
 In order to build the project, you can declare a Maven profile related to a specific APS version:
- * `aps2.3.6` (APS 2.3.6 - default)
+ * `aps2.3.7` (APS 2.3.7 - default)
+ * `aps2.3.6` (APS 2.3.6)
  * `aps2.3.5` (APS 2.3.5)
  * `aps2.3.4` (APS 2.3.4)
  * `aps2.3.3` (APS 2.3.3)
@@ -178,7 +179,7 @@ In order to build the project, you can declare a Maven profile related to a spec
  * `aps2.0.1` (APS 2.0.1)
  * `aps2.0.0` (APS 2.0.0) 
 
-Build and test with unit tests execution for APS 2.3.6 with:
+Build and test with unit tests execution for APS 2.3.7 with:
 `mvn clean test`
 
 Build and test with unit tests execution for APS 2.3.1 with:
@@ -218,7 +219,10 @@ Skip the build of the Activiti Admin container with:
  * Test your extensions with a consistent APS architecture running with Docker volumes
 
 # Contributors
-Thanks to Luca Stancapiano for testing and contributing on recent improvements. 
+ * Jeff Potts: updated the documentation
+ * Luca Stancapiano: testing and suggested new features
+ * Bindu Wavell: testing and created tools for introducing new capabilities
+ * Stanley Arnold: Fixed the Maven configuration
 
 # Enterprise support
 Official maintenance and support of this project is delivered by Zia Consulting
