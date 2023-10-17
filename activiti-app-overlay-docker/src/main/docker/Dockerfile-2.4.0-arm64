@@ -1,4 +1,4 @@
-FROM tomcat:9-jdk11-openjdk
+FROM tomcat:9-jdk17-openjdk
 
 ENV ACTIVITI_DATASOURCE_USERNAME: ${docker.aps.database.username}
 ENV ACTIVITI_DATASOURCE_PASSWORD: ${docker.aps.database.password}
