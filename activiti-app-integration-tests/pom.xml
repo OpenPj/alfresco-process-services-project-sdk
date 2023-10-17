@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>org.alfresco.activiti</groupId>
 		<artifactId>aps-project</artifactId>
-		<version>2.2.2</version>
+		<version>2.3.0-SNAPSHOT</version>
 	</parent>
 
 	<properties>
@@ -57,6 +57,11 @@
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>${maven-compiler-plugin.version}</version>
 				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>${maven-dependency-plugin.version}</version>
+				</plugin>	
 			</plugins>
 		</pluginManagement>
 		<plugins>
@@ -86,6 +91,7 @@
 				</executions>
 			</plugin>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
 				<executions>
 					<execution>
@@ -121,5 +127,46 @@
 			<url>https://jitpack.io</url>
 		</repository>
 	</repositories>
-
+	
+	<profiles>
+		<profile>
+			<id>only-eclipse</id>
+			<activation>
+				<property>
+					<name>m2e.version</name>
+				</property>
+			</activation>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.eclipse.m2e</groupId>
+							<artifactId>lifecycle-mapping</artifactId>
+							<version>${maven-eclipse-lifecycle-mapping.version}</version>
+							<configuration>
+								<lifecycleMappingMetadata>
+									<pluginExecutions>
+										<pluginExecution>
+											<pluginExecutionFilter>
+												<groupId>org.apache.maven.plugins</groupId>
+												<artifactId>maven-dependency-plugin</artifactId>
+												<versionRange>${maven-dependency-plugin.version}</versionRange>		
+												<goals>
+													<goal>copy</goal>
+												</goals>
+											</pluginExecutionFilter>
+											<action>
+												<ignore />
+											</action>
+										</pluginExecution>
+									</pluginExecutions>
+								</lifecycleMappingMetadata>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
+	</profiles>
+	
 </project>

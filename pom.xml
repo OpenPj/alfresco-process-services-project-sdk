@@ -9,7 +9,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.alfresco.activiti</groupId>
 	<artifactId>aps-project</artifactId>
-	<version>2.2.2</version>
+	<version>2.3.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>APS - SDK Project</name>
 
@@ -24,21 +24,17 @@
 		<webVersion>4.0</webVersion>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<maven.compiler.source>11</maven.compiler.source>
-		<maven.compiler.target>11</maven.compiler.target>
 		<maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
-		<maven-war-plugin.version>3.3.2</maven-war-plugin.version>
-		<docker-maven-plugin.version>0.43.0</docker-maven-plugin.version>
+		<maven-war-plugin.version>3.4.0</maven-war-plugin.version>
+		<docker-maven-plugin.version>0.43.4</docker-maven-plugin.version>
 		<maven-dependency-plugin.version>3.6.0</maven-dependency-plugin.version>
 		<maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
 		<maven-assembly-plugin.version>3.6.0</maven-assembly-plugin.version>
-		<maven-surefire-plugin.version>3.1.0</maven-surefire-plugin.version>
-		<maven-failsafe-plugin.version>3.1.0</maven-failsafe-plugin.version>
+		<maven-surefire-plugin.version>3.1.2</maven-surefire-plugin.version>
+		<maven-failsafe-plugin.version>3.1.2</maven-failsafe-plugin.version>
 		<maven-antrun-plugin.version>3.1.0</maven-antrun-plugin.version>
 		<maven-eclipse-lifecycle-mapping.version>1.0.0</maven-eclipse-lifecycle-mapping.version>
-		<jaxb.api.version>2.3.0</jaxb.api.version>
-		<jaxb.runtime.version>2.3.2</jaxb.runtime.version>
-		<maven.enforcer.plugin.version>3.3.0</maven.enforcer.plugin.version>
+		<maven.enforcer.plugin.version>3.4.1</maven.enforcer.plugin.version>
 		<junit-jupiter.version>5.9.2</junit-jupiter.version>
 		<skip.integration.test>false</skip.integration.test>
 		<exec-maven-plugin.version>3.1.0</exec-maven-plugin.version>
@@ -57,6 +53,8 @@
 
 			<properties>
 				<!-- APS 2.0.0 -->
+				<maven.compiler.source>11</maven.compiler.source>
+				<maven.compiler.target>11</maven.compiler.target>
 				<aps.version>2.0.0</aps.version>
 				<aps.docker.version>2.0.0</aps.docker.version>
 				<aps.version.major>2</aps.version.major>
@@ -90,6 +88,8 @@
 
 			<properties>
 				<!-- APS 2.0.1 -->
+				<maven.compiler.source>11</maven.compiler.source>
+				<maven.compiler.target>11</maven.compiler.target>
 				<aps.version>2.0.1</aps.version>
 				<aps.docker.version>2.0.1</aps.docker.version>
 				<aps.version.major>2</aps.version.major>
@@ -123,6 +123,8 @@
 
 			<properties>
 				<!-- APS 2.1.0 -->
+				<maven.compiler.source>11</maven.compiler.source>
+				<maven.compiler.target>11</maven.compiler.target>
 				<aps.version>2.1.0</aps.version>
 				<aps.docker.version>2.1.0</aps.docker.version>
 				<aps.version.major>2</aps.version.major>
@@ -157,6 +159,8 @@
 
 			<properties>
 				<!-- APS 2.2.0 -->
+				<maven.compiler.source>11</maven.compiler.source>
+				<maven.compiler.target>11</maven.compiler.target>
 				<aps.version>2.2.0</aps.version>
 				<aps.docker.version>2.2.0</aps.docker.version>
 				<aps.version.major>2</aps.version.major>
@@ -191,6 +195,8 @@
 
 			<properties>
 				<!-- APS 2.2.0.1 -->
+				<maven.compiler.source>11</maven.compiler.source>
+				<maven.compiler.target>11</maven.compiler.target>
 				<aps.version>2.2.0.1</aps.version>
 				<aps.docker.version>2.2.0.1</aps.docker.version>
 				<aps.version.major>2</aps.version.major>
@@ -225,6 +231,8 @@
 
 			<properties>
 				<!-- APS 2.3.0 -->
+				<maven.compiler.source>11</maven.compiler.source>
+				<maven.compiler.target>11</maven.compiler.target>
 				<aps.version>2.3.0</aps.version>
 				<aps.docker.version>2.3.0</aps.docker.version>
 				<aps.version.major>2</aps.version.major>
@@ -259,6 +267,8 @@
 
 			<properties>
 				<!-- APS 2.3.1 -->
+				<maven.compiler.source>11</maven.compiler.source>
+				<maven.compiler.target>11</maven.compiler.target>
 				<aps.version>2.3.1</aps.version>
 				<aps.docker.version>2.3.1</aps.docker.version>
 				<aps.version.major>2</aps.version.major>
@@ -293,6 +303,8 @@
 
 			<properties>
 				<!-- APS 2.3.2 -->
+				<maven.compiler.source>11</maven.compiler.source>
+				<maven.compiler.target>11</maven.compiler.target>
 				<aps.version>2.3.2</aps.version>
 				<aps.docker.version>2.3.2</aps.docker.version>
 				<aps.version.major>2</aps.version.major>
@@ -327,6 +339,8 @@
 
 			<properties>
 				<!-- APS 2.3.3 -->
+				<maven.compiler.source>11</maven.compiler.source>
+				<maven.compiler.target>11</maven.compiler.target>
 				<aps.version>2.3.3</aps.version>
 				<aps.docker.version>2.3.3</aps.docker.version>
 				<aps.version.major>2</aps.version.major>
@@ -361,6 +375,8 @@
 
 			<properties>
 				<!-- APS 2.3.4 -->
+				<maven.compiler.source>11</maven.compiler.source>
+				<maven.compiler.target>11</maven.compiler.target>
 				<aps.version>2.3.4</aps.version>
 				<aps.docker.version>2.3.4</aps.docker.version>
 				<aps.version.major>2</aps.version.major>
@@ -394,6 +410,8 @@
 
 			<properties>
 				<!-- APS 2.3.5 -->
+				<maven.compiler.source>11</maven.compiler.source>
+				<maven.compiler.target>11</maven.compiler.target>
 				<aps.version>2.3.5</aps.version>
 				<aps.docker.version>2.3.5</aps.docker.version>
 				<aps.version.major>2</aps.version.major>
@@ -428,6 +446,8 @@
 
 			<properties>
 				<!-- APS 2.3.6 -->
+				<maven.compiler.source>11</maven.compiler.source>
+				<maven.compiler.target>11</maven.compiler.target>
 				<aps.version>2.3.6</aps.version>
 				<aps.docker.version>2.3.6</aps.docker.version>
 				<aps.version.major>2</aps.version.major>
@@ -462,6 +482,8 @@
 
 			<properties>
 				<!-- APS 2.3.7 -->
+				<maven.compiler.source>11</maven.compiler.source>
+				<maven.compiler.target>11</maven.compiler.target>
 				<aps.version>2.3.7</aps.version>
 				<aps.docker.version>2.3.7</aps.docker.version>
 				<aps.version.major>2</aps.version.major>
@@ -491,11 +513,13 @@
 		<profile>
 			<id>aps2.3.8</id>
 			<activation>
-				<activeByDefault>true</activeByDefault>
+				<activeByDefault>false</activeByDefault>
 			</activation>
 
 			<properties>
 				<!-- APS 2.3.8 -->
+				<maven.compiler.source>11</maven.compiler.source>
+				<maven.compiler.target>11</maven.compiler.target>
 				<aps.version>2.3.8</aps.version>
 				<aps.docker.version>2.3.8</aps.docker.version>
 				<aps.version.major>2</aps.version.major>
@@ -513,6 +537,114 @@
 				<elasticsearch-rest-client.version>7.17.6</elasticsearch-rest-client.version>
 				<hibernate.version>5.4.32.Final</hibernate.version>
 				<h2.version>2.1.214</h2.version>
+				<postgresql.version>13.1</postgresql.version>
+				<skipITs>false</skipITs>
+				<skip.integration.test>false</skip.integration.test>
+				<skip.swagger.client.generation>false</skip.swagger.client.generation>
+				<docker-maven-plugin.skip.save>false</docker-maven-plugin.skip.save>
+				<docker-maven-plugin.build.save>false</docker-maven-plugin.build.save>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>aps2.3.9</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+
+			<properties>
+				<!-- APS 2.3.9 -->
+				<maven.compiler.source>11</maven.compiler.source>
+				<maven.compiler.target>11</maven.compiler.target>
+				<aps.version>2.3.9</aps.version>
+				<aps.docker.version>2.3.9</aps.docker.version>
+				<aps.version.major>2</aps.version.major>
+				<aps.version.minor>3</aps.version.minor>
+				<aps.version.revision>9</aps.version.revision>
+				<aps.2x.client.version>v2.3.7</aps.2x.client.version>
+				<opencsv.version>5.7.1</opencsv.version>
+				<jackson.version>2.14.1</jackson.version>
+				<bcprov.version>1.70</bcprov.version>
+				<activiti.version>7.10.0</activiti.version>
+				<spring.version>5.3.27.RELEASE</spring.version>
+				<spring-boot.version>2.5.15</spring-boot.version>
+				<spring-security.version>5.7.8</spring-security.version>
+				<elasticsearch.version>7.17.6</elasticsearch.version>
+				<elasticsearch-rest-client.version>7.17.6</elasticsearch-rest-client.version>
+				<hibernate.version>5.4.32.Final</hibernate.version>
+				<h2.version>2.1.214</h2.version>
+				<postgresql.version>13.1</postgresql.version>
+				<skipITs>false</skipITs>
+				<skip.integration.test>false</skip.integration.test>
+				<skip.swagger.client.generation>false</skip.swagger.client.generation>
+				<docker-maven-plugin.skip.save>false</docker-maven-plugin.skip.save>
+				<docker-maven-plugin.build.save>false</docker-maven-plugin.build.save>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>aps2.4.0</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+
+			<properties>
+				<!-- APS 2.4.0 -->
+				<maven.compiler.source>17</maven.compiler.source>
+				<maven.compiler.target>17</maven.compiler.target>
+				<aps.version>2.4.0</aps.version>
+				<aps.docker.version>2.4.0</aps.docker.version>
+				<aps.version.major>2</aps.version.major>
+				<aps.version.minor>4</aps.version.minor>
+				<aps.version.revision>0</aps.version.revision>
+				<aps.2x.client.version>v2.3.7</aps.2x.client.version>
+				<opencsv.version>5.7.1</opencsv.version>
+				<jackson.version>2.14.1</jackson.version>
+				<bcprov.version>1.70</bcprov.version>
+				<activiti.version>7.11.1-alpha.1</activiti.version>
+				<spring.version>5.3.29.RELEASE</spring.version>
+				<spring-boot.version>2.7.14</spring-boot.version>
+				<spring-security.version>5.8.5</spring-security.version>
+				<elasticsearch.version>7.17.6</elasticsearch.version>
+				<elasticsearch-rest-client.version>7.17.6</elasticsearch-rest-client.version>
+				<hibernate.version>5.4.32.Final</hibernate.version>
+				<h2.version>2.2.220</h2.version>
+				<postgresql.version>13.1</postgresql.version>
+				<skipITs>false</skipITs>
+				<skip.integration.test>false</skip.integration.test>
+				<skip.swagger.client.generation>false</skip.swagger.client.generation>
+				<docker-maven-plugin.skip.save>false</docker-maven-plugin.skip.save>
+				<docker-maven-plugin.build.save>false</docker-maven-plugin.build.save>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>aps2.4.1</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+
+			<properties>
+				<!-- APS 2.4.1 -->
+				<maven.compiler.source>17</maven.compiler.source>
+				<maven.compiler.target>17</maven.compiler.target>
+				<aps.version>2.4.1</aps.version>
+				<aps.docker.version>2.4.1</aps.docker.version>
+				<aps.version.major>2</aps.version.major>
+				<aps.version.minor>4</aps.version.minor>
+				<aps.version.revision>1</aps.version.revision>
+				<aps.2x.client.version>v2.3.7</aps.2x.client.version>
+				<opencsv.version>5.8</opencsv.version>
+				<jackson.version>2.14.1</jackson.version>
+				<bcprov.version>1.70</bcprov.version>
+				<activiti.version>7.11.1-alpha.1</activiti.version>
+				<spring.version>5.3.29.RELEASE</spring.version>
+				<spring-boot.version>2.7.14</spring-boot.version>
+				<spring-security.version>5.8.5</spring-security.version>
+				<elasticsearch.version>7.17.12</elasticsearch.version>
+				<elasticsearch-rest-client.version>7.17.12</elasticsearch-rest-client.version>
+				<hibernate.version>5.4.32.Final</hibernate.version>
+				<h2.version>2.2.220</h2.version>
 				<postgresql.version>13.1</postgresql.version>
 				<skipITs>false</skipITs>
 				<skip.integration.test>false</skip.integration.test>
