@@ -1,0 +1,105 @@
+version: "3.8"
+services:
+  aps-admin:
+    image: aps-sdk/alfresco-process-services-admin:development
+    hostname: aps-admin
+    networks:
+      - aps-network
+    build:
+      dockerfile: ./${docker.compose.dockerfile.activiti.admin}
+      context: ${project.parent.basedir}/target/admin
+      tags:
+        - "latest"
+        - "${modified.version}"
+    ports:
+      - ${docker.aps-admin.tomcat.port.internal}:${docker.aps-admin.tomcat.port.external}
+    healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost:${docker.aps-admin.tomcat.port.external}/activiti-admin"]
+        interval: 30s
+        timeout: 10s
+        retries: 5
+    depends_on:
+      aps-current-project:
+        condition: service_healthy
+      
+  aps-current-project:
+    image: aps-sdk/alfresco-process-services:development
+    hostname: aps-current-project
+    networks:
+      - aps-network
+    build:
+      dockerfile: ./${docker.compose.dockerfile.activiti.app}
+      context: ../../target
+      tags:
+        - "latest"
+        - "${modified.version}"
+    environment:
+      CATALINA_OPTS: ${catalina.opts.debug}
+    ports:
+      - ${docker.tomcat.port.external}:${docker.tomcat.port.internal}
+      - ${aps.debug.port}:${aps.debug.port}
+    volumes:
+      - aps-contentstore-volume:/act_data
+    healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost:${docker.tomcat.port.external}/activiti-app"]
+        interval: 30s
+        timeout: 10s
+        retries: 5
+    depends_on:
+      postgre:
+        condition: service_healthy
+      elasticsearch:
+        condition: service_healthy
+  
+  postgre:
+    image: ${docker.aps.database.image}
+    hostname: postgre
+    networks:
+      - aps-network
+    environment:
+      POSTGRES_DB: ${docker.aps.database.server.db.name}
+      POSTGRES_USER: ${docker.aps.database.username}
+      POSTGRES_PASSWORD: ${docker.aps.database.password}
+    ports:
+      - ${docker.aps.database.port.internal}:${docker.aps.database.port.external}
+    volumes:
+      - aps-db-volume:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d ${docker.aps.database.server.db.name} -U ${docker.aps.database.username}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  
+  elasticsearch:
+    image: elasticsearch:${elasticsearch.version}
+    hostname: elasticsearch
+    networks:
+      - aps-network
+    environment:
+      discovery.type: ${docker.aps.es.discovery.type}
+      ES_JAVA_OPTS: ${docker.aps.es.memory.settings}
+    ports:
+      - ${docker.es.service.port.internal}:${docker.es.service.port.external}
+      - ${docker.es.discovery.port.internal}:${docker.es.discovery.port.external}
+    volumes:
+      - aps-es-volume:/usr/share/elasticsearch/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:${docker.es.service.port.external}/_cat/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      
+networks:
+  aps-network:
+    name: aps-network
+
+volumes:
+  aps-db-volume:
+    name: aps-db-volume
+    external: true
+  aps-contentstore-volume:
+    name: aps-contentstore-volume
+    external: true
+  aps-es-volume:
+    name: aps-es-volume
+    external: true

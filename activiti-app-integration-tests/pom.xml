@@ -7,11 +7,11 @@
 	<parent>
 		<groupId>org.alfresco.activiti</groupId>
 		<artifactId>aps-project</artifactId>
-		<version>2.3.1</version>
+		<version>2.4.0-SNAPSHOT</version>
 	</parent>
 
 	<properties>
-		<httpclient5.version>5.2.1</httpclient5.version>
+		<httpclient5.version>${integration.test.httpclient5.version}</httpclient5.version>
 	</properties>
 
 	<dependencyManagement>
@@ -72,23 +72,6 @@
 					<source>${maven.compiler.source}</source>
 					<target>${maven.compiler.target}</target>
 				</configuration>
-			</plugin>
-			<plugin>
-				<artifactId>maven-failsafe-plugin</artifactId>
-				<configuration>
-					<skip>${skip.integration.test}</skip>
-					<argLine>
-						--illegal-access=permit
-					</argLine>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>integration-test</goal>
-							<goal>verify</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -165,6 +148,59 @@
 						</plugin>
 					</plugins>
 				</pluginManagement>
+			</build>
+		</profile>
+		<profile>
+			<id>failsafe-openjdk-17</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+				<jdk>17</jdk>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<configuration>
+					<skip>${skip.integration.test}</skip>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>integration-test</goal>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>failsafe-openjdk-11</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+				<jdk>11</jdk>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<configuration>
+					<skip>${skip.integration.test}</skip>
+					<argLine>
+						--illegal-access=permit
+					</argLine>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>integration-test</goal>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+				</plugins>
 			</build>
 		</profile>
 	</profiles>

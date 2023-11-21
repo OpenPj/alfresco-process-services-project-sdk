@@ -1,4 +1,4 @@
-# Alfresco Process Services SDK Project 2.3.1
+# Alfresco Process Services SDK Project 2.4.0-SNAPSHOT
 
 The project consists of the following Maven submodules:
 

@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>org.alfresco.activiti</groupId>
 		<artifactId>aps-project</artifactId>
-		<version>2.3.1</version>
+		<version>2.4.0-SNAPSHOT</version>
 	</parent>
 
 	<properties>
@@ -70,6 +70,12 @@
 		
 		<aps.debug.port>5005</aps.debug.port>
 		<catalina.opts.debug>-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=0.0.0.0:${aps.debug.port}</catalina.opts.debug>
+		
+		<docker.compose.dockerfile.activiti.app>Dockerfile-${aps.version}</docker.compose.dockerfile.activiti.app>
+		<docker.compose.dockerfile.activiti.admin>Dockerfile-admin-${aps.version}</docker.compose.dockerfile.activiti.admin>
+		
+		<custom2.parent.project.basedir>${project.parent.basedir}</custom2.parent.project.basedir>
+		
 	</properties>
 
 	<build>
@@ -99,9 +105,57 @@
 						</lifecycleMappingMetadata>
 					</configuration>
 				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>${maven-antrun-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.gmaven</groupId>
+					<artifactId>groovy-maven-plugin</artifactId>
+					<version>${gmaven-plugin.version}</version>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 		<plugins>
+			<plugin>
+			  <groupId>org.codehaus.gmaven</groupId>
+			  <artifactId>groovy-maven-plugin</artifactId>
+			  <executions>
+			    <execution>
+			      <id>set-project-parent-basedir-for-ant</id>
+			      <phase>validate</phase>
+			      <goals>
+			        <goal>execute</goal>
+			      </goals>
+			      <configuration>
+			        <source>
+			          project.properties.setProperty('ant.project.parent.basedir', project.parent.basedir.toString())
+			        </source>
+			      </configuration>
+			    </execution>
+			  </executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+	                <execution>
+						<id>copy-and-rename-dockerfiles</id>
+						<inherited>false</inherited>
+	                    <phase>package</phase>
+	                    <configuration>
+	                        <target>
+	                            <copy file="${ant.project.parent.basedir}/target/${docker.compose.dockerfile.activiti.app}" tofile="${ant.project.parent.basedir}/target/Dockerfile" />
+	                            <copy file="${ant.project.parent.basedir}/target/admin/${docker.compose.dockerfile.activiti.admin}" tofile="${ant.project.parent.basedir}/target/admin/Dockerfile" />
+	                        </target>
+	                    </configuration>
+	                    <goals>
+	                        <goal>run</goal>
+	                    </goals>
+	                </execution>
+            	</executions>
+			</plugin>
 			<plugin>
 				<artifactId>maven-dependency-plugin</artifactId>
 				<executions>
@@ -185,7 +239,7 @@
 				<executions>
 					<execution>
 						<id>copy-and-filter-docker-resources</id>
-						<phase>package</phase>
+						<phase>prepare-package</phase>
 						<goals>
 							<goal>copy-resources</goal>
 						</goals>
@@ -200,6 +254,19 @@
 										<exclude>**/*.so</exclude>
 										<exclude>**/*.gz</exclude>
 									</excludes>
+									<includes>
+										<include>**/Dockerfile-${aps.version}*</include>
+										<include>**/Dockerfile-admin-${aps.version}*</include>
+										<include>**/docker-compose/*.*</include>
+										<include>**/config/*.*</include>
+										<include>**/license/*.*</include>
+										<include>**/logging/*.*</include>
+										<include>**/properties/*.*</include>
+										<include>**/admin</include>
+									    <include>**/admin/properties/*.*</include>
+									    <include>**/admin/tomcat/*.*</include>
+									    <include>**/admin/tomcat/conf/*.*</include>
+									</includes>
 								</resource>
 							</resources>
 							<nonFilteredFileExtensions>
@@ -271,10 +338,10 @@
 									<platforms>linux/amd64, linux/arm64</platforms>
 								</buildOptions>
 								<contextDir>${project.parent.basedir}/target</contextDir>
-								<dockerFile>Dockerfile-${aps.version}</dockerFile>
+								<dockerFile>${docker.compose.dockerfile.activiti.app}</dockerFile>
 								<tags>
 									<tag>latest</tag>
-									<tag>${project.version}</tag>
+									<tag>${modified.version}</tag>
 								</tags>
 							</build>
 							<run>
@@ -429,37 +496,11 @@
 			<properties>
 				<docker-maven-plugin.skip.save>true</docker-maven-plugin.skip.save>
 				<docker-maven-plugin.build.save>true</docker-maven-plugin.build.save>
+				<docker.compose.dockerfile.activiti.app>Dockerfile-${aps.version}-arm64</docker.compose.dockerfile.activiti.app>
+				<docker.compose.dockerfile.activiti.admin>Dockerfile-admin-${aps.version}-arm64</docker.compose.dockerfile.activiti.admin>
 			</properties>
 			<build>
 				<plugins>
-					<plugin>
-						<groupId>com.coderplus.maven.plugins</groupId>
-						<artifactId>copy-rename-maven-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>copy-Dockerfile-activiti-app</id>
-								<phase>package</phase>
-								<goals>
-									<goal>copy</goal>
-								</goals>
-								<configuration>
-									<sourceFile>${project.parent.basedir}/target/Dockerfile-${aps.version}-arm64</sourceFile>
-									<destinationFile>${project.parent.basedir}/target/Dockerfile</destinationFile>
-								</configuration>
-							</execution>
-							<execution>
-								<id>copy-Dockerfile-activiti-admin</id>
-								<phase>package</phase>
-								<goals>
-									<goal>copy</goal>
-								</goals>
-								<configuration>
-									<sourceFile>${project.parent.basedir}/target/admin/Dockerfile-admin-${aps.version}-arm64</sourceFile>
-									<destinationFile>${project.parent.basedir}/target/admin/Dockerfile</destinationFile>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
 					<plugin>
 						<groupId>org.codehaus.mojo</groupId>
 						<artifactId>exec-maven-plugin</artifactId>
@@ -476,6 +517,7 @@
 									<arguments>
 										<argument>buildx</argument>
 										<argument>build</argument>
+										<argument>--file=${docker.compose.dockerfile.activiti.app}</argument>
 										<argument>--platform=linux/arm64</argument>
 										<argument>-taps-sdk/alfresco-process-services:development</argument>
 										<argument>-tlatest</argument>
@@ -500,6 +542,7 @@
 									<arguments>
 										<argument>buildx</argument>
 										<argument>build</argument>
+										<argument>--file=${docker.compose.dockerfile.activiti.admin}</argument>
 										<argument>--platform=linux/arm64</argument>
 										<argument>-taps-sdk/alfresco-process-services-admin:development</argument>
 										<argument>-tlatest</argument>
@@ -543,10 +586,10 @@
 									<build>
 										<skip>${skip.admin}</skip>
 										<contextDir>${project.parent.basedir}/target/admin</contextDir>
-										<dockerFile>Dockerfile-admin-${aps.version}</dockerFile>
+										<dockerFile>${docker.compose.dockerfile.activiti.admin}</dockerFile>
 										<tags>
 											<tag>latest</tag>
-											<tag>${project.version}</tag>
+											<tag>${modified.version}</tag>
 										</tags>
 									</build>
 									<run>
@@ -576,10 +619,10 @@
 											<platforms>linux/amd64, linux/arm64</platforms>
 										</buildOptions>
 										<contextDir>${project.parent.basedir}/target</contextDir>
-										<dockerFile>Dockerfile-${aps.version}</dockerFile>
+										<dockerFile>${docker.compose.dockerfile.activiti.app}</dockerFile>
 										<tags>
 											<tag>latest</tag>
-											<tag>${project.version}</tag>
+											<tag>${modified.version}</tag>
 										</tags>
 										<runCmds>
 											<runCmd>mkdir -p /act_data </runCmd>
@@ -753,5 +796,5 @@
 			</build>
 		</profile>
 	</profiles>
-
+	
 </project>
