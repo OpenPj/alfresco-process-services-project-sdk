@@ -10,10 +10,11 @@ The project consists of the following Maven submodules:
 ## Capabilities
  * Full support of Arm64 CPUs (Apple Silicon M1) with native Docker containers and a transparent Maven profile 
  * Running Docker will also create persistent volumes for each storage component (contentstore, db and ElasticSearch) for making the development approach in APS consistent and reliable
+ * Two different quickstarts: run scripts or using Full Maven lifecycle
 
 # Prerequisites
- * OpenJDK 11 for APS <= 2.3.9
  * OpenJDK 17 for APS >= 2.4.x
+ * OpenJDK 11 for APS <= 2.3.9
  * Apache Maven 3.9.5
  * Docker (optional)
  * Put valid  _activiti.lic_  and  _transform.lic_  (or  _Aspose.Total.Java.lic_  )  in the `/license` folder for running unit / integration tests and for building containers 
@@ -37,8 +38,44 @@ The project consists of the following Maven submodules:
 	  <password>yourAlfrescoPassword</password>
 	</server>
   ```
+  
+# Quickstart using run scripts (Maven + Docker Compose)
 
-# Quickstart
+Run scripts are provided in order to make easier and faster APS platform development. 
+In order to use both these generated Docker Compose templates you can use the following run scripts:
+ 
+ * `run.sh`: for Linux and Mac OS
+ * `run.bat`: for Windows
+ 
+ The APS version is automatically taken from `pom.xml`, you only need to set the APS version enabling the active profile of a specific version.
+ Run scripts support the following commands:
+ 
+ * Usage for Activiti App only: `./run.sh (.bat) {build_start|build_start_it_supported|start|stop|purge|tail|reload_aps|build_test|test}`
+ * Usage for Activiti App with Activiti Admin: `./run.sh (.bat) {build_start_admin|build_start_it_supported_admin|start_admin|stop_admin|purge_admin|tail_admin|reload_aps_admin|build_test_admin|test_admin}`
+
+For building, packaging and deploying APS containers:
+
+ * `./run.sh build_start`
+ 
+Stop all the Docker containers with:
+ 
+ * `./run.sh stop`
+
+For building, packaging and deploying APS containers including Activiti Admin app:
+
+ * `./run.sh build_start_admin`
+ 
+Stop all the Docker containers with:
+
+ * `./run.sh stop_admin`
+ 
+## Docker Compose templates
+Docker compose templates are dynamically generated from the Maven poms for each build in the `target/docker-compose` folder:
+
+ * `target/docker-compose/docker-compose.yml`: deploying Activiti App, Postgres and Elasticsearch
+ * `target/docker-compose/docker-compose-activiti-admin`: deploying Activiti Admin, Activiti App, Postgres and Elasticsearch
+
+# Quickstart using Full Maven Lifecycle (Maven + Docker)
 
 Full Maven lifecycle command:
 
@@ -82,7 +119,7 @@ Remember to eventually disable remote debugging for your production release comm
 	</ports>					
 ```
 
-Another good practice could be creating a separated Maven module with a `pom.xml` totally dedicatd to build your container for production release.
+Another good practice could be creating a separated Maven module with a `pom.xml` totally dedicated to build your container for production.
 
 ## Changing the default extensions deployment method
 By default the APS SDK is deploying extensions as a unique JAR embedded in the `activiti-app.war`.
