@@ -39,7 +39,7 @@ The project consists of the following Maven submodules:
 	</server>
   ```
   
-# Quickstart using run scripts (Maven + Docker Compose)
+# Quickstart using run scripts
 
 Run scripts are provided in order to make easier and faster APS platform development. 
 In order to use both these generated Docker Compose templates you can use the following run scripts:
@@ -75,7 +75,7 @@ Docker compose templates are dynamically generated from the Maven poms for each 
  * `target/docker-compose/docker-compose.yml`: deploying Activiti App, Postgres and Elasticsearch
  * `target/docker-compose/docker-compose-activiti-admin`: deploying Activiti Admin, Activiti App, Postgres and Elasticsearch
 
-# Quickstart using Full Maven Lifecycle (Maven + Docker)
+# Quickstart using Full Maven Lifecycle
 
 Full Maven lifecycle command:
 
