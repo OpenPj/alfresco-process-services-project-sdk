@@ -1,4 +1,4 @@
-# Alfresco Process Services SDK Project 2.4.0-SNAPSHOT
+# Alfresco Process Services SDK Project 2.4.0
 
 The project consists of the following Maven submodules:
 
@@ -15,7 +15,7 @@ The project consists of the following Maven submodules:
 # Prerequisites
  * OpenJDK 17 for APS >= 2.4.x
  * OpenJDK 11 for APS <= 2.3.9
- * Apache Maven 3.9.5
+ * Apache Maven 3.9.6
  * Docker (optional)
  * Put valid  _activiti.lic_  and  _transform.lic_  (or  _Aspose.Total.Java.lic_  )  in the `/license` folder for running unit / integration tests and for building containers 
  * Access to the Alfresco Nexus Repositories (credentials provided by Alfresco)
@@ -45,7 +45,7 @@ Run scripts are provided in order to make easier and faster APS platform develop
 In order to use both these generated Docker Compose templates you can use the following run scripts:
  
  * `run.sh`: for Linux and Mac OS
- * `run.bat`: for Windows
+ * `run.bat`: for Windows (Beta version)
  
  The APS version is automatically taken from `pom.xml`, you only need to set the APS version enabling the active profile of a specific version.
  Run scripts support the following commands:

@@ -9,7 +9,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.alfresco.activiti</groupId>
 	<artifactId>aps-project</artifactId>
-	<version>2.4.0-SNAPSHOT</version>
+	<version>2.4.0</version>
 	<packaging>pom</packaging>
 	<name>APS - SDK Project</name>
 
@@ -24,23 +24,23 @@
 		<webVersion>4.0</webVersion>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
+		<maven-compiler-plugin.version>3.12.1</maven-compiler-plugin.version>
 		<maven-war-plugin.version>3.4.0</maven-war-plugin.version>
 		<docker-maven-plugin.version>0.43.4</docker-maven-plugin.version>
 		<maven-dependency-plugin.version>3.6.1</maven-dependency-plugin.version>
 		<maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
 		<maven-assembly-plugin.version>3.6.0</maven-assembly-plugin.version>
-		<maven-surefire-plugin.version>3.2.2</maven-surefire-plugin.version>
-		<maven-failsafe-plugin.version>3.2.2</maven-failsafe-plugin.version>
+		<maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
+		<maven-failsafe-plugin.version>3.2.5</maven-failsafe-plugin.version>
 		<maven-antrun-plugin.version>3.1.0</maven-antrun-plugin.version>
 		<maven-eclipse-lifecycle-mapping.version>1.0.0</maven-eclipse-lifecycle-mapping.version>
 		<maven.enforcer.plugin.version>3.4.1</maven.enforcer.plugin.version>
 		<junit-jupiter.version>5.10.1</junit-jupiter.version>
 		<skip.integration.test>false</skip.integration.test>
-		<exec-maven-plugin.version>3.1.0</exec-maven-plugin.version>
-		<maven-build-helper.plugin.version>3.4.0</maven-build-helper.plugin.version>
+		<exec-maven-plugin.version>3.1.1</exec-maven-plugin.version>
+		<maven-build-helper.plugin.version>3.5.0</maven-build-helper.plugin.version>
 		<gmaven-plugin.version>2.1.1</gmaven-plugin.version>
-		<integration.test.httpclient5.version>5.2.1</integration.test.httpclient5.version>
+		<integration.test.httpclient5.version>5.2.3</integration.test.httpclient5.version>
 		<docker-maven-plugin.skip.save>false</docker-maven-plugin.skip.save>
 		<skip.admin>false</skip.admin>
 	</properties>
