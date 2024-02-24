@@ -1,4 +1,4 @@
-# Alfresco Process Services SDK Project 2.4.0
+# Alfresco Process Services SDK Project 2.4.1
 
 The project consists of the following Maven submodules:
 
@@ -204,7 +204,8 @@ Put your Java test classes in the following package:
 
 In order to build the project, you can declare a Maven profile related to a specific APS version:
 
- * `aps2.4.2` (APS 2.4.2 - default)
+ * `aps2.4.3` (APS 2.4.3 - default)
+ * `aps2.4.2` (APS 2.4.2)
  * `aps2.4.1` (APS 2.4.1)
  * `aps2.4.0` (APS 2.4.0)
  * `aps2.3.9` (APS 2.3.9)
@@ -223,7 +224,7 @@ In order to build the project, you can declare a Maven profile related to a spec
  * `aps2.0.1` (APS 2.0.1)
  * `aps2.0.0` (APS 2.0.0) 
 
-Build and test with unit tests execution for APS 2.4.2 with:
+Build and test with unit tests execution for APS 2.4.3 with:
 `mvn clean test`
 
 Build and test with unit tests execution for APS 2.3.1 with:

@@ -53,7 +53,7 @@ down_admin() {
 purge() {
     docker volume rm aps-db-volume
     docker volume rm aps-contentstore-volume
-	  docker volume rm aps-es-volume
+	docker volume rm aps-es-volume
 }
 
 purge_admin() {
