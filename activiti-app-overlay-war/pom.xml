@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>org.alfresco.activiti</groupId>
 		<artifactId>aps-project</artifactId>
-		<version>2.4.1</version>
+		<version>3.0.0-SNAPSHOT</version>
 	</parent>
 
 	<dependencies>
@@ -32,7 +32,10 @@
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
 				<configuration>
-					<packagingExcludes>com.activiti/</packagingExcludes>
+					<packagingExcludes>
+						com.activiti/,
+						WEB-INF/lib/slf4j-api-2.0.11.jar
+					</packagingExcludes>
 					<workDirectory>./target/activiti-app</workDirectory>
 				</configuration>
 			</plugin>

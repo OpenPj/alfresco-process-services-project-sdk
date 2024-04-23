@@ -56,6 +56,7 @@ services:
     environment:
       discovery.type: ${docker.aps.es.discovery.type}
       ES_JAVA_OPTS: ${docker.aps.es.memory.settings}
+      xpack.security.enabled: ${docker.aps.es.xpack.security.enabled}
     ports:
       - ${docker.es.service.port.internal}:${docker.es.service.port.external}
       - ${docker.es.discovery.port.internal}:${docker.es.discovery.port.external}

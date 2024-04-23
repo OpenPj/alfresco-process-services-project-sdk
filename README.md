@@ -1,4 +1,4 @@
-# Alfresco Process Services SDK Project 2.4.1
+# Alfresco Process Services SDK Project 3.0.0
 
 The project consists of the following Maven submodules:
 
@@ -13,8 +13,7 @@ The project consists of the following Maven submodules:
  * Two different quickstarts: run scripts or using Full Maven lifecycle
 
 # Prerequisites
- * OpenJDK 17 for APS >= 2.4.x
- * OpenJDK 11 for APS <= 2.3.9
+ * OpenJDK 17
  * Apache Maven 3.9.6
  * Docker (optional)
  * Put valid  _activiti.lic_  and  _transform.lic_  (or  _Aspose.Total.Java.lic_  )  in the `/license` folder for running unit / integration tests and for building containers 
@@ -204,37 +203,15 @@ Put your Java test classes in the following package:
 
 In order to build the project, you can declare a Maven profile related to a specific APS version:
 
- * `aps2.4.3` (APS 2.4.3 - default)
- * `aps2.4.2` (APS 2.4.2)
- * `aps2.4.1` (APS 2.4.1)
- * `aps2.4.0` (APS 2.4.0)
- * `aps2.3.9` (APS 2.3.9)
- * `aps2.3.8` (APS 2.3.8)
- * `aps2.3.7` (APS 2.3.7)
- * `aps2.3.6` (APS 2.3.6)
- * `aps2.3.5` (APS 2.3.5)
- * `aps2.3.4` (APS 2.3.4)
- * `aps2.3.3` (APS 2.3.3)
- * `aps2.3.2` (APS 2.3.2)
- * `aps2.3.1` (APS 2.3.1)
- * `aps2.3.0` (APS 2.3.0)
- * `aps2.2.0.1` (APS 2.2.0.1)
- * `aps2.2.0` (APS 2.2.0)
- * `aps2.1.0` (APS 2.1.0)
- * `aps2.0.1` (APS 2.0.1)
- * `aps2.0.0` (APS 2.0.0) 
+ * `aps24.2` (APS 24.2 - default)
+ * `aps24.1` (APS 24.1)
+ 
 
-Build and test with unit tests execution for APS 2.4.3 with:
+Build and test with unit tests execution for APS 24.2 with:
 `mvn clean test`
 
 Build and test with unit tests execution for APS 2.3.1 with:
-`mvn clean test -Paps2.3.1`
-
-Build and test with unit tests execution for APS 2.2.0 with:
-`mvn clean test -Paps2.2.0`
-
-Build and test with unit tests execution for APS 2.1.0 with:
-`mvn clean test -Paps2.1.0`
+`mvn clean test -Paps24.1`
 
 Build your Docker container with:
 `mvn docker:build`
@@ -252,7 +229,7 @@ Skip the build of the Activiti Admin container with:
 `mvn clean install docker:build docker:start -Pactiviti-admin,skip.admin`
 
 # Building your Docker container (optional)
- * Update if you need  _logback.xml_  in `/activiti-app-overlay-war/src/main/webapp/WEB-INF/classes`
+ * Update if you need  _log4j2-dev.properties_ and _log4j2.properties_ in `/activiti-app-overlay-war/src/main/webapp/WEB-INF/classes`
  * Update if you need your  _activiti-app.properties_  in `/activiti-app-overlay-docker/src/main/docker/properties`
 
 # Few things to notice
