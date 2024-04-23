@@ -48,13 +48,13 @@
 	<profiles>
 		
 		<profile>
-			<id>aps24.1</id>
+			<id>aps24.1.0</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
 
 			<properties>
-				<!-- APS 24.1 -->
+				<!-- APS 24.1.0 -->
 				<maven.compiler.source>17</maven.compiler.source>
 				<maven.compiler.target>17</maven.compiler.target>
 				<aps.version>24.1.0</aps.version>
@@ -86,13 +86,13 @@
 		</profile>
 		
 		<profile>
-			<id>aps24.2</id>
+			<id>aps24.2.0</id>
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
 
 			<properties>
-				<!-- APS 24.2 -->
+				<!-- APS 24.2.0 -->
 				<maven.compiler.source>17</maven.compiler.source>
 				<maven.compiler.target>17</maven.compiler.target>
 				<aps.version>24.2.0</aps.version>

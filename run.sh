@@ -63,23 +63,23 @@ purge_admin() {
 }
 
 build() {
-    $MVN_EXEC clean install -Paps$APS_VERSION
+    $MVN_EXEC clean pre-integration-test -Paps$APS_VERSION
 }
 
 build_admin() {
-    $MVN_EXEC clean install -Paps$APS_VERSION,activiti-admin
+    $MVN_EXEC clean pre-integration-test -Paps$APS_VERSION,activiti-admin
 }
 
 build_activiti_app(){
   docker-compose -f "$COMPOSE_FILE_PATH" kill aps-current-project
     yes | docker-compose -f "$COMPOSE_FILE_PATH" rm -f aps-current-project
-    $MVN_EXEC clean install -pl aps-extensions-jar,activiti-app-overlay-war,activiti-app-overlay-docker -Paps$APS_VERSION
+    $MVN_EXEC clean pre-integration-test -pl aps-extensions-jar,activiti-app-overlay-war,activiti-app-overlay-docker -Paps$APS_VERSION
 }
 
 build_activiti_app_admin(){
   docker-compose -f "$COMPOSE_ADMIN_FILE_PATH" kill aps-current-project
     yes | docker-compose -f "$COMPOSE_ADMIN_FILE_PATH" rm -f aps-current-project
-    $MVN_EXEC clean install -pl aps-extensions-jar,activiti-app-overlay-war,activiti-app-overlay-docker -Paps$APS_VERSION,activiti-admin
+    $MVN_EXEC clean pre-integration-test -pl aps-extensions-jar,activiti-app-overlay-war,activiti-app-overlay-docker -Paps$APS_VERSION,activiti-admin
 }
 
 tail() {

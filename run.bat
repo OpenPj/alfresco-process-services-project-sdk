@@ -165,20 +165,20 @@ EXIT /B 0
     )
 EXIT /B 0
 :build
-    call %MVN_EXEC% clean package -Paps%APS_VERSION%
+    call %MVN_EXEC% clean pre-integration-test -Paps%APS_VERSION%
 EXIT /B 0
 :build_admin
-    call %MVN_EXEC% clean package -Paps%APS_VERSION%,activiti-admin
+    call %MVN_EXEC% clean pre-integration-test -Paps%APS_VERSION%,activiti-admin
 EXIT /B 0
 :build_activiti_app
     docker-compose -f "%COMPOSE_FILE_PATH%" kill aps-current-project
     docker-compose -f "%COMPOSE_FILE_PATH%" rm -f aps-current-project
-    call %MVN_EXEC% clean package -pl aps-extensions-jar,activiti-app-overlay-war,activiti-app-overlay-docker -Paps%APS_VERSION%
+    call %MVN_EXEC% clean pre-integration-test -pl aps-extensions-jar,activiti-app-overlay-war,activiti-app-overlay-docker -Paps%APS_VERSION%
 EXIT /B 0
 :build_activiti_app_admin
     docker-compose -f "%COMPOSE_ADMIN_FILE_PATH%" kill aps-current-project
     docker-compose -f "%COMPOSE_ADMIN_FILE_PATH%" rm -f aps-current-project
-    call %MVN_EXEC% clean package -pl aps-extensions-jar,activiti-app-overlay-war,activiti-app-overlay-docker -Paps%APS_VERSION%,activiti-admin
+    call %MVN_EXEC% clean pre-integration-test -pl aps-extensions-jar,activiti-app-overlay-war,activiti-app-overlay-docker -Paps%APS_VERSION%,activiti-admin
 EXIT /B 0
 :tail
     docker-compose -f "%COMPOSE_FILE_PATH%" logs -f
