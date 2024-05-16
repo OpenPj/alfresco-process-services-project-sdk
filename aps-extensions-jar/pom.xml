@@ -98,6 +98,35 @@
 				<artifactId>jackson-core</artifactId>
 				<version>${jackson.version}</version>
 			</dependency>
+			<dependency>
+			  <groupId>org.activiti</groupId>
+			  <artifactId>activiti-api-runtime-shared</artifactId>
+			  <version>${activiti.version}</version>
+			</dependency>
+			<dependency>
+			    <groupId>org.mybatis</groupId>
+			    <artifactId>mybatis</artifactId>
+			    <version>${mybatis.version}</version>
+			    <scope>test</scope>
+			</dependency>
+			<dependency>
+			    <groupId>de.odysseus.juel</groupId>
+			    <artifactId>juel-api</artifactId>
+			    <version>${juel.version}</version>
+			    <scope>test</scope>
+			</dependency>
+			<dependency>
+			    <groupId>de.odysseus.juel</groupId>
+			    <artifactId>juel-impl</artifactId>
+			    <version>${juel.version}</version>
+			    <scope>test</scope>
+			</dependency>
+			<dependency>
+			    <groupId>de.odysseus.juel</groupId>
+			    <artifactId>juel-spi</artifactId>
+			    <version>${juel.version}</version>
+			    <scope>test</scope>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -175,7 +204,34 @@
 			<groupId>com.opencsv</groupId>
 			<artifactId>opencsv</artifactId>
 			<version>${opencsv.version}</version>
+			<scope>provided</scope>
 		</dependency>
+		<dependency>
+		  <groupId>org.activiti</groupId>
+		  <artifactId>activiti-api-runtime-shared</artifactId>
+		  <scope>test</scope>
+		</dependency>
+		<dependency>
+		    <groupId>org.mybatis</groupId>
+		    <artifactId>mybatis</artifactId>
+		    <scope>test</scope>
+		</dependency>
+		<dependency>
+		    <groupId>de.odysseus.juel</groupId>
+		    <artifactId>juel-api</artifactId>
+		    <scope>test</scope>
+		</dependency>
+		<dependency>
+		    <groupId>de.odysseus.juel</groupId>
+		    <artifactId>juel-impl</artifactId>
+		    <scope>test</scope>
+		</dependency>
+		<dependency>
+		    <groupId>de.odysseus.juel</groupId>
+		    <artifactId>juel-spi</artifactId>
+		    <scope>test</scope>
+		</dependency>
+
 	</dependencies>
 
 	<build>

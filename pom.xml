@@ -75,6 +75,8 @@
 				<hibernate.version>5.4.32.Final</hibernate.version>
 				<h2.version>1.4.200</h2.version>
 				<postgresql.version>10.9</postgresql.version>
+				<mybatis.version>3.5.7</mybatis.version>
+				<juel.version>2.2.7</juel.version>
 				<skipITs>false</skipITs>
 				<skip.integration.test>false</skip.integration.test>
 				<skip.swagger.client.generation>false</skip.swagger.client.generation>
@@ -110,6 +112,8 @@
 				<hibernate.version>5.4.32.Final</hibernate.version>
 				<h2.version>1.4.200</h2.version>
 				<postgresql.version>10.9</postgresql.version>
+				<mybatis.version>3.5.7</mybatis.version>
+				<juel.version>2.2.7</juel.version>
 				<skipITs>false</skipITs>
 				<skip.integration.test>false</skip.integration.test>
 				<skip.swagger.client.generation>false</skip.swagger.client.generation>
@@ -145,6 +149,8 @@
 				<hibernate.version>5.4.32.Final</hibernate.version>
 				<h2.version>1.4.200</h2.version>
 				<postgresql.version>10.9</postgresql.version>
+				<mybatis.version>3.5.7</mybatis.version>
+				<juel.version>2.2.7</juel.version>
 				<skipITs>false</skipITs>
 				<skip.integration.test>false</skip.integration.test>
 				<skip.swagger.client.generation>false</skip.swagger.client.generation>
@@ -181,6 +187,8 @@
 				<hibernate.version>5.4.32.Final</hibernate.version>
 				<h2.version>1.4.200</h2.version>
 				<postgresql.version>13.1</postgresql.version>
+				<mybatis.version>3.5.9</mybatis.version>
+				<juel.version>2.2.7</juel.version>
 				<skipITs>false</skipITs>
 				<skip.integration.test>false</skip.integration.test>
 				<skip.swagger.client.generation>false</skip.swagger.client.generation>
@@ -217,6 +225,8 @@
 				<hibernate.version>5.4.32.Final</hibernate.version>
 				<h2.version>1.4.200</h2.version>
 				<postgresql.version>13.1</postgresql.version>
+				<mybatis.version>3.5.9</mybatis.version>
+				<juel.version>2.2.7</juel.version>
 				<skipITs>false</skipITs>
 				<skip.integration.test>false</skip.integration.test>
 				<skip.swagger.client.generation>false</skip.swagger.client.generation>
@@ -253,6 +263,8 @@
 				<hibernate.version>5.4.32.Final</hibernate.version>
 				<h2.version>1.4.200</h2.version>
 				<postgresql.version>13.1</postgresql.version>
+				<mybatis.version>3.5.9</mybatis.version>
+				<juel.version>2.2.7</juel.version>
 				<skipITs>false</skipITs>
 				<skip.integration.test>false</skip.integration.test>
 				<skip.swagger.client.generation>false</skip.swagger.client.generation>
@@ -289,6 +301,8 @@
 				<hibernate.version>5.4.32.Final</hibernate.version>
 				<h2.version>1.4.200</h2.version>
 				<postgresql.version>13.1</postgresql.version>
+				<mybatis.version>3.5.9</mybatis.version>
+				<juel.version>2.2.7</juel.version>
 				<skipITs>false</skipITs>
 				<skip.integration.test>false</skip.integration.test>
 				<skip.swagger.client.generation>false</skip.swagger.client.generation>
@@ -325,6 +339,8 @@
 				<hibernate.version>5.4.32.Final</hibernate.version>
 				<h2.version>1.4.200</h2.version>
 				<postgresql.version>13.1</postgresql.version>
+				<mybatis.version>3.5.10</mybatis.version>
+				<juel.version>2.2.7</juel.version>
 				<skipITs>false</skipITs>
 				<skip.integration.test>false</skip.integration.test>
 				<skip.swagger.client.generation>false</skip.swagger.client.generation>
@@ -361,6 +377,8 @@
 				<hibernate.version>5.4.32.Final</hibernate.version>
 				<h2.version>2.1.210</h2.version>
 				<postgresql.version>13.1</postgresql.version>
+				<mybatis.version>3.5.10</mybatis.version>
+				<juel.version>2.2.7</juel.version>
 				<skipITs>false</skipITs>
 				<skip.integration.test>false</skip.integration.test>
 				<skip.swagger.client.generation>false</skip.swagger.client.generation>
@@ -397,6 +415,8 @@
 				<hibernate.version>5.4.32.Final</hibernate.version>
 				<h2.version>2.1.214</h2.version>
 				<postgresql.version>13.1</postgresql.version>
+				<mybatis.version>3.5.10</mybatis.version>
+				<juel.version>2.2.7</juel.version>
 				<skipITs>false</skipITs>
 				<skip.integration.test>false</skip.integration.test>
 				<skip.swagger.client.generation>false</skip.swagger.client.generation>
@@ -432,6 +452,8 @@
 				<hibernate.version>5.4.32.Final</hibernate.version>
 				<h2.version>2.1.214</h2.version>
 				<postgresql.version>13.1</postgresql.version>
+				<mybatis.version>3.5.10</mybatis.version>
+				<juel.version>2.2.7</juel.version>
 				<skipITs>false</skipITs>
 				<skip.integration.test>false</skip.integration.test>
 				<skip.swagger.client.generation>false</skip.swagger.client.generation>
@@ -468,6 +490,8 @@
 				<hibernate.version>5.4.32.Final</hibernate.version>
 				<h2.version>2.1.214</h2.version>
 				<postgresql.version>13.1</postgresql.version>
+				<mybatis.version>3.5.10</mybatis.version>
+				<juel.version>2.2.7</juel.version>
 				<skipITs>false</skipITs>
 				<skip.integration.test>false</skip.integration.test>
 				<skip.swagger.client.generation>false</skip.swagger.client.generation>
@@ -504,6 +528,8 @@
 				<hibernate.version>5.4.32.Final</hibernate.version>
 				<h2.version>2.1.214</h2.version>
 				<postgresql.version>13.1</postgresql.version>
+				<mybatis.version>3.5.11</mybatis.version>
+				<juel.version>2.2.7</juel.version>
 				<skipITs>false</skipITs>
 				<skip.integration.test>false</skip.integration.test>
 				<skip.swagger.client.generation>false</skip.swagger.client.generation>
@@ -540,6 +566,8 @@
 				<hibernate.version>5.4.32.Final</hibernate.version>
 				<h2.version>2.1.214</h2.version>
 				<postgresql.version>13.1</postgresql.version>
+				<mybatis.version>3.5.11</mybatis.version>
+				<juel.version>2.2.7</juel.version>
 				<skipITs>false</skipITs>
 				<skip.integration.test>false</skip.integration.test>
 				<skip.swagger.client.generation>false</skip.swagger.client.generation>
@@ -576,6 +604,8 @@
 				<hibernate.version>5.4.32.Final</hibernate.version>
 				<h2.version>2.1.214</h2.version>
 				<postgresql.version>13.1</postgresql.version>
+				<mybatis.version>3.5.11</mybatis.version>
+				<juel.version>2.2.7</juel.version>
 				<skipITs>false</skipITs>
 				<skip.integration.test>false</skip.integration.test>
 				<skip.swagger.client.generation>false</skip.swagger.client.generation>
@@ -612,6 +642,8 @@
 				<hibernate.version>5.4.32.Final</hibernate.version>
 				<h2.version>2.2.220</h2.version>
 				<postgresql.version>13.1</postgresql.version>
+				<mybatis.version>3.5.11</mybatis.version>
+				<juel.version>2.2.7</juel.version>
 				<skipITs>false</skipITs>
 				<skip.integration.test>false</skip.integration.test>
 				<skip.swagger.client.generation>false</skip.swagger.client.generation>
@@ -648,6 +680,8 @@
 				<hibernate.version>5.4.32.Final</hibernate.version>
 				<h2.version>2.2.220</h2.version>
 				<postgresql.version>13.1</postgresql.version>
+				<mybatis.version>3.5.13</mybatis.version>
+				<juel.version>2.2.7</juel.version>
 				<skipITs>false</skipITs>
 				<skip.integration.test>false</skip.integration.test>
 				<skip.swagger.client.generation>false</skip.swagger.client.generation>
@@ -684,6 +718,8 @@
 				<hibernate.version>5.4.32.Final</hibernate.version>
 				<h2.version>2.2.220</h2.version>
 				<postgresql.version>13.1</postgresql.version>
+				<mybatis.version>3.5.13</mybatis.version>
+				<juel.version>2.2.7</juel.version>
 				<skipITs>false</skipITs>
 				<skip.integration.test>false</skip.integration.test>
 				<skip.swagger.client.generation>false</skip.swagger.client.generation>
@@ -695,7 +731,7 @@
 		<profile>
 			<id>aps2.4.3</id>
 			<activation>
-				<activeByDefault>true</activeByDefault>
+				<activeByDefault>false</activeByDefault>
 			</activation>
 
 			<properties>
@@ -720,6 +756,46 @@
 				<hibernate.version>5.4.32.Final</hibernate.version>
 				<h2.version>2.2.220</h2.version>
 				<postgresql.version>13.1</postgresql.version>
+				<mybatis.version>3.5.13</mybatis.version>
+				<juel.version>2.2.7</juel.version>
+				<skipITs>false</skipITs>
+				<skip.integration.test>false</skip.integration.test>
+				<skip.swagger.client.generation>false</skip.swagger.client.generation>
+				<docker-maven-plugin.skip.save>false</docker-maven-plugin.skip.save>
+				<docker-maven-plugin.build.save>false</docker-maven-plugin.build.save>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>aps2.4.4</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+
+			<properties>
+				<!-- APS 2.4.4 -->
+				<maven.compiler.source>17</maven.compiler.source>
+				<maven.compiler.target>17</maven.compiler.target>
+				<aps.version>2.4.4</aps.version>
+				<aps.docker.version>2.4.4</aps.docker.version>
+				<aps.version.major>2</aps.version.major>
+				<aps.version.minor>4</aps.version.minor>
+				<aps.version.revision>4</aps.version.revision>
+				<aps.2x.client.version>v2.3.7</aps.2x.client.version>
+				<opencsv.version>5.8</opencsv.version>
+				<jackson.version>2.14.1</jackson.version>
+				<bcprov.version>1.70</bcprov.version>
+				<activiti.version>7.11.1-alpha.9</activiti.version>
+				<spring.version>5.3.29.RELEASE</spring.version>
+				<spring-boot.version>2.7.14</spring-boot.version>
+				<spring-security.version>5.8.5</spring-security.version>
+				<elasticsearch.version>7.17.14</elasticsearch.version>
+				<elasticsearch-rest-client.version>7.17.14</elasticsearch-rest-client.version>
+				<hibernate.version>5.4.32.Final</hibernate.version>
+				<h2.version>2.2.220</h2.version>
+				<postgresql.version>13.1</postgresql.version>
+				<mybatis.version>3.5.13</mybatis.version>
+				<juel.version>2.2.7</juel.version>
 				<skipITs>false</skipITs>
 				<skip.integration.test>false</skip.integration.test>
 				<skip.swagger.client.generation>false</skip.swagger.client.generation>
@@ -844,9 +920,11 @@
 			<url>https://artifacts.alfresco.com/nexus/content/repositories/activiti-enterprise-releases</url>
 			<releases>
 				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
 			</releases>
 			<snapshots>
 				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
 			</snapshots>
 		</repository>
 		<repository>
@@ -855,9 +933,11 @@
 			<url>https://artifacts.alfresco.com/nexus/content/repositories/public</url>
 			<releases>
 				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
 			</releases>
 			<snapshots>
 				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
 			</snapshots>
 		</repository>
 		<repository>
