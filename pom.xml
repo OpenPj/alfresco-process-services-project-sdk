@@ -9,7 +9,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.alfresco.activiti</groupId>
 	<artifactId>aps-project</artifactId>
-	<version>3.0.0</version>
+	<version>3.0.1</version>
 	<packaging>pom</packaging>
 	<name>APS - SDK Project - 3.x</name>
 
