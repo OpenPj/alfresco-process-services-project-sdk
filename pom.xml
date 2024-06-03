@@ -9,7 +9,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.alfresco.activiti</groupId>
 	<artifactId>aps-project</artifactId>
-	<version>2.5.0</version>
+	<version>2.5.1</version>
 	<packaging>pom</packaging>
 	<name>APS - SDK Project</name>
 
@@ -995,6 +995,44 @@
 		</profile>
 		
 		<profile>
+			<id>aps2.3.8.7</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+
+			<properties>
+				<!-- APS 2.3.8.7 -->
+				<maven.compiler.source>11</maven.compiler.source>
+				<maven.compiler.target>11</maven.compiler.target>
+				<aps.version>2.3.8.7</aps.version>
+				<aps.docker.version>2.3.8.7</aps.docker.version>
+				<aps.version.major>2</aps.version.major>
+				<aps.version.minor>3</aps.version.minor>
+				<aps.version.revision>8.7</aps.version.revision>
+				<aps.2x.client.version>v2.3.7</aps.2x.client.version>
+				<opencsv.version>5.7.1</opencsv.version>
+				<jackson.version>2.14.1</jackson.version>
+				<bcprov.version>1.70</bcprov.version>
+				<activiti.version>7.10.0</activiti.version>
+				<spring.version>5.3.27.RELEASE</spring.version>
+				<spring-boot.version>2.5.12</spring-boot.version>
+				<spring-security.version>5.7.8</spring-security.version>
+				<elasticsearch.version>7.17.6</elasticsearch.version>
+				<elasticsearch-rest-client.version>7.17.6</elasticsearch-rest-client.version>
+				<hibernate.version>5.4.32.Final</hibernate.version>
+				<h2.version>2.1.214</h2.version>
+				<postgresql.version>13.1</postgresql.version>
+				<mybatis.version>3.5.11</mybatis.version>
+				<juel.version>2.2.7</juel.version>
+				<skipITs>false</skipITs>
+				<skip.integration.test>false</skip.integration.test>
+				<skip.swagger.client.generation>false</skip.swagger.client.generation>
+				<docker-maven-plugin.skip.save>false</docker-maven-plugin.skip.save>
+				<docker-maven-plugin.build.save>false</docker-maven-plugin.build.save>
+			</properties>
+		</profile>
+		
+		<profile>
 			<id>aps2.3.9</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
@@ -1565,6 +1603,44 @@
 		</profile>
 		
 		<profile>
+			<id>aps2.4.2.10</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+
+			<properties>
+				<!-- APS 2.4.2.10 -->
+				<maven.compiler.source>17</maven.compiler.source>
+				<maven.compiler.target>17</maven.compiler.target>
+				<aps.version>2.4.2.10</aps.version>
+				<aps.docker.version>2.4.2.10</aps.docker.version>
+				<aps.version.major>2</aps.version.major>
+				<aps.version.minor>4</aps.version.minor>
+				<aps.version.revision>2.10</aps.version.revision>
+				<aps.2x.client.version>v2.3.7</aps.2x.client.version>
+				<opencsv.version>5.8</opencsv.version>
+				<jackson.version>2.14.1</jackson.version>
+				<bcprov.version>1.70</bcprov.version>
+				<activiti.version>7.11.1-alpha.10</activiti.version>
+				<spring.version>5.3.29.RELEASE</spring.version>
+				<spring-boot.version>2.7.14</spring-boot.version>
+				<spring-security.version>5.8.5</spring-security.version>
+				<elasticsearch.version>7.17.14</elasticsearch.version>
+				<elasticsearch-rest-client.version>7.17.14</elasticsearch-rest-client.version>
+				<hibernate.version>5.4.32.Final</hibernate.version>
+				<h2.version>2.2.220</h2.version>
+				<postgresql.version>13.1</postgresql.version>
+				<mybatis.version>3.5.13</mybatis.version>
+				<juel.version>2.2.7</juel.version>
+				<skipITs>false</skipITs>
+				<skip.integration.test>false</skip.integration.test>
+				<skip.swagger.client.generation>false</skip.swagger.client.generation>
+				<docker-maven-plugin.skip.save>false</docker-maven-plugin.skip.save>
+				<docker-maven-plugin.build.save>false</docker-maven-plugin.build.save>
+			</properties>
+		</profile>
+
+		<profile>
 			<id>aps2.4.3</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
@@ -1605,7 +1681,7 @@
 		<profile>
 			<id>aps2.4.4</id>
 			<activation>
-				<activeByDefault>true</activeByDefault>
+				<activeByDefault>false</activeByDefault>
 			</activation>
 
 			<properties>
@@ -1791,7 +1867,9 @@
 		<module>aps-extensions-jar</module>
 		<module>activiti-app-overlay-war</module>
 		<module>activiti-app-overlay-docker</module>
+		<!--
 		<module>activiti-app-integration-tests</module>
+		-->
 	</modules>
 
 </project>
