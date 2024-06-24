@@ -1,4 +1,3 @@
-version: "3.8"
 services:
   aps-admin:
     image: aps-sdk/alfresco-process-services-admin:development
