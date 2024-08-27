@@ -134,34 +134,34 @@ EXIT /B %ERRORLEVEL%
     docker volume create aps-db-volume
     docker volume create aps-contentstore-volume
     docker volume create aps-es-volume
-    docker-compose -f "%COMPOSE_FILE_PATH%" up --build -d --remove-orphans
+    docker compose -f "%COMPOSE_FILE_PATH%" up --build -d --remove-orphans
 EXIT /B 0
 :start_admin
     docker volume create aps-db-volume
     docker volume create aps-contentstore-volume
     docker volume create aps-es-volume
-    docker-compose -f "%COMPOSE_ADMIN_FILE_PATH%" up --build -d --remove-orphans
+    docker compose -f "%COMPOSE_ADMIN_FILE_PATH%" up --build -d --remove-orphans
 EXIT /B 0
 :start_activiti_app
     docker volume create aps-db-volume
     docker volume create aps-contentstore-volume
     docker volume create aps-es-volume
-    docker-compose -f "%COMPOSE_FILE_PATH%" up --build -d aps-current-project --remove-orphans
+    docker compose -f "%COMPOSE_FILE_PATH%" up --build -d aps-current-project --remove-orphans
 EXIT /B 0
 :start_activiti_app_admin
     docker volume create aps-db-volume
     docker volume create aps-contentstore-volume
     docker volume create aps-es-volume
-    docker-compose -f "%COMPOSE_ADMIN_FILE_PATH%" up --build -d aps-current-project --remove-orphans
+    docker compose -f "%COMPOSE_ADMIN_FILE_PATH%" up --build -d aps-current-project --remove-orphans
 EXIT /B 0
 :down
     if exist "%COMPOSE_FILE_PATH%" (
-        docker-compose -f "%COMPOSE_FILE_PATH%" down
+        docker compose -f "%COMPOSE_FILE_PATH%" down
     )
 EXIT /B 0
 :down_admin
     if exist "%COMPOSE_ADMIN_FILE_PATH%" (
-        docker-compose -f "%COMPOSE_ADMIN_FILE_PATH%" down
+        docker compose -f "%COMPOSE_ADMIN_FILE_PATH%" down
     )
 EXIT /B 0
 :build
@@ -171,26 +171,26 @@ EXIT /B 0
     call %MVN_EXEC% clean pre-integration-test -Paps%APS_VERSION%,activiti-admin
 EXIT /B 0
 :build_activiti_app
-    docker-compose -f "%COMPOSE_FILE_PATH%" kill aps-current-project
-    docker-compose -f "%COMPOSE_FILE_PATH%" rm -f aps-current-project
+    docker compose -f "%COMPOSE_FILE_PATH%" kill aps-current-project
+    docker compose -f "%COMPOSE_FILE_PATH%" rm -f aps-current-project
     call %MVN_EXEC% clean pre-integration-test -pl aps-extensions-jar,activiti-app-overlay-war,activiti-app-overlay-docker -Paps%APS_VERSION%
 EXIT /B 0
 :build_activiti_app_admin
-    docker-compose -f "%COMPOSE_ADMIN_FILE_PATH%" kill aps-current-project
-    docker-compose -f "%COMPOSE_ADMIN_FILE_PATH%" rm -f aps-current-project
+    docker compose -f "%COMPOSE_ADMIN_FILE_PATH%" kill aps-current-project
+    docker compose -f "%COMPOSE_ADMIN_FILE_PATH%" rm -f aps-current-project
     call %MVN_EXEC% clean pre-integration-test -pl aps-extensions-jar,activiti-app-overlay-war,activiti-app-overlay-docker -Paps%APS_VERSION%,activiti-admin
 EXIT /B 0
 :tail
-    docker-compose -f "%COMPOSE_FILE_PATH%" logs -f
+    docker compose -f "%COMPOSE_FILE_PATH%" logs -f
 EXIT /B 0
 :tail_admin
-    docker-compose -f "%COMPOSE_ADMIN_FILE_PATH%" logs -f
+    docker compose -f "%COMPOSE_ADMIN_FILE_PATH%" logs -f
 EXIT /B 0
 :tail_all
     docker-compose -f "%COMPOSE_FILE_PATH%" logs --tail="all"
 EXIT /B 0
 :tail_all_admin
-    docker-compose -f "%COMPOSE_ADMIN_FILE_PATH%" logs --tail="all"
+    docker compose -f "%COMPOSE_ADMIN_FILE_PATH%" logs --tail="all"
 EXIT /B 0
 :prepare-test
     call %MVN_EXEC% verify -DskipTests=true -pl aps-extensions-jar,activiti-app-overlay-war,activiti-app-overlay-docker -Paps%APS_VERSION%

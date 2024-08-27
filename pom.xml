@@ -9,7 +9,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.alfresco.activiti</groupId>
 	<artifactId>aps-project</artifactId>
-	<version>3.0.2</version>
+	<version>3.0.3</version>
 	<packaging>pom</packaging>
 	<name>APS - SDK Project - 3.x</name>
 
@@ -115,6 +115,7 @@
 				<h2.version>2.2.224</h2.version>
 				<postgresql.version>13.12</postgresql.version>
 				<slf4j.version>2.0.12</slf4j.version>
+				<micrometer-registry-prometheus.version>1.12.5</micrometer-registry-prometheus.version>
 				<skipITs>false</skipITs>
 				<skip.integration.test>false</skip.integration.test>
 				<skip.swagger.client.generation>false</skip.swagger.client.generation>
@@ -126,7 +127,7 @@
 		<profile>
 			<id>aps24.2.1</id>
 			<activation>
-				<activeByDefault>true</activeByDefault>
+				<activeByDefault>false</activeByDefault>
 			</activation>
 
 			<properties>
@@ -153,6 +154,46 @@
 				<h2.version>2.2.224</h2.version>
 				<postgresql.version>13.12</postgresql.version>
 				<slf4j.version>2.0.12</slf4j.version>
+				<micrometer-registry-prometheus.version>1.12.5</micrometer-registry-prometheus.version>
+				<skipITs>false</skipITs>
+				<skip.integration.test>false</skip.integration.test>
+				<skip.swagger.client.generation>false</skip.swagger.client.generation>
+				<docker-maven-plugin.skip.save>false</docker-maven-plugin.skip.save>
+				<docker-maven-plugin.build.save>false</docker-maven-plugin.build.save>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>aps24.3.0</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+
+			<properties>
+				<!-- APS 24.3.0 -->
+				<maven.compiler.source>17</maven.compiler.source>
+				<maven.compiler.target>17</maven.compiler.target>
+				<aps.version>24.3.0</aps.version>
+				<aps.docker.version>24.3.0</aps.docker.version>
+				<aps.version.major>24</aps.version.major>
+				<aps.version.minor>3</aps.version.minor>
+				<aps.version.revision>0</aps.version.revision>
+				<aps.2x.client.version>v2.3.7</aps.2x.client.version>
+				<opencsv.version>5.9</opencsv.version>
+				<jackson.version>2.17.1</jackson.version>
+				<bcprov.version>1.78</bcprov.version>
+				<activiti.version>8.1.2</activiti.version>
+				<spring.version>6.1.10.RELEASE</spring.version>
+				<spring-boot.version>3.3.1</spring-boot.version>
+				<spring-security.version>6.3.2</spring-security.version>
+				<elasticsearch.version>8.14.1</elasticsearch.version>
+				<elasticsearch-rest-client.artifactId>elasticsearch-rest-client</elasticsearch-rest-client.artifactId>
+				<elasticsearch-rest-client.version>8.13.4</elasticsearch-rest-client.version>
+				<hibernate.version>6.5.2.Final</hibernate.version>
+				<h2.version>2.2.224</h2.version>
+				<postgresql.version>13.12</postgresql.version>
+				<slf4j.version>2.0.12</slf4j.version>
+				<micrometer-registry-prometheus.version>1.12.5</micrometer-registry-prometheus.version>
 				<skipITs>false</skipITs>
 				<skip.integration.test>false</skip.integration.test>
 				<skip.swagger.client.generation>false</skip.swagger.client.generation>
