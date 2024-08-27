@@ -88,7 +88,7 @@
 		<profile>
 			<id>aps24.2.0</id>
 			<activation>
-				<activeByDefault>true</activeByDefault>
+				<activeByDefault>false</activeByDefault>
 			</activation>
 
 			<properties>
