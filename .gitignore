@@ -141,3 +141,4 @@ Desktop.ini
 .eslintcache
 /keycloak-assembly/target
 /keycloak-theme/target
+aps-extensions-jar/src/test/resources/activiti/version.properties

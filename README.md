@@ -1,4 +1,4 @@
-# Alfresco Process Services SDK Project 2.5.2
+# Alfresco Process Services SDK Project 2.6.0
 
 The project consists of the following Maven submodules:
 
@@ -206,6 +206,9 @@ In order to build the project, you can declare a Maven profile related to a spec
 
  * `aps2.4.4` (APS 2.4.4 - default)
  * `aps2.4.3` (APS 2.4.3)
+ * `aps2.4.2.15` (APS 2.4.2.15)
+ * `aps2.4.2.14` (APS 2.4.2.14)
+ * `aps2.4.2.13` (APS 2.4.2.13)
  * `aps2.4.2.12` (APS 2.4.2.12)
  * `aps2.4.2.11` (APS 2.4.2.11)
  * `aps2.4.2.10` (APS 2.4.2.10)
@@ -223,6 +226,7 @@ In order to build the project, you can declare a Maven profile related to a spec
  * `aps2.4.1.1` (APS 2.4.1.1)
  * `aps2.4.1` (APS 2.4.1)
  * `aps2.4.0` (APS 2.4.0)
+ * `aps2.3.10` (APS 2.3.10)
  * `aps2.3.9` (APS 2.3.9)
  * `aps2.3.8.7` (APS 2.3.8.7)
  * `aps2.3.8.6` (APS 2.3.8.6)

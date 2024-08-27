@@ -31,10 +31,10 @@ public class FourEyesAppLoggingListener implements ExecutionListener {
 		logger.info("Four Eyes - Initiator of the process has user ID = " + initiator);
 		
 		//Process variables 
-		logger.info("--- Process variables:");
+		logger.debug("--- Process variables:");
 		Map<String, Object> procVars = execution.getVariables();
 		for (Map.Entry<String, Object> procVar : procVars.entrySet()) {
-		 logger.info(" [" + procVar.getKey() + " = " + procVar.getValue() + "]");
+		 logger.debug(" [" + procVar.getKey() + " = " + procVar.getValue() + "]");
 		}
 	}
 

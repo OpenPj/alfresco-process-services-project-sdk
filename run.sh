@@ -14,39 +14,39 @@ start() {
     docker volume create aps-db-volume
     docker volume create aps-contentstore-volume
 	  docker volume create aps-es-volume
-    docker-compose -f "$COMPOSE_FILE_PATH" up --build -d --remove-orphans
+    docker compose -f "$COMPOSE_FILE_PATH" up --build -d --remove-orphans
 }
 
 start_activiti_app() {
     docker volume create aps-db-volume
     docker volume create aps-contentstore-volume
     docker volume create aps-es-volume
-    docker-compose -f "$COMPOSE_FILE_PATH" up --build -d aps-current-project --remove-orphans 
+    docker compose -f "$COMPOSE_FILE_PATH" up --build -d aps-current-project --remove-orphans 
 }
 
 start_activiti_app_admin() {
     docker volume create aps-db-volume
     docker volume create aps-contentstore-volume
     docker volume create aps-es-volume
-    docker-compose -f "$COMPOSE_ADMIN_FILE_PATH" up --build -d aps-current-project --remove-orphans 
+    docker compose -f "$COMPOSE_ADMIN_FILE_PATH" up --build -d aps-current-project --remove-orphans 
 }
 
 start_admin() {
     docker volume create aps-db-volume
     docker volume create aps-contentstore-volume
     docker volume create aps-es-volume
-    docker-compose -f "$COMPOSE_ADMIN_FILE_PATH" up --build -d --remove-orphans
+    docker compose -f "$COMPOSE_ADMIN_FILE_PATH" up --build -d --remove-orphans
 }
 
 down() {
     if [ -f "$COMPOSE_FILE_PATH" ]; then
-        docker-compose -f "$COMPOSE_FILE_PATH" down
+        docker compose -f "$COMPOSE_FILE_PATH" down
     fi
 }
 
 down_admin() {
     if [ -f "$COMPOSE_ADMIN_FILE_PATH" ]; then
-        docker-compose -f "$COMPOSE_ADMIN_FILE_PATH" down
+        docker compose -f "$COMPOSE_ADMIN_FILE_PATH" down
     fi
 }
 
@@ -71,31 +71,31 @@ build_admin() {
 }
 
 build_activiti_app(){
-  docker-compose -f "$COMPOSE_FILE_PATH" kill aps-current-project
-    yes | docker-compose -f "$COMPOSE_FILE_PATH" rm -f aps-current-project
+  docker compose -f "$COMPOSE_FILE_PATH" kill aps-current-project
+    yes | docker compose -f "$COMPOSE_FILE_PATH" rm -f aps-current-project
     $MVN_EXEC clean package -pl aps-extensions-jar,activiti-app-overlay-war,activiti-app-overlay-docker -Paps$APS_VERSION
 }
 
 build_activiti_app_admin(){
-  docker-compose -f "$COMPOSE_ADMIN_FILE_PATH" kill aps-current-project
-    yes | docker-compose -f "$COMPOSE_ADMIN_FILE_PATH" rm -f aps-current-project
+  docker compose -f "$COMPOSE_ADMIN_FILE_PATH" kill aps-current-project
+    yes | docker compose -f "$COMPOSE_ADMIN_FILE_PATH" rm -f aps-current-project
     $MVN_EXEC clean package -pl aps-extensions-jar,activiti-app-overlay-war,activiti-app-overlay-docker -Paps$APS_VERSION,activiti-admin
 }
 
 tail() {
-    docker-compose -f "$COMPOSE_FILE_PATH" logs -f
+    docker compose -f "$COMPOSE_FILE_PATH" logs -f
 }
 
 tail_admin() {
-    docker-compose -f "$COMPOSE_ADMIN_FILE_PATH" logs -f
+    docker compose -f "$COMPOSE_ADMIN_FILE_PATH" logs -f
 }
 
 tail_all() {
-    docker-compose -f "$COMPOSE_FILE_PATH" logs --tail="all"
+    docker compose -f "$COMPOSE_FILE_PATH" logs --tail="all"
 }
 
 tail_all_admin() {
-    docker-compose -f "$COMPOSE_ADMIN_FILE_PATH" logs --tail="all"
+    docker compose -f "$COMPOSE_ADMIN_FILE_PATH" logs --tail="all"
 }
 
 prepare_test() {

@@ -11,7 +11,7 @@ public class FourEyesAppServiceTask implements JavaDelegate {
 	
 	@Override
 	public void execute(DelegateExecution execution) {
-		log.info("Four Eyes App - Hello world from the class delegate");
+		log.debug("Four Eyes App - Hello world from the class delegate");
         execution.setVariable("helloWorld", "Four Eyes App - Hello world from the class delegate");
 	}
 

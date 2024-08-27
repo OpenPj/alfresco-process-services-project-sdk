@@ -25,7 +25,7 @@
   <logger name="org.hibernate.engine.internal" level="WARN"/>
   <logger name="com.codahale.metrics" level="WARN"/>
   <logger name="com.zaxxer" level="WARN"/>
-  <logger name="com.activiti" level="INFO"/>
+  <logger name="com.activiti" level="DEBUG"/>
   <root level="INFO">
     <appender-ref ref="CA"/>
     <appender-ref ref="FILE"/>
