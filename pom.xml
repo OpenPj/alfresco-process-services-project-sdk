@@ -9,7 +9,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.alfresco.activiti</groupId>
 	<artifactId>aps-project</artifactId>
-	<version>2.6.0</version>
+	<version>2.6.1</version>
 	<packaging>pom</packaging>
 	<name>APS - SDK Project</name>
 
@@ -1909,7 +1909,7 @@
 		<profile>
 			<id>aps2.4.4</id>
 			<activation>
-				<activeByDefault>true</activeByDefault>
+				<activeByDefault>false</activeByDefault>
 			</activation>
 
 			<properties>
@@ -1943,6 +1943,46 @@
 				<docker-maven-plugin.build.save>false</docker-maven-plugin.build.save>
 			</properties>
 		</profile>
+		
+		<profile>
+			<id>aps2.4.5</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+
+			<properties>
+				<!-- APS 2.4.5 -->
+				<maven.compiler.source>17</maven.compiler.source>
+				<maven.compiler.target>17</maven.compiler.target>
+				<aps.version>2.4.5</aps.version>
+				<aps.docker.version>2.4.5</aps.docker.version>
+				<aps.version.major>2</aps.version.major>
+				<aps.version.minor>4</aps.version.minor>
+				<aps.version.revision>5</aps.version.revision>
+				<aps.2x.client.version>v2.3.7</aps.2x.client.version>
+				<opencsv.version>5.8</opencsv.version>
+				<jackson.version>2.14.1</jackson.version>
+				<bcprov.version>1.78</bcprov.version>
+				<activiti.version>7.11.1</activiti.version>
+				<spring.version>5.3.37.RELEASE</spring.version>
+				<spring-boot.version>2.7.18</spring-boot.version>
+				<spring-security.version>5.8.13</spring-security.version>
+				<elasticsearch.version>7.17.23</elasticsearch.version>
+				<elasticsearch-rest-client.version>7.17.23</elasticsearch-rest-client.version>
+				<hibernate.version>5.4.32.Final</hibernate.version>
+				<h2.version>2.2.220</h2.version>
+				<postgresql.version>13.1</postgresql.version>
+				<mybatis.version>3.5.16</mybatis.version>
+				<juel.version>2.2.7</juel.version>
+				<skipITs>false</skipITs>
+				<skip.integration.test>false</skip.integration.test>
+				<skip.swagger.client.generation>false</skip.swagger.client.generation>
+				<docker-maven-plugin.skip.save>false</docker-maven-plugin.skip.save>
+				<docker-maven-plugin.build.save>false</docker-maven-plugin.build.save>
+			</properties>
+		</profile>
+		
+		
 	</profiles>
 
 	<build>
