@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>org.alfresco.activiti</groupId>
 		<artifactId>aps-project</artifactId>
-		<version>3.0.3</version>
+		<version>3.0.5</version>
 	</parent>
 
 	<dependencyManagement>
@@ -25,6 +25,11 @@
 			<dependency>
 				<groupId>org.elasticsearch</groupId>
 				<artifactId>elasticsearch-x-content</artifactId>
+				<version>${elasticsearch.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>co.elastic.clients</groupId>
+				<artifactId>elasticsearch-java</artifactId>
 				<version>${elasticsearch.version}</version>
 			</dependency>
 			<dependency>
@@ -107,9 +112,13 @@
 		    <artifactId>slf4j-api</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>co.elastic.clients</groupId>
+			<artifactId>elasticsearch-java</artifactId>
+			<scope>test</scope>
+		</dependency>	
+		<dependency>
 		    <groupId>io.micrometer</groupId>
 		    <artifactId>micrometer-registry-prometheus</artifactId>
-		    <version>${micrometer-registry-prometheus.version}</version>
 		    <scope>test</scope>
 		</dependency>
 		<dependency>
