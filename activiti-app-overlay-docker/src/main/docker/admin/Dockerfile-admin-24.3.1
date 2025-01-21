@@ -1,0 +1,14 @@
+FROM alfresco/process-services-admin:${aps.docker.version}
+
+ARG TOMCAT_DIR=/usr/local/tomcat
+ARG USERNAME=alfresco
+
+USER root
+
+ADD --chown=${USERNAME} jdbc $TOMCAT_DIR/lib
+COPY --chown=${USERNAME} properties/activiti-admin.properties $TOMCAT_DIR/lib
+COPY --chown=${USERNAME} tomcat/conf/server.xml $TOMCAT_DIR/conf
+
+RUN chown ${USERNAME}:${USERNAME} -R /usr/local/tomcat
+
+USER ${USERNAME}
