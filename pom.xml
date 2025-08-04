@@ -9,7 +9,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.alfresco.activiti</groupId>
 	<artifactId>aps-project</artifactId>
-	<version>3.0.6</version>
+	<version>3.0.7</version>
 	<packaging>pom</packaging>
 	<name>APS - SDK Project - 3.x</name>
 
@@ -322,7 +322,7 @@
 		<profile>
 			<id>aps24.4.2</id>
 			<activation>
-				<activeByDefault>true</activeByDefault>
+				<activeByDefault>false</activeByDefault>
 			</activation>
 
 			<properties>
@@ -350,6 +350,240 @@
 				<postgresql.version>13.12</postgresql.version>
 				<slf4j.version>2.0.16</slf4j.version>
 				<micrometer-registry-prometheus.version>1.14.1</micrometer-registry-prometheus.version>
+				<skipITs>false</skipITs>
+				<skip.integration.test>false</skip.integration.test>
+				<skip.swagger.client.generation>false</skip.swagger.client.generation>
+				<docker-maven-plugin.skip.save>false</docker-maven-plugin.skip.save>
+				<docker-maven-plugin.build.save>false</docker-maven-plugin.build.save>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>aps24.4.3</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+
+			<properties>
+				<!-- APS 24.4.3 -->
+				<maven.compiler.source>17</maven.compiler.source>
+				<maven.compiler.target>17</maven.compiler.target>
+				<aps.version>24.4.3</aps.version>
+				<aps.docker.version>24.4.3</aps.docker.version>
+				<aps.version.major>24</aps.version.major>
+				<aps.version.minor>4</aps.version.minor>
+				<aps.version.revision>3</aps.version.revision>
+				<aps.2x.client.version>v2.3.7</aps.2x.client.version>
+				<opencsv.version>5.9</opencsv.version>
+				<jackson.version>2.18.1</jackson.version>
+				<bcprov.version>1.79</bcprov.version>
+				<activiti.version>8.1.2</activiti.version>
+				<spring.version>6.1.14.RELEASE</spring.version>
+				<spring-boot.version>3.3.5</spring-boot.version>
+				<spring-security.version>6.3.4</spring-security.version>
+				<elasticsearch.version>8.15.3</elasticsearch.version>
+				<elasticsearch-rest-client.artifactId>elasticsearch-rest-client</elasticsearch-rest-client.artifactId>
+				<elasticsearch-rest-client.version>8.13.4</elasticsearch-rest-client.version>
+				<hibernate.version>6.6.2.Final</hibernate.version>
+				<h2.version>2.3.232</h2.version>
+				<postgresql.version>13.12</postgresql.version>
+				<slf4j.version>2.0.16</slf4j.version>
+				<micrometer-registry-prometheus.version>1.14.1</micrometer-registry-prometheus.version>
+				<skipITs>false</skipITs>
+				<skip.integration.test>false</skip.integration.test>
+				<skip.swagger.client.generation>false</skip.swagger.client.generation>
+				<docker-maven-plugin.skip.save>false</docker-maven-plugin.skip.save>
+				<docker-maven-plugin.build.save>false</docker-maven-plugin.build.save>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>aps24.4.4</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+
+			<properties>
+				<!-- APS 24.4.4 -->
+				<maven.compiler.source>17</maven.compiler.source>
+				<maven.compiler.target>17</maven.compiler.target>
+				<aps.version>24.4.4</aps.version>
+				<aps.docker.version>24.4.4</aps.docker.version>
+				<aps.version.major>24</aps.version.major>
+				<aps.version.minor>4</aps.version.minor>
+				<aps.version.revision>4</aps.version.revision>
+				<aps.2x.client.version>v2.3.7</aps.2x.client.version>
+				<opencsv.version>5.9</opencsv.version>
+				<jackson.version>2.18.1</jackson.version>
+				<bcprov.version>1.79</bcprov.version>
+				<activiti.version>8.1.2</activiti.version>
+				<spring.version>6.1.14.RELEASE</spring.version>
+				<spring-boot.version>3.3.5</spring-boot.version>
+				<spring-security.version>6.3.4</spring-security.version>
+				<elasticsearch.version>8.15.3</elasticsearch.version>
+				<elasticsearch-rest-client.artifactId>elasticsearch-rest-client</elasticsearch-rest-client.artifactId>
+				<elasticsearch-rest-client.version>8.13.4</elasticsearch-rest-client.version>
+				<hibernate.version>6.6.2.Final</hibernate.version>
+				<h2.version>2.3.232</h2.version>
+				<postgresql.version>13.12</postgresql.version>
+				<slf4j.version>2.0.16</slf4j.version>
+				<micrometer-registry-prometheus.version>1.14.1</micrometer-registry-prometheus.version>
+				<skipITs>false</skipITs>
+				<skip.integration.test>false</skip.integration.test>
+				<skip.swagger.client.generation>false</skip.swagger.client.generation>
+				<docker-maven-plugin.skip.save>false</docker-maven-plugin.skip.save>
+				<docker-maven-plugin.build.save>false</docker-maven-plugin.build.save>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>aps24.5.0</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+
+			<properties>
+				<!-- APS 24.5.0 -->
+				<maven.compiler.source>17</maven.compiler.source>
+				<maven.compiler.target>17</maven.compiler.target>
+				<aps.version>24.5.0</aps.version>
+				<aps.docker.version>24.5.0</aps.docker.version>
+				<aps.version.major>24</aps.version.major>
+				<aps.version.minor>5</aps.version.minor>
+				<aps.version.revision>0</aps.version.revision>
+				<aps.2x.client.version>v2.3.7</aps.2x.client.version>
+				<opencsv.version>5.10</opencsv.version>
+				<jackson.version>2.18.2</jackson.version>
+				<bcprov.version>1.80</bcprov.version>
+				<activiti.version>8.1.3-alpha.1</activiti.version>
+				<spring.version>6.2.7.RELEASE</spring.version>
+				<spring-boot.version>3.4.5</spring-boot.version>
+				<spring-security.version>6.4.6</spring-security.version>
+				<elasticsearch.version>8.17.2</elasticsearch.version>
+				<elasticsearch-rest-client.artifactId>elasticsearch-rest-client</elasticsearch-rest-client.artifactId>
+				<elasticsearch-rest-client.version>8.15.5</elasticsearch-rest-client.version>
+				<hibernate.version>6.6.8.Final</hibernate.version>
+				<h2.version>2.3.232</h2.version>
+				<postgresql.version>13.12</postgresql.version>
+				<slf4j.version>2.0.17</slf4j.version>
+				<micrometer-registry-prometheus.version>1.14.4</micrometer-registry-prometheus.version>
+				<skipITs>false</skipITs>
+				<skip.integration.test>false</skip.integration.test>
+				<skip.swagger.client.generation>false</skip.swagger.client.generation>
+				<docker-maven-plugin.skip.save>false</docker-maven-plugin.skip.save>
+				<docker-maven-plugin.build.save>false</docker-maven-plugin.build.save>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>aps25.1.0</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+
+			<properties>
+				<!-- APS 25.1.0 -->
+				<maven.compiler.source>17</maven.compiler.source>
+				<maven.compiler.target>17</maven.compiler.target>
+				<aps.version>25.1.0</aps.version>
+				<aps.docker.version>25.1.0</aps.docker.version>
+				<aps.version.major>25</aps.version.major>
+				<aps.version.minor>1</aps.version.minor>
+				<aps.version.revision>0</aps.version.revision>
+				<aps.2x.client.version>v2.3.7</aps.2x.client.version>
+				<opencsv.version>5.10</opencsv.version>
+				<jackson.version>2.18.2</jackson.version>
+				<bcprov.version>1.80</bcprov.version>
+				<activiti.version>8.1.3-alpha.1</activiti.version>
+				<spring.version>6.2.3.RELEASE</spring.version>
+				<spring-boot.version>3.4.3</spring-boot.version>
+				<spring-security.version>6.4.3</spring-security.version>
+				<elasticsearch.version>8.17.3</elasticsearch.version>
+				<elasticsearch-rest-client.artifactId>elasticsearch-rest-client</elasticsearch-rest-client.artifactId>
+				<elasticsearch-rest-client.version>8.15.5</elasticsearch-rest-client.version>
+				<hibernate.version>6.6.9.Final</hibernate.version>
+				<h2.version>2.3.232</h2.version>
+				<postgresql.version>13.12</postgresql.version>
+				<slf4j.version>2.0.16</slf4j.version>
+				<micrometer-registry-prometheus.version>1.14.4</micrometer-registry-prometheus.version>
+				<skipITs>false</skipITs>
+				<skip.integration.test>false</skip.integration.test>
+				<skip.swagger.client.generation>false</skip.swagger.client.generation>
+				<docker-maven-plugin.skip.save>false</docker-maven-plugin.skip.save>
+				<docker-maven-plugin.build.save>false</docker-maven-plugin.build.save>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>aps25.1.1</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+
+			<properties>
+				<!-- APS 25.1.1 -->
+				<maven.compiler.source>17</maven.compiler.source>
+				<maven.compiler.target>17</maven.compiler.target>
+				<aps.version>25.1.1</aps.version>
+				<aps.docker.version>25.1.1</aps.docker.version>
+				<aps.version.major>25</aps.version.major>
+				<aps.version.minor>1</aps.version.minor>
+				<aps.version.revision>1</aps.version.revision>
+				<aps.2x.client.version>v2.3.7</aps.2x.client.version>
+				<opencsv.version>5.10</opencsv.version>
+				<jackson.version>2.18.2</jackson.version>
+				<bcprov.version>1.80</bcprov.version>
+				<activiti.version>8.1.3-alpha.1</activiti.version>
+				<spring.version>6.2.3.RELEASE</spring.version>
+				<spring-boot.version>3.4.3</spring-boot.version>
+				<spring-security.version>6.4.3</spring-security.version>
+				<elasticsearch.version>8.17.3</elasticsearch.version>
+				<elasticsearch-rest-client.artifactId>elasticsearch-rest-client</elasticsearch-rest-client.artifactId>
+				<elasticsearch-rest-client.version>8.15.5</elasticsearch-rest-client.version>
+				<hibernate.version>6.6.10.Final</hibernate.version>
+				<h2.version>2.3.232</h2.version>
+				<postgresql.version>13.12</postgresql.version>
+				<slf4j.version>2.0.16</slf4j.version>
+				<micrometer-registry-prometheus.version>1.14.5</micrometer-registry-prometheus.version>
+				<skipITs>false</skipITs>
+				<skip.integration.test>false</skip.integration.test>
+				<skip.swagger.client.generation>false</skip.swagger.client.generation>
+				<docker-maven-plugin.skip.save>false</docker-maven-plugin.skip.save>
+				<docker-maven-plugin.build.save>false</docker-maven-plugin.build.save>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>aps25.2.0</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+
+			<properties>
+				<!-- APS 25.2.0 -->
+				<maven.compiler.source>17</maven.compiler.source>
+				<maven.compiler.target>17</maven.compiler.target>
+				<aps.version>25.2.0</aps.version>
+				<aps.docker.version>25.2.0</aps.docker.version>
+				<aps.version.major>25</aps.version.major>
+				<aps.version.minor>2</aps.version.minor>
+				<aps.version.revision>0</aps.version.revision>
+				<aps.2x.client.version>v2.3.7</aps.2x.client.version>
+				<opencsv.version>5.11.2</opencsv.version>
+				<jackson.version>2.19.1</jackson.version>
+				<bcprov.version>1.81</bcprov.version>
+				<activiti.version>8.1.3</activiti.version>
+				<spring.version>6.2.6.RELEASE</spring.version>
+				<spring-boot.version>3.5.3</spring-boot.version>
+				<spring-security.version>6.5.1</spring-security.version>
+				<elasticsearch.version>8.17.4</elasticsearch.version>
+				<elasticsearch-rest-client.artifactId>elasticsearch-rest-client</elasticsearch-rest-client.artifactId>
+				<elasticsearch-rest-client.version>8.18.1</elasticsearch-rest-client.version>
+				<hibernate.version>6.6.13.Final</hibernate.version>
+				<h2.version>2.3.232</h2.version>
+				<postgresql.version>13.12</postgresql.version>
+				<slf4j.version>2.0.17</slf4j.version>
+				<micrometer-registry-prometheus.version>1.15.1</micrometer-registry-prometheus.version>
 				<skipITs>false</skipITs>
 				<skip.integration.test>false</skip.integration.test>
 				<skip.swagger.client.generation>false</skip.swagger.client.generation>
