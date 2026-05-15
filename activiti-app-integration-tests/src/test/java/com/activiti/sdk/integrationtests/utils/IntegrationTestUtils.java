@@ -15,7 +15,6 @@ import org.apache.hc.client5.http.entity.mime.FileBody;
 import org.apache.hc.client5.http.entity.mime.MultipartEntityBuilder;
 import org.apache.hc.client5.http.impl.auth.BasicScheme;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
-import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.apache.hc.client5.http.protocol.HttpClientContext;
 import org.apache.hc.core5.http.HttpEntity;
@@ -59,7 +58,7 @@ public class IntegrationTestUtils {
 				httppost.setEntity(reqEntity);
 
 				System.out.println("Importing app " + httppost);
-				try (final CloseableHttpResponse response = httpclient.execute(httppost, localContext)) {
+				httpclient.execute(httppost, localContext, response -> {
 					System.out.println("----------------------------------------");
 					System.out.println(response);
 					final HttpEntity resEntity = response.getEntity();
@@ -67,7 +66,8 @@ public class IntegrationTestUtils {
 						System.out.println("Response content length: " + resEntity.getContentLength());
 					}
 					EntityUtils.consume(resEntity);
-				}
+					return null;
+				});
 			}
 		} catch (FileNotFoundException e) {
 			fail(e.getMessage(), e);
@@ -93,7 +93,7 @@ public class IntegrationTestUtils {
 				httpGet.setEntity(reqEntity);
 
 				System.out.println("Get URL: " + httpGet);
-				try (final CloseableHttpResponse response = httpclient.execute(httpGet, localContext)) {
+				httpclient.execute(httpGet, localContext, response -> {
 					System.out.println("----------------------------------------");
 					System.out.println(response);
 					final HttpEntity resEntity = response.getEntity();
@@ -101,7 +101,8 @@ public class IntegrationTestUtils {
 						System.out.println("Response content length: " + resEntity.getContentLength());
 					}
 					EntityUtils.consume(resEntity);
-				}
+					return null;
+				});
 			}
 			System.out.println("End of executing private GET request: " + endpoint);
 
@@ -125,7 +126,7 @@ public class IntegrationTestUtils {
 				final HttpGet httpGet = new HttpGet(endpoint);
 
 				System.out.println("Get URL: " + httpGet);
-				try (final CloseableHttpResponse response = httpclient.execute(httpGet,localContext)) {
+				httpclient.execute(httpGet, localContext, response -> {
 					System.out.println("----------------------------------------");
 					System.out.println(response);
 					final HttpEntity resEntity = response.getEntity();
@@ -133,7 +134,8 @@ public class IntegrationTestUtils {
 						System.out.println("Response content length: " + resEntity.getContentLength());
 					}
 					EntityUtils.consume(resEntity);
-				}
+					return null;
+				});
 			}
 			System.out.println("End executing public GET request: " + endpoint);
 		} catch (FileNotFoundException e) {
