@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>org.alfresco.activiti</groupId>
 		<artifactId>aps-project</artifactId>
-		<version>3.1.0</version>
+		<version>3.1.1</version>
 	</parent>
 
 	<dependencyManagement>
@@ -338,7 +338,7 @@
 						</goals>
 						<configuration>
 							<outputDirectory>${project.basedir}/src/test/resources</outputDirectory>
-							<overwrite>false</overwrite>
+							<changeDetection>always</changeDetection>
 							<resources>
 								<resource>
 									<directory>${project.parent.basedir}/license</directory>
