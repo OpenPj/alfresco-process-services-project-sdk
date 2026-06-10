@@ -1,8 +1,8 @@
 package org.alfresco.activiti.unit.tests;
 
 import static java.lang.Long.parseLong;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.HashMap;
 import java.util.List;
@@ -15,12 +15,10 @@ import org.activiti.engine.TaskService;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
 import org.alfresco.activiti.conf.ApplicationWhitelistingTestConfiguration;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import com.activiti.domain.idm.AccountType;
 import com.activiti.domain.idm.Tenant;
@@ -37,8 +35,7 @@ import com.activiti.security.SecurityUtils;
 import com.activiti.service.api.UserService;
 import com.activiti.service.idm.TenantService;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = ApplicationWhitelistingTestConfiguration.class)
+@SpringJUnitConfig(classes = ApplicationWhitelistingTestConfiguration.class)
 public class FourEyesTest {
 
 	@Autowired
@@ -88,7 +85,7 @@ public class FourEyesTest {
 		return "form" + task.getFormKey() + "outcome";
 	}
 
-	@Before
+	@BeforeEach
 	public void beforeTest() {
 		List<Tenant> tenants = tenantService.findTenantsByName("testTenant");
 		if (tenants.isEmpty()) {

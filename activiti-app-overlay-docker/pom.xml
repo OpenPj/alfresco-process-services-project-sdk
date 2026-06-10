@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>org.alfresco.activiti</groupId>
 		<artifactId>aps-project</artifactId>
-		<version>3.1.1</version>
+		<version>3.1.2-SNAPSHOT</version>
 	</parent>
 
 	<properties>
@@ -112,42 +112,34 @@
 					<version>${maven-antrun-plugin.version}</version>
 				</plugin>
 				<plugin>
-					<groupId>org.codehaus.gmaven</groupId>
-					<artifactId>groovy-maven-plugin</artifactId>
-					<version>${gmaven-plugin.version}</version>
-				</plugin>
-				<plugin>
 			    	<groupId>org.apache.maven.plugins</groupId>
 			    	<artifactId>maven-jar-plugin</artifactId>
 			    	<version>${maven-jar-plugin.version}</version>
 			    </plugin>
 			</plugins>
-		</pluginManagement>
+     	</pluginManagement>
 		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>set-project-parent-basedir-for-ant</id>
+						<goals>
+							<goal>rootlocation</goal>
+						</goals>
+						<configuration>
+							<rootLocationProperty>ant.project.parent.basedir</rootLocationProperty>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 			    <groupId>org.apache.maven.plugins</groupId>
 			    <artifactId>maven-jar-plugin</artifactId>
 			    <configuration>
 			        <skipIfEmpty>true</skipIfEmpty>
 			    </configuration>
-			</plugin>
-			<plugin>
-			  <groupId>org.codehaus.gmaven</groupId>
-			  <artifactId>groovy-maven-plugin</artifactId>
-			  <executions>
-			    <execution>
-			      <id>set-project-parent-basedir-for-ant</id>
-			      <phase>validate</phase>
-			      <goals>
-			        <goal>execute</goal>
-			      </goals>
-			      <configuration>
-			        <source>
-			          project.properties.setProperty('ant.project.parent.basedir', project.parent.basedir.toString())
-			        </source>
-			      </configuration>
-			    </execution>
-			  </executions>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
